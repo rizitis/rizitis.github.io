@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="pingback" href="https://invoices.rae.gr/xmlrpc.php" />
+	<title>Τιμολόγια Προμήθειας Ηλεκτρικής Ενέργειας &#8211; ΡΑΑΕΥ :: Τιμολόγια παρόχων ενέργειας</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//cdn.datatables.net' />
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+<link rel="alternate" type="application/rss+xml" title="Ροή RSS &raquo; ΡΑΑΕΥ :: Τιμολόγια παρόχων ενέργειας" href="https://invoices.rae.gr/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Ροή Σχολίων &raquo; ΡΑΑΕΥ :: Τιμολόγια παρόχων ενέργειας" href="https://invoices.rae.gr/comments/feed/" />
+<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/invoices.rae.gr\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.2"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff","\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://invoices.rae.gr/wp-includes/css/dist/block-library/style.min.css?ver=6.4.2' media='all' />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='rae-front-styles-css' href='https://invoices.rae.gr/wp-content/plugins/rae-plugin/front/css/front-styles.css?ver=6.4.2' media='all' />
+<link rel='stylesheet' id='bootstrap-css-css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css?ver=6.4.2' media='all' />
+<link rel='stylesheet' id='datatables-css-css' href='https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css?ver=6.4.2' media='all' />
+<link rel='stylesheet' id='bootstrap-select-css-css' href='https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css?ver=6.4.2' media='all' />
+<link rel='stylesheet' id='hfe-style-css' href='https://invoices.rae.gr/wp-content/plugins/header-footer-elementor/assets/css/header-footer-elementor.css?ver=1.6.22' media='all' />
+<link rel='stylesheet' id='elementor-icons-css' href='https://invoices.rae.gr/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.23.0' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' href='https://invoices.rae.gr/wp-content/plugins/elementor/assets/css/frontend-lite.min.css?ver=3.17.3' media='all' />
+<link rel='stylesheet' id='swiper-css' href='https://invoices.rae.gr/wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min.css?ver=8.4.5' media='all' />
+<link rel='stylesheet' id='elementor-post-6-css' href='https://invoices.rae.gr/wp-content/uploads/elementor/css/post-6.css?ver=1702888787' media='all' />
+<link rel='stylesheet' id='elementor-pro-css' href='https://invoices.rae.gr/wp-content/plugins/elementor-pro/assets/css/frontend-lite.min.css?ver=3.18.2' media='all' />
+<link rel='stylesheet' id='elementor-post-80-css' href='https://invoices.rae.gr/wp-content/uploads/elementor/css/post-80.css?ver=1704201618' media='all' />
+<link rel='stylesheet' id='hfe-widgets-style-css' href='https://invoices.rae.gr/wp-content/plugins/header-footer-elementor/inc/widgets-css/frontend.css?ver=1.6.22' media='all' />
+<link rel='stylesheet' id='elementor-post-197-css' href='https://invoices.rae.gr/wp-content/uploads/elementor/css/post-197.css?ver=1703782427' media='all' />
+<link rel='stylesheet' id='elementor-post-221-css' href='https://invoices.rae.gr/wp-content/uploads/elementor/css/post-221.css?ver=1703685063' media='all' />
+<link rel='stylesheet' id='hello-elementor-css' href='https://invoices.rae.gr/wp-content/themes/hello-elementor/style.min.css?ver=2.9.0' media='all' />
+<link rel='stylesheet' id='hello-elementor-theme-style-css' href='https://invoices.rae.gr/wp-content/themes/hello-elementor/theme.min.css?ver=2.9.0' media='all' />
+<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Manrope%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap&#038;subset=greek&#038;ver=6.4.2' media='all' />
+<link rel='stylesheet' id='elementor-icons-shared-0-css' href='https://invoices.rae.gr/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css?ver=5.15.3' media='all' />
+<link rel='stylesheet' id='elementor-icons-fa-brands-css' href='https://invoices.rae.gr/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min.css?ver=5.15.3' media='all' />
+<link rel='stylesheet' id='elementor-icons-fa-solid-css' href='https://invoices.rae.gr/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css?ver=5.15.3' media='all' />
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><script src="https://invoices.rae.gr/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script src="https://invoices.rae.gr/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<link rel="https://api.w.org/" href="https://invoices.rae.gr/wp-json/" /><link rel="alternate" type="application/json" href="https://invoices.rae.gr/wp-json/wp/v2/pages/80" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://invoices.rae.gr/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.4.2" />
+<link rel="canonical" href="https://invoices.rae.gr/epaggelmatiko-2/" />
+<link rel='shortlink' href='https://invoices.rae.gr/?p=80' />
+<link rel="alternate" type="application/json+oembed" href="https://invoices.rae.gr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Finvoices.rae.gr%2Fepaggelmatiko-2%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://invoices.rae.gr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Finvoices.rae.gr%2Fepaggelmatiko-2%2F&#038;format=xml" />
+<meta name="generator" content="Elementor 3.17.3; features: e_dom_optimization, e_optimized_assets_loading, e_optimized_css_loading, additional_custom_breakpoints, block_editor_assets_optimize, e_image_loading_optimization; settings: css_print_method-external, google_font-enabled, font_display-swap">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4M92T8WQY"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-L4M92T8WQY');
+</script>
+<link rel="icon" href="https://invoices.rae.gr/wp-content/uploads/2024/01/cropped-cropped-RAAEY-ΡΑΕWW-new-logo-32x32.jpg" sizes="32x32" />
+<link rel="icon" href="https://invoices.rae.gr/wp-content/uploads/2024/01/cropped-cropped-RAAEY-ΡΑΕWW-new-logo-192x192.jpg" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://invoices.rae.gr/wp-content/uploads/2024/01/cropped-cropped-RAAEY-ΡΑΕWW-new-logo-180x180.jpg" />
+<meta name="msapplication-TileImage" content="https://invoices.rae.gr/wp-content/uploads/2024/01/cropped-cropped-RAAEY-ΡΑΕWW-new-logo-270x270.jpg" />
+		<style id="wp-custom-css">
+			a.XEDUANZB_text_decoration {
+    text-decoration: none!important;
+}
+
+table#custom_table tr td {
+    vertical-align: bottom;
+}
+
+.XEDUANZB_vendors {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+
+button.btn.dropdown-toggle.btn-light {
+    border-color: #0756ae;
+    color: #0756ae;
+}
+
+button.btn.dropdown-toggle.btn-light:hover {
+    color: #ffffff;
+    background: #0756ae;
+}
+
+button.btn.btn-danger, button#clearFilters {
+    background: #0756ae;
+    border: 1px solid #0756ae;
+	margin: 20px
+}
+
+button.btn.btn-danger:hover, button#clearFilters:hover {
+    background: #ffffff;
+    color: #0756ae;
+}
+
+
+#billing_table td {
+	border: none
+}
+
+#billing_table tbody tr:hover, table tbody tr:hover {
+    background-color: #abccef!important;
+}
+
+#product_table tr,
+#billing_table tr,
+#product_table tr td, 
+#product_table tr th,
+#billing_table tr td, 
+#billing_table tr th {
+	transition-duration: 300ms;	
+}
+
+#product_table thead tr, #billing_table thead tr {
+	background: linear-gradient(90deg, #0756AEC2 0%, #85257FC7 100%)!important;
+}
+
+#billing_table tr th, #product_table tr th {
+	vertical-align: bottom;
+	font-size: 13px;
+	background: transparent;
+	color: #ffffff;
+	border: none;
+}
+
+#billing_table tr td {
+	vertical-align: middle;
+	font-size: 13px;
+}
+
+#product_table tbody>tr:nth-child(odd), #billing_table tbody>tr:nth-child(odd) {
+    background-color: #e9f4f9;
+}
+
+.btn-square {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    text-decoration: none;
+    background:#ffffff;
+    color: #0756ae;
+	border: 2px solid #0756ae;
+	-webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+	transition-duration: 200ms;
+}
+
+.btn-square:hover {
+    text-decoration: none;
+    color: #ffffff;
+	background: linear-gradient(90deg, #0756AEC2 0%, #85257FC7 100%);
+}
+.XEDUANZB_Icon{
+	padding-top: 50px; 
+	flex: 7; display: flex; 
+	align-items: center; 
+	justify-content: center;"
+}
+.XEDUANZB_flex_3{
+	flex: 3; 
+	display: flex; 
+	align-items: center; 
+	justify-content: center;
+}
+.XEDUANZB_padding_top{
+	padding-top: 40px;
+}
+.XEDUANZB_btn-square{
+	height: 100%; 
+	display: flex;
+	flex-direction: column; 
+	background-color: #ffffff; 
+}
+	
+.XEDUANZB_margin_bottom {
+	margin-bottom: 10px; 
+	display: flex; 
+	justify-content: center; 
+	flex-wrap: wrap; 
+	align-items: center;
+	width: 100%;
+}
+.page-content a,  .XEDUANZB_text_decoration a p {
+	text-decoration: none; 
+	color: inherit;
+}
+
+
+
+
+/*COLORS*/
+
+td.color_green, td.color_blue  {
+    color: #ffffff;
+}
+
+td.color_green {
+	background: rgb(0 161 0 / 81%)!important;
+}
+
+td.color_blue {
+	background: rgb(0 50 161 / 81%)!important;
+}
+
+td.color_yellow {
+	background: rgb(255 230 0 / 81%)!important;
+}
+
+td.color_orange {
+	background: rgb(255 151 0 / 81%)!important;
+}
+
+
+table tbody tr td {    background:transparent!important;
+}
+
+
+table tbody tr:hover {
+    background-color: #eeeeee!important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #ffffff;
+}
+
+
+
+
+
+		</style>
+		</head>
+
+<body class="page-template-default page page-id-80 wp-custom-logo ehf-header ehf-footer ehf-template-hello-elementor ehf-stylesheet-hello-elementor elementor-default elementor-kit-6 elementor-page elementor-page-80">
+<div id="page" class="hfeed site">
+
+		<header id="masthead" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
+			<p class="main-title bhf-hidden" itemprop="headline"><a href="https://invoices.rae.gr" title="ΡΑΑΕΥ :: Τιμολόγια παρόχων ενέργειας" rel="home">ΡΑΑΕΥ :: Τιμολόγια παρόχων ενέργειας</a></p>
+					<div data-elementor-type="wp-post" data-elementor-id="197" class="elementor elementor-197" data-elementor-post-type="elementor-hf">
+							<div class="elementor-element elementor-element-d144366 e-flex e-con-boxed e-con e-parent" data-id="d144366" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;,&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-8172664 e-con-full e-flex e-con e-child" data-id="8172664" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-1a2a533 elementor-widget elementor-widget-site-logo" data-id="1a2a533" data-element_type="widget" data-settings="{&quot;width&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:300,&quot;sizes&quot;:[]},&quot;width_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;width_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;align_mobile&quot;:&quot;center&quot;,&quot;align&quot;:&quot;center&quot;,&quot;space&quot;:{&quot;unit&quot;:&quot;%&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_tablet&quot;:{&quot;unit&quot;:&quot;%&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;space_mobile&quot;:{&quot;unit&quot;:&quot;%&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;image_border_radius&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;top&quot;:&quot;&quot;,&quot;right&quot;:&quot;&quot;,&quot;bottom&quot;:&quot;&quot;,&quot;left&quot;:&quot;&quot;,&quot;isLinked&quot;:true},&quot;image_border_radius_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;top&quot;:&quot;&quot;,&quot;right&quot;:&quot;&quot;,&quot;bottom&quot;:&quot;&quot;,&quot;left&quot;:&quot;&quot;,&quot;isLinked&quot;:true},&quot;image_border_radius_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;top&quot;:&quot;&quot;,&quot;right&quot;:&quot;&quot;,&quot;bottom&quot;:&quot;&quot;,&quot;left&quot;:&quot;&quot;,&quot;isLinked&quot;:true},&quot;caption_padding&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;top&quot;:&quot;&quot;,&quot;right&quot;:&quot;&quot;,&quot;bottom&quot;:&quot;&quot;,&quot;left&quot;:&quot;&quot;,&quot;isLinked&quot;:true},&quot;caption_padding_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;top&quot;:&quot;&quot;,&quot;right&quot;:&quot;&quot;,&quot;bottom&quot;:&quot;&quot;,&quot;left&quot;:&quot;&quot;,&quot;isLinked&quot;:true},&quot;caption_padding_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;top&quot;:&quot;&quot;,&quot;right&quot;:&quot;&quot;,&quot;bottom&quot;:&quot;&quot;,&quot;left&quot;:&quot;&quot;,&quot;isLinked&quot;:true},&quot;caption_space&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;caption_space_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;caption_space_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="site-logo.default">
+				<div class="elementor-widget-container">
+					<div class="hfe-site-logo">
+													<a data-elementor-open-lightbox=""  class='elementor-clickable' href="https://invoices.rae.gr">
+							<div class="hfe-site-logo-set">           
+				<div class="hfe-site-logo-container">
+									<img class="hfe-site-logo-img elementor-animation-"  src="https://invoices.rae.gr/wp-content/uploads/2023/12/logo.jpeg" alt="default-logo"/>
+				</div>
+			</div>
+							</a>
+						</div>  
+					</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-e5cac36 e-con-full e-flex e-con e-child" data-id="e5cac36" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-578de08 elementor-shape-rounded elementor-grid-0 e-grid-align-center elementor-widget elementor-widget-social-icons" data-id="578de08" data-element_type="widget" data-widget_type="social-icons.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.17.0 - 08-11-2023 */
+.elementor-widget-social-icons.elementor-grid-0 .elementor-widget-container,.elementor-widget-social-icons.elementor-grid-mobile-0 .elementor-widget-container,.elementor-widget-social-icons.elementor-grid-tablet-0 .elementor-widget-container{line-height:1;font-size:0}.elementor-widget-social-icons:not(.elementor-grid-0):not(.elementor-grid-tablet-0):not(.elementor-grid-mobile-0) .elementor-grid{display:inline-grid}.elementor-widget-social-icons .elementor-grid{grid-column-gap:var(--grid-column-gap,5px);grid-row-gap:var(--grid-row-gap,5px);grid-template-columns:var(--grid-template-columns);justify-content:var(--justify-content,center);justify-items:var(--justify-content,center)}.elementor-icon.elementor-social-icon{font-size:var(--icon-size,25px);line-height:var(--icon-size,25px);width:calc(var(--icon-size, 25px) + (2 * var(--icon-padding, .5em)));height:calc(var(--icon-size, 25px) + (2 * var(--icon-padding, .5em)))}.elementor-social-icon{--e-social-icon-icon-color:#fff;display:inline-flex;background-color:#69727d;align-items:center;justify-content:center;text-align:center;cursor:pointer}.elementor-social-icon i{color:var(--e-social-icon-icon-color)}.elementor-social-icon svg{fill:var(--e-social-icon-icon-color)}.elementor-social-icon:last-child{margin:0}.elementor-social-icon:hover{opacity:.9;color:#fff}.elementor-social-icon-android{background-color:#a4c639}.elementor-social-icon-apple{background-color:#999}.elementor-social-icon-behance{background-color:#1769ff}.elementor-social-icon-bitbucket{background-color:#205081}.elementor-social-icon-codepen{background-color:#000}.elementor-social-icon-delicious{background-color:#39f}.elementor-social-icon-deviantart{background-color:#05cc47}.elementor-social-icon-digg{background-color:#005be2}.elementor-social-icon-dribbble{background-color:#ea4c89}.elementor-social-icon-elementor{background-color:#d30c5c}.elementor-social-icon-envelope{background-color:#ea4335}.elementor-social-icon-facebook,.elementor-social-icon-facebook-f{background-color:#3b5998}.elementor-social-icon-flickr{background-color:#0063dc}.elementor-social-icon-foursquare{background-color:#2d5be3}.elementor-social-icon-free-code-camp,.elementor-social-icon-freecodecamp{background-color:#006400}.elementor-social-icon-github{background-color:#333}.elementor-social-icon-gitlab{background-color:#e24329}.elementor-social-icon-globe{background-color:#69727d}.elementor-social-icon-google-plus,.elementor-social-icon-google-plus-g{background-color:#dd4b39}.elementor-social-icon-houzz{background-color:#7ac142}.elementor-social-icon-instagram{background-color:#262626}.elementor-social-icon-jsfiddle{background-color:#487aa2}.elementor-social-icon-link{background-color:#818a91}.elementor-social-icon-linkedin,.elementor-social-icon-linkedin-in{background-color:#0077b5}.elementor-social-icon-medium{background-color:#00ab6b}.elementor-social-icon-meetup{background-color:#ec1c40}.elementor-social-icon-mixcloud{background-color:#273a4b}.elementor-social-icon-odnoklassniki{background-color:#f4731c}.elementor-social-icon-pinterest{background-color:#bd081c}.elementor-social-icon-product-hunt{background-color:#da552f}.elementor-social-icon-reddit{background-color:#ff4500}.elementor-social-icon-rss{background-color:#f26522}.elementor-social-icon-shopping-cart{background-color:#4caf50}.elementor-social-icon-skype{background-color:#00aff0}.elementor-social-icon-slideshare{background-color:#0077b5}.elementor-social-icon-snapchat{background-color:#fffc00}.elementor-social-icon-soundcloud{background-color:#f80}.elementor-social-icon-spotify{background-color:#2ebd59}.elementor-social-icon-stack-overflow{background-color:#fe7a15}.elementor-social-icon-steam{background-color:#00adee}.elementor-social-icon-stumbleupon{background-color:#eb4924}.elementor-social-icon-telegram{background-color:#2ca5e0}.elementor-social-icon-thumb-tack{background-color:#1aa1d8}.elementor-social-icon-tripadvisor{background-color:#589442}.elementor-social-icon-tumblr{background-color:#35465c}.elementor-social-icon-twitch{background-color:#6441a5}.elementor-social-icon-twitter{background-color:#1da1f2}.elementor-social-icon-viber{background-color:#665cac}.elementor-social-icon-vimeo{background-color:#1ab7ea}.elementor-social-icon-vk{background-color:#45668e}.elementor-social-icon-weibo{background-color:#dd2430}.elementor-social-icon-weixin{background-color:#31a918}.elementor-social-icon-whatsapp{background-color:#25d366}.elementor-social-icon-wordpress{background-color:#21759b}.elementor-social-icon-xing{background-color:#026466}.elementor-social-icon-yelp{background-color:#af0606}.elementor-social-icon-youtube{background-color:#cd201f}.elementor-social-icon-500px{background-color:#0099e5}.elementor-shape-rounded .elementor-icon.elementor-social-icon{border-radius:10%}.elementor-shape-circle .elementor-icon.elementor-social-icon{border-radius:50%}</style>		<div class="elementor-social-icons-wrapper elementor-grid">
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-linkedin elementor-repeater-item-c64bb15" href="https://www.linkedin.com/company/regulatory-authority-for-energy-rae/" target="_blank">
+						<span class="elementor-screen-only">Linkedin</span>
+						<i class="fab fa-linkedin"></i>					</a>
+				</span>
+					</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-5d78102 e-flex e-con-boxed e-con e-child" data-id="5d78102" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-a5511be hfe-nav-menu__breakpoint-none hfe-submenu-icon-arrow hfe-submenu-animation-none hfe-link-redirect-child elementor-widget elementor-widget-navigation-menu" data-id="a5511be" data-element_type="widget" data-settings="{&quot;padding_horizontal_menu_item_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;padding_vertical_menu_item_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;menu_space_between_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;menu_row_space_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;width_dropdown_item_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;padding_horizontal_dropdown_item_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;padding_vertical_dropdown_item_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;padding_horizontal_menu_item&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:15,&quot;sizes&quot;:[]},&quot;padding_horizontal_menu_item_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;padding_vertical_menu_item&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:15,&quot;sizes&quot;:[]},&quot;padding_vertical_menu_item_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;menu_space_between&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;menu_space_between_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;menu_row_space&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;menu_row_space_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;dropdown_border_radius&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;top&quot;:&quot;&quot;,&quot;right&quot;:&quot;&quot;,&quot;bottom&quot;:&quot;&quot;,&quot;left&quot;:&quot;&quot;,&quot;isLinked&quot;:true},&quot;dropdown_border_radius_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;top&quot;:&quot;&quot;,&quot;right&quot;:&quot;&quot;,&quot;bottom&quot;:&quot;&quot;,&quot;left&quot;:&quot;&quot;,&quot;isLinked&quot;:true},&quot;dropdown_border_radius_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;top&quot;:&quot;&quot;,&quot;right&quot;:&quot;&quot;,&quot;bottom&quot;:&quot;&quot;,&quot;left&quot;:&quot;&quot;,&quot;isLinked&quot;:true},&quot;width_dropdown_item&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;220&quot;,&quot;sizes&quot;:[]},&quot;width_dropdown_item_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;padding_horizontal_dropdown_item&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;padding_horizontal_dropdown_item_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;padding_vertical_dropdown_item&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:15,&quot;sizes&quot;:[]},&quot;padding_vertical_dropdown_item_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;distance_from_menu&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;distance_from_menu_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;distance_from_menu_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;toggle_size&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;toggle_size_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;toggle_size_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;toggle_border_width&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;toggle_border_width_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;toggle_border_width_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;toggle_border_radius&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;toggle_border_radius_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;toggle_border_radius_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="navigation-menu.default">
+				<div class="elementor-widget-container">
+						<div class="hfe-nav-menu hfe-layout-horizontal hfe-nav-menu-layout horizontal hfe-pointer__none" data-layout="horizontal">
+				<div role="button" class="hfe-nav-menu__toggle elementor-clickable">
+					<span class="screen-reader-text">Menu</span>
+					<div class="hfe-nav-menu-icon">
+											</div>
+				</div>
+				<nav class="hfe-nav-menu__layout-horizontal hfe-nav-menu__submenu-arrow" data-toggle-icon="" data-close-icon="" data-full-width=""><ul id="menu-1-a5511be" class="hfe-nav-menu"><li id="menu-item-40" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children parent hfe-has-submenu hfe-creative-menu"><div class="hfe-has-submenu-container"><a class = "hfe-menu-item">Επιλέξτε είδος τιμολογίου<span class='hfe-menu-toggle sub-arrow hfe-menu-child-0'><i class='fa'></i></span></a></div>
+<ul class="sub-menu">
+	<li id="menu-item-124" class="menu-item menu-item-type-post_type menu-item-object-page hfe-creative-menu"><a href="https://invoices.rae.gr/oikiako/" class = "hfe-sub-menu-item">Οικιακό Τιμολόγιο</a></li>
+	<li id="menu-item-116" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-80 current_page_item hfe-creative-menu"><a href="https://invoices.rae.gr/epaggelmatiko-2/" class = "hfe-sub-menu-item hfe-sub-menu-item-active">Επαγγελματικό Τιμολόγιο</a></li>
+</ul>
+</li>
+</ul></nav>
+			</div>
+					</div>
+				</div>
+				<div class="elementor-element elementor-element-98b3513 elementor-widget elementor-widget-shortcode" data-id="98b3513" data-element_type="widget" data-widget_type="shortcode.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-shortcode"></div>
+				</div>
+				</div>
+					</div>
+				</div>
+				</div>
+					</div>
+				</div>
+							</div>
+				</header>
+
+	
+<main id="content" class="site-main post-80 page type-page status-publish hentry">
+
+			<header class="page-header">
+			<h1 class="entry-title">Τιμολόγια Προμήθειας Ηλεκτρικής Ενέργειας</h1>		</header>
+	
+	<div class="page-content">
+				<div data-elementor-type="wp-page" data-elementor-id="80" class="elementor elementor-80" data-elementor-post-type="page">
+							<div class="elementor-element elementor-element-5448cf77 e-flex e-con-boxed e-con e-parent" data-id="5448cf77" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-10f53a2 elementor-widget elementor-widget-text-editor" data-id="10f53a2" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.17.0 - 08-11-2023 */
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap{background-color:#69727d;color:#fff}.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap{color:#69727d;border:3px solid;background-color:transparent}.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap{margin-top:8px}.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap-letter{width:1em;height:1em}.elementor-widget-text-editor .elementor-drop-cap{float:left;text-align:center;line-height:1;font-size:50px}.elementor-widget-text-editor .elementor-drop-cap-letter{display:inline-block}</style>
+    <div class="container">
+        <div class="XEDUANZB_vendors">
+            <div class="col-sm-12 col-md-3">
+                <label>Πάροχος:</label>
+                <select id="company"
+                        class="form-control selectpicker"
+                        name="company[]"
+                        multiple
+                        data-selected-text-format="count"
+                        data-live-search="true"
+                        data-actions-box="true"
+                        data-width="100%"
+                        data-count-selected-text="Επιλεγμένοι Πάροχοι: ({0})"
+                        title="Επιλέξτε"
+                >
+                                            <option value="ELPEDISON">ELPEDISON</option>
+                                            <option value="NRG">NRG</option>
+                                            <option value="OTE ESTATE">OTE ESTATE</option>
+                                            <option value="PROTERGIA">PROTERGIA</option>
+                                            <option value="SOLAR ENERGY">SOLAR ENERGY</option>
+                                            <option value="VOLTERRA">VOLTERRA</option>
+                                            <option value="VOLTON ">VOLTON </option>
+                                            <option value="WE ENERGY">WE ENERGY</option>
+                                            <option value="ΔΕΗ">ΔΕΗ</option>
+                                            <option value="ΕΛΙΝΟΙΛ">ΕΛΙΝΟΙΛ</option>
+                                            <option value="ΖΕΝΙΘ">ΖΕΝΙΘ</option>
+                                            <option value="ΗΡΩΝ">ΗΡΩΝ</option>
+                                            <option value="ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ">ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ</option>
+                                    </select>
+            </div>
+
+            <div class="col-sm-12 col-md-3">
+                <label>Είδος Τιμολογίου:</label>
+                <select id="color" class="form-control selectpicker" name="color[]" multiple
+                        data-live-search="true" data-actions-box="true" data-width="100%" title="Επιλέξτε">
+                                            <option value="Ειδικό Τιμολόγιο">Ειδικό Τιμολόγιο</option>
+                                            <option value="Σταθερό Τιμολόγιο">Σταθερό Τιμολόγιο</option>
+                                            <option value="Κυμαινόμενο Τιμολόγιο">Κυμαινόμενο Τιμολόγιο</option>
+                                            <option value="Δυναμικό Τιμολόγιο">Δυναμικό Τιμολόγιο</option>
+                                    </select>
+            </div>
+
+            <div class="col-sm-12 col-md-3">
+                <label>Έτος(η):</label>
+                <select id="year"
+                        class="form-control selectpicker"
+                        name="year[]"
+                        multiple
+                        data-live-search="true"
+                        data-actions-box="true"
+                        data-width="100%"
+                        title="Επιλέξτε"
+                >
+                                            <option value="2024">2024</option>
+                                    </select>
+            </div>
+
+            <div class="col-sm-12 col-md-3">
+                <label>Μήνας(ες):</label>
+                <select id="month"
+                        class="form-control selectpicker"
+                        name="month[]"
+                        multiple
+                        data-live-search="true"
+                        data-actions-box="true"
+                        data-width="100%"
+                        title="Επιλέξτε"
+                >
+                                            <option value="1">Ιανουάριος</option>
+                                    </select>
+            </div>
+
+            <div class="col">
+                <input name="checkbox_ekptosi" id="checkbox_ekptosi" type="checkbox" checked>
+                <label for="checkbox_ekptosi">Έκπτωση με Προϋποθέσεις</label>
+            </div>
+
+            <div class="col-sm-2 d-flex align-items-center justify-content-center ">
+                <button id="clearFilters" class="btn btn-danger">Καθαρισμός Φίλτρων</button>
+            </div>
+        </div>
+
+        <table id="billing_table" class="ox-table-display table table-bordered table-striped table-responsive-stack">
+            <thead>
+            <tr>
+                <th>Πάροχος</th>
+                <th>Έτος</th>
+                <th>Μήνας</th>
+                <th>Ονομασία Τιμολογίου</th>
+                <th style="display: none;" class="checkbox_ekptosi_off">Πάγιο (€/μήνα)</th>
+                <th style="display: none;" class="checkbox_ekptosi_off">Τελική Τιμή Προμήθειας (€/MWh)</th>
+                <th class="checkbox_ekptosi_on">Πάγιο με Έκπτωση με προϋπόθεση (€/μήνα)</th>
+                <th class="checkbox_ekptosi_on">Προϋπόθεση Έκπτωσης Παγίου</th> <!-- -->
+                <th class="checkbox_ekptosi_on">Τελική Τιμή Προμήθειας με Έκπτωση με προϋπόθεση (€/MWh)
+                </th>
+                <th class="checkbox_ekptosi_on">Προϋπόθεση Έκπτωσης Βασικής Τιμής Προμήθειας</th> <!-- -->
+                <th>Παρατηρήσεις</th>
+            </tr>
+            </thead>
+            <tbody>
+                                        <tr>
+                    <td data-filter-value="ELPEDISON">ELPEDISON</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Σταθερό Τιμολόγιο"
+                        class='color_blue'>
+                        Bright for business                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">3.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">169.00</td>
+                    <td class="checkbox_ekptosi_on">3.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">169.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ELPEDISON">ELPEDISON</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">170.58</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">170.58</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="NRG">NRG</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό (≤ 25 kVA)                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">224.20</td>
+                    <td class="checkbox_ekptosi_on">3.60</td>
+                    <td class="checkbox_ekptosi_on">e-bill, πάγια εντολή</td>
+                    <td class="checkbox_ekptosi_on">169.20</td>
+                    <td class="checkbox_ekptosi_on">Συνέπεια</td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="NRG">NRG</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό (> 25 kVA)                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">176.20</td>
+                    <td class="checkbox_ekptosi_on">3.60</td>
+                    <td class="checkbox_ekptosi_on">e-bill, πάγια εντολή</td>
+                    <td class="checkbox_ekptosi_on">166.20</td>
+                    <td class="checkbox_ekptosi_on">Συνέπεια</td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="OTE ESTATE">OTE ESTATE</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">198.00</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">198.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="PROTERGIA">PROTERGIA</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Κυμαινόμενο Τιμολόγιο"
+                        class='color_yellow'>
+                        Plus Επαγγελματικό 2                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">1.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">166.90</td>
+                    <td class="checkbox_ekptosi_on">1.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">166.90</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="PROTERGIA">PROTERGIA</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Κυμαινόμενο Τιμολόγιο"
+                        class='color_yellow'>
+                        Value Fair Επαγγελματικό 2                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">153.80</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">153.80</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="PROTERGIA">PROTERGIA</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Κυμαινόμενο Τιμολόγιο"
+                        class='color_yellow'>
+                        Value Simple Επαγγελματικό 1                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">162.60</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">162.60</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="PROTERGIA">PROTERGIA</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Κυμαινόμενο Τιμολόγιο"
+                        class='color_yellow'>
+                        Value Simple Επαγγελματικό 3                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">162.60</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">162.60</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="PROTERGIA">PROTERGIA</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">4.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">242.60</td>
+                    <td class="checkbox_ekptosi_on">4.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">182.60</td>
+                    <td class="checkbox_ekptosi_on">Συνέπεια</td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="PROTERGIA">PROTERGIA</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Κυμαινόμενο Τιμολόγιο"
+                        class='color_yellow'>
+                        Plus Επαγγελματικό 1                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">1.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">166.90</td>
+                    <td class="checkbox_ekptosi_on">1.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">166.90</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="PROTERGIA">PROTERGIA</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Κυμαινόμενο Τιμολόγιο"
+                        class='color_yellow'>
+                        Plus Επαγγελματικό 3                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">1.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">166.90</td>
+                    <td class="checkbox_ekptosi_on">1.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">166.90</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="PROTERGIA">PROTERGIA</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Κυμαινόμενο Τιμολόγιο"
+                        class='color_yellow'>
+                        Value Fair Επαγγελματικό 1                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">154.80</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">154.80</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="PROTERGIA">PROTERGIA</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Κυμαινόμενο Τιμολόγιο"
+                        class='color_yellow'>
+                        Value Fair Επαγγελματικό 3                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">152.80</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">152.80</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="PROTERGIA">PROTERGIA</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Κυμαινόμενο Τιμολόγιο"
+                        class='color_yellow'>
+                        Value Simple Επαγγελματικό 2                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">162.60</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">162.60</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="PROTERGIA">PROTERGIA</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Σταθερό Τιμολόγιο"
+                        class='color_blue'>
+                        Επαγγελματικό 1 Value Safe                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">3.50</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">165.00</td>
+                    <td class="checkbox_ekptosi_on">3.50</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">165.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="SOLAR ENERGY">SOLAR ENERGY</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">168.80</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">168.80</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="SOLAR ENERGY">SOLAR ENERGY</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Σταθερό Τιμολόγιο"
+                        class='color_blue'>
+                        Επαγγελματικό FIXED                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">3.50</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">400.00</td>
+                    <td class="checkbox_ekptosi_on">3.50</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">360.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="VOLTERRA">VOLTERRA</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">4.50</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">144.00</td>
+                    <td class="checkbox_ekptosi_on">4.50</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">144.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="VOLTON ">VOLTON </td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">4.90</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">169.05</td>
+                    <td class="checkbox_ekptosi_on">4.90</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">144.25</td>
+                    <td class="checkbox_ekptosi_on">Συνέπεια</td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="WE ENERGY">WE ENERGY</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">166.06</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">166.06</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΔΕΗ">ΔΕΗ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Κυμαινόμενο Τιμολόγιο"
+                        class='color_yellow'>
+                        MyBusiness4All+                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">140.40</td>
+                    <td class="checkbox_ekptosi_on">4.90</td>
+                    <td class="checkbox_ekptosi_on">Πάγια Πληρωμή</td>
+                    <td class="checkbox_ekptosi_on">137.59</td>
+                    <td class="checkbox_ekptosi_on">Πάγια Πληρωμή</td>
+                    <td>Επιπλέον Χρέωση Ισχύος 1,5 €/KW/μήνα</td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΔΕΗ">ΔΕΗ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Κυμαινόμενο Τιμολόγιο"
+                        class='color_yellow'>
+                        MyBussiness4ALL                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">0.00</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on">Πάγια Πληρωμή</td>
+                    <td class="checkbox_ekptosi_on">149.82</td>
+                    <td class="checkbox_ekptosi_on">Πάγια Πληρωμή</td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΔΕΗ">ΔΕΗ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό - Γ21                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">163.15</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">163.15</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΔΕΗ">ΔΕΗ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό - Αγροτικό                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">160.35</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">160.35</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΔΕΗ">ΔΕΗ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Κυμαινόμενο Τιμολόγιο"
+                        class='color_yellow'>
+                        Γ22                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">157.50</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">157.50</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td>Επιπλέον Χρέωση Ισχύος 2,2 €/KW/μήνα</td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΔΕΗ">ΔΕΗ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό - Γ23                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">217.35</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">217.35</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td>Χρέωση νυχτερινού 137,35 €/MWh</td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΔΕΗ">ΔΕΗ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό - ΦΟΠ                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">165.35</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">165.35</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΕΛΙΝΟΙΛ">ΕΛΙΝΟΙΛ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">0.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">163.38</td>
+                    <td class="checkbox_ekptosi_on">0.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">163.38</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΕΛΙΝΟΙΛ">ΕΛΙΝΟΙΛ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Σταθερό Τιμολόγιο"
+                        class='color_blue'>
+                        Power on! Blue Bussiness                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">149.00</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">149.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΕΛΙΝΟΙΛ">ΕΛΙΝΟΙΛ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Σταθερό Τιμολόγιο"
+                        class='color_blue'>
+                        Power on! Blue Bussiness 23                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">0.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">159.00</td>
+                    <td class="checkbox_ekptosi_on">0.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">159.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td>Χρέωση νυχτερινού 149 €/MWh</td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΖΕΝΙΘ">ΖΕΝΙΘ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">1.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">179.47</td>
+                    <td class="checkbox_ekptosi_on">1.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">179.47</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΗΡΩΝ">ΗΡΩΝ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Σταθερό Τιμολόγιο"
+                        class='color_blue'>
+                        Bussines Fix 3                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">7.50</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">179.00</td>
+                    <td class="checkbox_ekptosi_on">7.50</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">179.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΗΡΩΝ">ΗΡΩΝ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό - Basic Business S                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">189.77</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">177.37</td>
+                    <td class="checkbox_ekptosi_on">Συνέπεια</td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΗΡΩΝ">ΗΡΩΝ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό - Basic Business L                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">191.77</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">185.47</td>
+                    <td class="checkbox_ekptosi_on">Συνέπεια</td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ">ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό - Επαγγελματικό 2                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">185.65</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">155.65</td>
+                    <td class="checkbox_ekptosi_on">Συνέπεια</td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ">ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό - Αγροτικό                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">185.65</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">155.65</td>
+                    <td class="checkbox_ekptosi_on">Συνέπεια</td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ">ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό - Επαγγελματικό 1                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">178.65</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">148.65</td>
+                    <td class="checkbox_ekptosi_on">Συνέπεια</td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ">ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό - Επαγγελματικό Νυχτερινό                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">185.65</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">155.65</td>
+                    <td class="checkbox_ekptosi_on">Συνέπεια</td>
+                    <td></td>
+                </tr>
+                            <tr>
+                    <td data-filter-value="ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ">ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ</td>
+                    <td>2024</td>
+                    <td>1</td>
+                    <td data-filter-value="Ειδικό Τιμολόγιο"
+                        class='color_green'>
+                        Ειδικό - ΦΟΠ                    </td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">5.00</td>
+                    <td style="display: none;" class="checkbox_ekptosi_off">178.65</td>
+                    <td class="checkbox_ekptosi_on">5.00</td>
+                    <td class="checkbox_ekptosi_on"></td>
+                    <td class="checkbox_ekptosi_on">148.65</td>
+                    <td class="checkbox_ekptosi_on">Συνέπεια</td>
+                    <td></td>
+                </tr>
+                        </tbody>
+        </table>
+    </div>
+
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                $("#clearFilters").on("click", function () {
+                    $('#company').selectpicker('val', ["ELPEDISON","NRG","OTE ESTATE","PROTERGIA","SOLAR ENERGY","VOLTERRA","VOLTON ","WE ENERGY","ΔΕΗ","ΕΛΙΝΟΙΛ","ΖΕΝΙΘ","ΗΡΩΝ","ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ"]);
+                    $('#color').selectpicker('val', ['Ειδικό Τιμολόγιο', 'Σταθερό Τιμολόγιο', 'Κυμαινόμενο Τιμολόγιο', 'Δυναμικό Τιμολόγιο',]);
+                    $('#month').selectpicker('val', ['1']);
+                    $('#year').selectpicker('val', ['2024']);
+                    filterRows();
+                });
+
+                function filterRows() {
+                    var company_column_dropdown = $('#company').val();
+                    var color_column_dropdown = $('#color').val();
+                    var year_column_dropdown = $('#year').val();
+                    var month_column_dropdown = $('#month').val();
+
+                    $("#billing_table tbody tr").each(function () {
+                        var company_column = $(this).find("td:first").text();
+                        var color_column = $(this).find("td:nth-child(4)").data('filter-value');
+                        var year_column = $(this).find("td:nth-child(2)").text();
+                        var month_column = $(this).find("td:nth-child(3)").text();
+
+                        var isInCompanyDropdown = company_column_dropdown.includes(company_column);
+                        var isInColorDropdown = color_column_dropdown.includes(color_column);
+                        var isInYearDropdown = year_column_dropdown.includes(year_column);
+                        var isInMonthDropdown = month_column_dropdown.includes(month_column);
+
+                        $(this).hide();
+                        if(isInCompanyDropdown && isInColorDropdown && isInYearDropdown && isInMonthDropdown){
+                            $(this).show();
+                        }
+                    });
+                }
+
+                $('#company').on('change', filterRows);
+                $('#color').on('change', filterRows);
+                $('#month').on('change', filterRows);
+                $('#year').on('change', filterRows);
+
+                $('#company').selectpicker('val', ["ELPEDISON","NRG","OTE ESTATE","PROTERGIA","SOLAR ENERGY","VOLTERRA","VOLTON ","WE ENERGY","ΔΕΗ","ΕΛΙΝΟΙΛ","ΖΕΝΙΘ","ΗΡΩΝ","ΦΥΣΙΚΟ ΑΕΡΙΟ ΕΛΛΗΝΙΚΗ ΕΤΑΙΡΙΑ ΕΝΕΡΓΕΙΑΣ"]);
+                $('#color').selectpicker('val', ['Ειδικό Τιμολόγιο', 'Σταθερό Τιμολόγιο', 'Κυμαινόμενο Τιμολόγιο', 'Δυναμικό Τιμολόγιο',]);
+                $('#month').selectpicker('val', ['1']);
+                $('#year').selectpicker('val', ['2024']);
+                filterRows();
+
+                var billing_table = $('#billing_table').DataTable({
+                    "searching": false,
+                    "info": false,
+                    "paging": false,
+                    "order": [[ 8, 'asc' ]]
+                });
+
+                $('#checkbox_ekptosi').click(function () {
+                    if ($(this).is(':checked')) {
+                        $('.checkbox_ekptosi_on').show();
+                        $('.checkbox_ekptosi_off').hide();
+                        billing_table.order([[8, 'asc']]).draw();
+                    } else {
+                        $('.checkbox_ekptosi_on').hide();
+                        $('.checkbox_ekptosi_off').show();
+                        billing_table.order([[5, 'asc']]).draw();
+
+                    }
+                });
+            });
+        })(jQuery);
+    </script>
+
+    				<!-- wp:shortcode -->
+
+<!-- /wp:shortcode -->						</div>
+				</div>
+				<div class="elementor-element elementor-element-59560df elementor-widget elementor-widget-text-editor" data-id="59560df" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p style="font-weight: 400;">*Οι ανωτέρω τιμές είναι οι πλέον πρόσφατες προσφερόμενες από τους προμηθευτές ηλεκτρικής ενέργειας, τις οποίες η ΡΑΑΕΥ οφείλει να αναρτήσει στην ιστοσελίδα της σύμφωνα με την παρ. 4 του άρθρου 138Α του νόμου 4951/2022. Σε κάθε περίπτωση, εφαρμοζόμενων των διατάξεων της παρ. 9 του άρθρου 138Α του νόμου 4951/2022, η ΡΑΑΕΥ θα προβεί σε έλεγχο της τήρησης των διατάξεων του νόμου και της Υπουργικής Απόφασης ΥΠΕΝ/ΔΗΕ/120637/2107.</p>						</div>
+				</div>
+					</div>
+				</div>
+							</div>
+				<div class="post-tags">
+					</div>
+			</div>
+
+	
+</main>
+
+	
+		<footer itemtype="https://schema.org/WPFooter" itemscope="itemscope" id="colophon" role="contentinfo">
+			<div class='footer-width-fixer'>		<div data-elementor-type="wp-post" data-elementor-id="221" class="elementor elementor-221" data-elementor-post-type="elementor-hf">
+							<div class="elementor-element elementor-element-5ac3759 e-flex e-con-boxed e-con e-parent" data-id="5ac3759" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;shape_divider_top&quot;:&quot;curve&quot;,&quot;shape_divider_top_negative&quot;:&quot;yes&quot;,&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+				<div class="elementor-shape elementor-shape-top" data-negative="true">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+	<path class="elementor-shape-fill" d="M500,97C126.7,96.3,0.8,19.8,0,0v100l1000,0V1C1000,19.4,873.3,97.8,500,97z"/>
+</svg>		</div>
+		<div class="elementor-element elementor-element-6f75d2d e-con-full e-flex e-con e-child" data-id="6f75d2d" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-cc0b38e elementor-widget elementor-widget-image" data-id="cc0b38e" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.17.0 - 08-11-2023 */
+.elementor-widget-image{text-align:center}.elementor-widget-image a{display:inline-block}.elementor-widget-image a img[src$=".svg"]{width:48px}.elementor-widget-image img{vertical-align:middle;display:inline-block}</style>												<img fetchpriority="high" width="800" height="316" src="https://invoices.rae.gr/wp-content/uploads/2023/12/RAAEY-ΡΑΕWW-new-logo-1024x405.jpg" class="attachment-large size-large wp-image-230" alt="" srcset="https://invoices.rae.gr/wp-content/uploads/2023/12/RAAEY-ΡΑΕWW-new-logo-1024x405.jpg 1024w, https://invoices.rae.gr/wp-content/uploads/2023/12/RAAEY-ΡΑΕWW-new-logo-300x119.jpg 300w, https://invoices.rae.gr/wp-content/uploads/2023/12/RAAEY-ΡΑΕWW-new-logo-768x304.jpg 768w, https://invoices.rae.gr/wp-content/uploads/2023/12/RAAEY-ΡΑΕWW-new-logo.jpg 1301w" sizes="(max-width: 800px) 100vw, 800px" />															</div>
+				</div>
+				<div class="elementor-element elementor-element-175db8e elementor-shape-rounded elementor-grid-0 e-grid-align-center elementor-widget elementor-widget-social-icons" data-id="175db8e" data-element_type="widget" data-widget_type="social-icons.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-social-icons-wrapper elementor-grid">
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-linkedin elementor-repeater-item-c64bb15" href="https://www.linkedin.com/company/regulatory-authority-for-energy-rae/" target="_blank">
+						<span class="elementor-screen-only">Linkedin</span>
+						<i class="fab fa-linkedin"></i>					</a>
+				</span>
+					</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-f0631d6 elementor-widget elementor-widget-button" data-id="f0631d6" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="https://www.rae.gr/contact/">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon elementor-align-icon-left">
+				<i aria-hidden="true" class="fas fa-phone-alt"></i>			</span>
+						<span class="elementor-button-text">Επικοινωνία</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-79d9c7d elementor-widget elementor-widget-image" data-id="79d9c7d" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+																<a href="https://et.diavgeia.gov.gr/f/22793">
+							<img width="756" height="181" src="https://invoices.rae.gr/wp-content/uploads/2023/12/diaygeia-logo.png" class="attachment-large size-large wp-image-237" alt="" srcset="https://invoices.rae.gr/wp-content/uploads/2023/12/diaygeia-logo.png 756w, https://invoices.rae.gr/wp-content/uploads/2023/12/diaygeia-logo-300x72.png 300w" sizes="(max-width: 756px) 100vw, 756px" />								</a>
+															</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-ca510df e-con-full e-flex e-con e-child" data-id="ca510df" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-6673524 elementor-align-left elementor-mobile-align-center elementor-widget__width-initial elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="6673524" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+			<link rel="stylesheet" href="https://invoices.rae.gr/wp-content/plugins/elementor/assets/css/widget-icon-list.min.css">		<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<a href="https://www.rae.gr/sxetika-me-ti-rae/">
+
+											<span class="elementor-icon-list-text">Σχετικά με τη ΡΑΑΕΥ</span>
+											</a>
+									</li>
+						</ul>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-6b93842 elementor-align-left elementor-widget__width-initial elementor-mobile-align-center elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="6b93842" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<a href="https://www.rae.gr/sxetika-me/prokirikseis/" target="_blank">
+
+											<span class="elementor-icon-list-text">Προκηρύξεις</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="http://oldsite.rae.gr/site" target="_blank">
+
+												<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-check"></i>						</span>
+										<span class="elementor-icon-list-text">Είσοδος στον παλαιό Ιστότοπο</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="https://www.rae.gr/wp-content/uploads/2022/06/ISO_9001.pdf" target="_blank">
+
+												<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-check"></i>						</span>
+										<span class="elementor-icon-list-text">Πιστοποιητικό ISO 9001</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="https://www.rae.gr/gdpr/" target="_blank">
+
+												<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-check"></i>						</span>
+										<span class="elementor-icon-list-text">GDPR - Προσωπικά Δεδομένα </span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="https://www.rae.gr/wp-content/uploads/2023/10/GEP_RAE-1.ΝΒ-1.pdf">
+
+												<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-check"></i>						</span>
+										<span class="elementor-icon-list-text">GENDER EQUALTIY PLAN 2023</span>
+											</a>
+									</li>
+						</ul>
+				</div>
+				</div>
+				</div>
+					</div>
+				</div>
+							</div>
+		</div>		</footer>
+	</div><!-- #page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" id="popper-js-js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" id="bootstrap-js-js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" id="datatables-js-js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js" id="datatables-bootstrap-js-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" id="bootstrap-select-js-js"></script>
+<script src="https://invoices.rae.gr/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js?ver=1.0.0" id="hello-theme-frontend-js"></script>
+<script src="https://invoices.rae.gr/wp-content/plugins/header-footer-elementor/inc/js/frontend.js?ver=1.6.22" id="hfe-frontend-js-js"></script>
+<script src="https://invoices.rae.gr/wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js?ver=3.18.2" id="elementor-pro-webpack-runtime-js"></script>
+<script src="https://invoices.rae.gr/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.17.3" id="elementor-webpack-runtime-js"></script>
+<script src="https://invoices.rae.gr/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.17.3" id="elementor-frontend-modules-js"></script>
+<script src="https://invoices.rae.gr/wp-includes/js/dist/vendor/wp-polyfill-inert.min.js?ver=3.1.2" id="wp-polyfill-inert-js"></script>
+<script src="https://invoices.rae.gr/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.14.0" id="regenerator-runtime-js"></script>
+<script src="https://invoices.rae.gr/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0" id="wp-polyfill-js"></script>
+<script src="https://invoices.rae.gr/wp-includes/js/dist/hooks.min.js?ver=c6aec9a8d4e5a5d543a1" id="wp-hooks-js"></script>
+<script src="https://invoices.rae.gr/wp-includes/js/dist/i18n.min.js?ver=7701b0c3857f914212ef" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script id="elementor-pro-frontend-js-before">
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/invoices.rae.gr\/wp-admin\/admin-ajax.php","nonce":"48699b570f","urls":{"assets":"https:\/\/invoices.rae.gr\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"https:\/\/invoices.rae.gr\/wp-json\/"},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"el","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/invoices.rae.gr\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
+</script>
+<script src="https://invoices.rae.gr/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=3.18.2" id="elementor-pro-frontend-js"></script>
+<script src="https://invoices.rae.gr/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2" id="elementor-waypoints-js"></script>
+<script src="https://invoices.rae.gr/wp-includes/js/jquery/ui/core.min.js?ver=1.13.2" id="jquery-ui-core-js"></script>
+<script id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"M\u03bf\u03b9\u03c1\u03b1\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03c3\u03c4\u03bf Facebook","shareOnTwitter":"\u039c\u03bf\u03b9\u03c1\u03b1\u03c3\u03c4\u03b5\u03af\u03c4\u03b5 \u03c3\u03c4\u03bf Twitter","pinIt":"\u039a\u03b1\u03c1\u03c6\u03af\u03c4\u03c3\u03c9\u03bc\u03b1","download":"\u039b\u03ae\u03c8\u03b7","downloadImage":"\u039a\u03b1\u03c4\u03ad\u03b2\u03b1\u03c3\u03bc\u03b1 \u03b5\u03b9\u03ba\u03cc\u03bd\u03b1\u03c2","fullscreen":"\u03a0\u03bb\u03ae\u03c1\u03b7\u03c2 \u03bf\u03b8\u03cc\u03bd\u03b7","zoom":"\u039c\u03b5\u03b3\u03ad\u03bd\u03b8\u03c5\u03bd\u03c3\u03b7","share":"\u039a\u03bf\u03b9\u03bd\u03ae \u03c7\u03c1\u03ae\u03c3\u03b7","playVideo":"\u0391\u03bd\u03b1\u03c0\u03b1\u03c1\u03b1\u03b3\u03c9\u03b3\u03ae \u0392\u03af\u03bd\u03c4\u03b5\u03bf","previous":"\u03a0\u03c1\u03bf\u03b7\u03b3\u03bf\u03cd\u03bc\u03b5\u03bd\u03bf","next":"\u0395\u03c0\u03cc\u03bc\u03b5\u03bd\u03bf","close":"\u039a\u03bb\u03b5\u03af\u03c3\u03b9\u03bc\u03bf","a11yCarouselWrapperAriaLabel":"Carousel | Horizontal scrolling: Arrow Left & Right","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"\u039a\u03b1\u03c4\u03b1\u03ba\u03cc\u03c1\u03c5\u03c6\u03b7 \u039a\u03b9\u03bd\u03b7\u03c4\u03ae \u03a3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"\u039f\u03c1\u03b9\u03b6\u03cc\u03bd\u03c4\u03b9\u03b1 \u039a\u03b9\u03bd\u03b7\u03c4\u03ae \u03a3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"\u03a6\u03bf\u03c1\u03b7\u03c4\u03cc\u03c2 \u03c5\u03c0\u03bf\u03bb\u03bf\u03b3\u03b9\u03c3\u03c4\u03ae\u03c2","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},"version":"3.17.3","is_static":false,"experimentalFeatures":{"e_dom_optimization":true,"e_optimized_assets_loading":true,"e_optimized_css_loading":true,"additional_custom_breakpoints":true,"container":true,"e_swiper_latest":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"block_editor_assets_optimize":true,"landing-pages":true,"e_image_loading_optimization":true,"e_global_styleguide":true,"page-transitions":true,"notes":true,"form-submissions":true,"e_scroll_snap":true},"urls":{"assets":"https:\/\/invoices.rae.gr\/wp-content\/plugins\/elementor\/assets\/"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"logo","hello_header_menu_layout":"horizontal","hello_footer_logo_type":"logo"},"post":{"id":80,"title":"%CE%A4%CE%B9%CE%BC%CE%BF%CE%BB%CF%8C%CE%B3%CE%B9%CE%B1%20%CE%A0%CF%81%CE%BF%CE%BC%CE%AE%CE%B8%CE%B5%CE%B9%CE%B1%CF%82%20%CE%97%CE%BB%CE%B5%CE%BA%CF%84%CF%81%CE%B9%CE%BA%CE%AE%CF%82%20%CE%95%CE%BD%CE%AD%CF%81%CE%B3%CE%B5%CE%B9%CE%B1%CF%82%20%E2%80%93%20%CE%A1%CE%91%CE%91%CE%95%CE%A5%20%3A%3A%20%CE%A4%CE%B9%CE%BC%CE%BF%CE%BB%CF%8C%CE%B3%CE%B9%CE%B1%20%CF%80%CE%B1%CF%81%CF%8C%CF%87%CF%89%CE%BD%20%CE%B5%CE%BD%CE%AD%CF%81%CE%B3%CE%B5%CE%B9%CE%B1%CF%82","excerpt":"","featuredImage":false}};
+</script>
+<script src="https://invoices.rae.gr/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.17.3" id="elementor-frontend-js"></script>
+<script src="https://invoices.rae.gr/wp-content/plugins/elementor-pro/assets/js/elements-handlers.min.js?ver=3.18.2" id="pro-elements-handlers-js"></script>
+</body>
+</html> 
+
