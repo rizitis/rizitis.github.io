@@ -109,24 +109,21 @@ h2{
 
 /* Responsive */
 
-@media (max-width: 767px) {
-            /* Adjust font size for smaller screens */
-            .fl-table tbody td,
-            .fl-table tbody th,
-            .fl-table thead td,
-            .fl-table thead th {
-                font-size: 10px;
-                padding: 8px;
-            }
+.table-container {
+        overflow-x: auto;
+        margin: 0;
+    }
 
-            /* Remove fixed width for cells on smaller screens */
-            .fl-table tbody td,
-            .fl-table tbody th,
-            .fl-table thead td,
-            .fl-table thead th {
-                width: auto;
-            }
+@media (max-width: 767px) {
+        .fl-table tbody td,
+        .fl-table tbody th,
+        .fl-table thead td,
+        .fl-table thead th {
+            font-size: 10px;
+            padding: 8px;
+            width: auto;
         }
+    }
     </style>
 </head>
 
@@ -160,8 +157,8 @@ Eνημερωθείτε για αυτές απευθείας από τον κά�
 
 <p>Eνημέρωση σελίδας από 1-5 κάθε μήνα.</p>
 <h2>Responsive Table</h2>
-<div class="table-wrapper">
-    <table class="fl-table">
+    <div class="table-container">
+        <table class="fl-table">
         <thead>
         <tr>
             <th>ΠΑΡΟΧΟΣ</th>
