@@ -42,6 +42,88 @@
             max-width: 100%;
             height: auto;
         }
+        
+        *{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+body{
+    font-family: Helvetica;
+    -webkit-font-smoothing: antialiased;
+<!--     background: rgba( 71, 147, 227, 1); -->
+}
+h2{
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    padding: 30px 0;
+}
+
+/* Table Styles */
+
+.table-wrapper{
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+    overflow-x: auto;
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: #4FC3A1;
+}
+
+
+.fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+/* Responsive */
+
+.table-container {
+        overflow-x: auto;
+        margin: 0;
+    }
+
+@media (max-width: 767px) {
+        .fl-table tbody td,
+        .fl-table tbody th,
+        .fl-table thead td,
+        .fl-table thead th {
+            font-size: 10px;
+            padding: 8px;
+            width: auto;
+        }
+    }
     </style>
 </head>
 
@@ -70,18 +152,112 @@
 και κάποιους άλλους το ακριβότερο όλων...</p>
 Για τον μήνα <b>Ιανουάριο 2024</b> οι παρακάτω 5 πάροχοι
 χρέωσαν την καλύτερη τιμή ανά kWh στον πελάτη τους:
-<p><em>H ΔΕΗ έχει δική της πολιτική και προανακοινώνει την τιμή στο κίτρινο<br>
-ΟΙ παρακάτω τιμές <b>δεν</b> αφορούν όσους είστε σε επαγγελματικά τιμολόγια... </em></p>
-Η PROTERGIA έχει προανακοινώσει 4 διαφορετικά ΚΙΤΡΙΝΑ, ρωτήστε τους για διευκρινίσεις
+<p><em>Κάποιοι πάροχοι έχουν δική της πολιτική και προανακοινώνουν την τιμή στο κίτρινο</em></p>
 
-<dl>
-<p><li><b>ΔΕΗ:</b> μέχρι 500KWh/μήνα τελική χρέωση 0,12653€/KWh. Αν υπερβείς πάει 0,17133€/KWh<br>Χρέωση νυχτερινού 105,73 €/MWh  </li></p>
-<p><li><b>PROTERGIA</b> Από 0,13280-0,16690 €/MWh Ανάλογα το πρόγραμμα</li></p>
-<p><li><b></b>  </li></p>
-<p><li><b></b>  </li></p>
-<p><li><b></b> </li></p>
-</dl>
-    </main>
+
+
+<h2>Responsive Table</h2>
+    <div class="table-container">
+        <table class="fl-table">
+        <thead>
+        <tr>
+            <th>ΠΑΡΟΧΟΣ</th>
+            <th>ΤΙΜΗ</th>
+            <th>ΝΥΚΤΕΡΙΝΟ</th>
+            <th>ΠΑΓΙΟ</th>
+            <th>Υπό Όρους</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>ΔΕΗ</td>
+            <td>0,126-0,171</td>
+            <td>0,11</td>
+            <td></td>
+            <td>ΝΑΙ</td>                      
+        </tr>
+        <tr>
+            <td>PROTERGIA</td>
+            <td>0,132-0,166</td>
+            <td>ΟΧΙ</td>
+            <td></td>
+            <td>ΝΑΙ</td>
+        </tr>
+        <tr>
+            <td>ΕΛΙΝΟΙΛ</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>ΗΡΩΝ</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>NRG</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        
+        <tr>
+            <td> Φυσ.Αέριο</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Voltera</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Volton</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>WE ENERGY</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>SOLAR ENERGY</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>ΖΕΝΙΘ</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Elpedison</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tbody>
+    </table>
+</div>
+</main>
    <center> <p>><b>κεράστε ένα καφέ ;)</b></p>
    <section id="contact">
             <h2>Contact</h2>
