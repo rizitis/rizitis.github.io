@@ -42,6 +42,135 @@
             max-width: 100%;
             height: auto;
         }
+        
+        *{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+body{
+    font-family: Helvetica;
+    -webkit-font-smoothing: antialiased;
+<!--     background: rgba( 71, 147, 227, 1); -->
+}
+h2{
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    padding: 30px 0;
+}
+
+/* Table Styles */
+
+.table-wrapper{
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: #4FC3A1;
+}
+
+
+.fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .fl-table {
+        display: block;
+        width: 100%;
+    }
+    .table-wrapper:before{
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    }
+    .fl-table thead, .fl-table tbody, .fl-table thead th {
+        display: block;
+    }
+    .fl-table thead th:last-child{
+        border-bottom: none;
+    }
+    .fl-table thead {
+        float: left;
+    }
+    .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    .fl-table td, .fl-table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+    .fl-table tbody tr {
+        display: table-cell;
+    }
+    .fl-table tbody tr:nth-child(odd) {
+        background: none;
+    }
+    .fl-table tr:nth-child(even) {
+        background: transparent;
+    }
+    .fl-table tr td:nth-child(odd) {
+        background: #F8F8F8;
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tr td:nth-child(even) {
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tbody td {
+        display: block;
+        text-align: center;
+    }
+}
     </style>
 </head>
 
@@ -53,13 +182,13 @@
 
     <main>
       <center> <img src="./prasino.png"> </center>       
-        <p>Eνημέρωση σελίδας την 1-5 κάθε μήνα.</p>
+        
 <b>Ειδικό Τιμολόγιο</b>
 <p>Δηλαδή:</p>
 
 <lo>
-<li>–H τιμή χρέωσης kWh ανακοινώνεται την 1η έως την 5η ημέρα κάθε μήνα 
-<li>-Θα ξέρεις από την 1 του μήνα πόσο θα χρεωθείς την kWh + πάγιο έως 5€ στο τέλος του μήνα.
+<li>–H τιμή χρέωσης kWh θα ανακοινώνεται έως την 5η ημέρα κάθε μήνα. 
+<li>-Θα ξέρεις από την 5η του μήνα πόσο θα χρεωθείς την kWh + πάγιο έως 5€ στο τέλος του μήνα.
 <li>-Μπορείς χωρίς τέλος πρόωρης αποχώρησης να αλλάξεις πάροχο</lo>
 <p><b>Συμπέρασμα:</b> (Τι είχες Γιάννη; Τι είχα πάντα…) Με μια μικρή
 διαφορά υπέρ μας.</p> <p>Τον Γενάρη 2024 θα ξεκινήσουμε όλοι
@@ -67,27 +196,114 @@
 στις 2 Ιανουαρίου 2024 θα δούμε ξεκάθαρα αν ο πάροχος μας
 είναι ακριβότερος και κατά πόσο από τους άλλους.<br /> Άρα τον αποχαιρετούμε με ένα απλό τηλέφωνο σε άλλο πάροχο
 φτηνότερο…</p>
+Οι τιμές έχουν διάφορες προϋποθέσεις <b>(Υπό Όρους)</b> ανάλογα τον πάροχο (πχ εκπτώσεις συνέπειας κτλ)<br>
+Eνημερωθείτε για αυτές απευθείας από τον κάθε πάροχο επίσημα.<br> 
+
+
 Για τον <b>ΓΕΝΑΡΗ 2024 </b>οι παρακάτω πάροχοι ανακοίνωσαν αυτές ως καλύτερες τους τιμές στην PAAEY:
-<b>(18:09:50 5/1/2024)</b> <br>
-Οι τιμές έχουν διάφορες προϋποθέσεις ανάλογα τον πάροχο (πχ εκπτώσεις συνέπειας κτλ)<br>
-ενημερωθείτε για αυτές από τον κάθε πάροχο επίσημα: 
-<dl>
-<li> <b>ΔΕΗ:</b> 0,13635€/KWh μέχρι 500KWh μετά 0,14595€/KWh (πάγιο 5€)<br> </li>
-<b>Nυχτερινό</b> 0,11155€/KWh<br>
-<p><li><b>ΕΛΙΝΟΙΛ:</b>  0,14038€/KWh+πάγιο 5€ </li></p>
-<p></p>
-<li><b>ΗΡΩΝ:</b> 0,14052€/KWh+πάγιο 5€ </li>
-<p></p>
-<p><li>  <b>NRG:</b> 0,141€/KWh</li></p>
-<p><li><b> Protergia:</b> 0,1426€/KWh+πάγιο 4€</li></p>
-<p><li><b> Φυσικό Αέριο:</b> 0,14265€/KWh+πάγιο 5€</li></p>
-<p><li><b>Volterra:</b>  0,144€/KWh</li></p>
-<p><li> <b> Volton:</b> 0,14425€/KWh+πάγιο 4,90€. </li></p>
-<p><li><b>WE ENERGY</b> 0,16606€/KWh+πάγιο 5€</li></p>
-<p><li><b>SOLAR ENERGY</b> 0,16880€/KWh+πάγιο 5€</li></p>
-<p><li><b>ZeniΘ:</b>  0,16947€/KWh+πάγιο 5€</li></p>
-<p><li>  <b> Elpedison: </b> 0,1706€/KWh+πάγιο 5€</li></p>
-</dl>
+
+<p>Eνημέρωση σελίδας από 1-5 κάθε μήνα.</p>
+<h2>Responsive Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>ΠΑΡΟΧΟΣ</th>
+            <th>ΤΙΜΗ</th>
+            <th>ΝΥΚΤΕΡΙΝΟ</th>
+            <th>ΠΑΓΙΟ</th>
+            <th>Υπό Όρους</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>ΔΕΗ</td>
+            <td>0,136-0,146</td>
+            <td>0,11</td>
+            <td>5€</td>
+            <td>ΝΑΙ</td>                      
+        </tr>
+        <tr>
+            <td>ΕΛΙΝΟΙΛ</td>
+            <td>0,140</td>
+            <td>OXI</td>
+            <td>5€</td>
+            <td>NAI</td>
+        </tr>
+        <tr>
+            <td>ΗΡΩΝ</td>
+            <td>0,140</td>
+            <td>OXI</td>
+            <td>5€</td>
+            <td>NAI</td>
+        </tr>
+        <tr>
+            <td>NRG</td>
+            <td>0,141</td>
+            <td>OXI</td>
+            <td></td>
+            <td>ΝΑΙ</td>
+        </tr>
+        <tr>
+            <td>PROTERGIA</td>
+            <td>0,143</td>
+            <td>ΟΧΙ</td>
+            <td>4€</td>
+            <td>ΝΑΙ</td>
+        </tr>
+        <tr>
+            <td> Φυσ.Αέριο</td>
+            <td>0,143</td>
+            <td>ΟΧΙ</td>
+            <td>5€</td>
+            <td>ΝΑΙ</td>
+        </tr>
+        <tr>
+            <td>Voltera</td>
+            <td>0,144</td>
+            <td>ΟΧΙ</td>
+            <td></td>
+            <td>ΝΑΙ</td>
+        </tr>
+        <tr>
+            <td>Volton</td>
+            <td>0,144</td>
+            <td>ΟΧΙ</td>
+            <td>4,90€</td>
+            <td>ΝΑΙ</td>
+        </tr>
+        <tr>
+            <td>WE ENERGY</td>
+            <td>0,17</td>
+            <td>ΟΧΙ</td>
+            <td>5€</td>
+            <td>ΝΑΙ</td>
+        </tr>
+        <tr>
+            <td>SOLAR ENERGY</td>
+            <td>0,17</td>
+            <td>ΟΧΙ</td>
+            <td>5€</td>
+            <td>ΝΑΙ</td>
+        </tr>
+        <tr>
+            <td>ΖΕΝΙΘ</td>
+            <td>0,17</td>
+            <td>ΟΧΙ</td>
+            <td>5€</td>
+            <td>ΝΑΙ</td>
+        </tr>
+        <tr>
+            <td>Elpedison</td>
+            <td>0,17</td>
+            <td>ΟΧΙ</td>
+            <td>5€</td>
+            <td>ΝΑΙ</td>
+        </tr>
+        <tbody>
+    </table>
+</div>
+
     </main>
   <center> <p>><b>κεράστε ένα καφέ ;)</b></p>
  <section id="contact">
