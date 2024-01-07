@@ -42,6 +42,88 @@
             max-width: 100%;
             height: auto;
         }
+        
+        *{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+body{
+    font-family: Helvetica;
+    -webkit-font-smoothing: antialiased;
+<!--     background: rgba( 71, 147, 227, 1); -->
+}
+h2{
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    padding: 30px 0;
+}
+
+/* Table Styles */
+
+.table-wrapper{
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+    overflow-x: auto;
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: #4FC3A1;
+}
+
+
+.fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+/* Responsive */
+
+.table-container {
+        overflow-x: auto;
+        margin: 0;
+    }
+
+@media (max-width: 767px) {
+        .fl-table tbody td,
+        .fl-table tbody th,
+        .fl-table thead td,
+        .fl-table thead th {
+            font-size: 10px;
+            padding: 8px;
+            width: auto;
+        }
+    }
     </style>
 </head>
 
@@ -62,26 +144,69 @@
 <li>-Αν αποφασίσεις όμως να αλλάξεις εταιρία πριν λήξει το συμβόλαιο σου θα πληρώσεις τέλος πρόωρης αποχώρησης.
 
 <p><b>Συμπέρασμα:</b> Αν έχεις σχετικά μικρή κατανάλωση και θέλεις ήσυχο το κεφάλι σου<br /> και αν βρεις μια καλή προσφορά…ίσως σου κάνει</p>
-(Η λίστα ανανεώνεται κάθε μέχρι τις 5 κάθε μήνα.)<br>
-<b>(18:05:48 5/1/2024)</b> <br>
+(Η λίστα ανανεώνεται την 1η και 15η κάθε μήνα.)<br>
 Οι τιμές έχουν διάφορες προϋποθέσεις ανάλογα τον πάροχο (πχ εκπτώσεις συνέπειας)<br>
 ενημερωθείτε για αυτές από τον κάθε πάροχο επίσημα: 
-<dl>
-<li><b>ΕΛΙΝΟΙΛ:</b> 0,149€/KWh + 5 πάγιο (12μηνη διάρκειας)<br>
-<b>Νυκτερινό</b>  0,139€/KWh</li>
-<p><li><b>ΖΕΝΙΘ:</b> 0,160€/KWh + 5 πάγιο</li></p>
-<li> <b>Protergia:</b> 0,165€/KWh + 3.5 πάγιο (διάρκειας 12 μηνών)</li>
-<p></p>
-<li> <b>ΗΡΩΝ:</b> 0,165€/KWh + 7,5 πάγιο (12μηνη διάρκειας)</li>
-<p></p>
-<li>  <b>Elpedison:</b> 0,169€/KWh + 3 πάγιο (διάρκειας 12 μηνών )</li>
-<p></p>
-<li> <b>ΔΕΗ:</b> 0,175€/KWh + 3,5 πάγιο - 17,9€/KWh + 5 πάγιο (12μηνη διάρκειας)<br>
-<b>Νυκτερινό</b> 0,166 5€/KWh</li>
-<p></p>
+<h2>Responsive Table</h2>
+    <div class="table-container">
+        <table class="fl-table">
+        <thead>
+        <tr>
+            <th>ΠΑΡΟΧΟΣ</th>
+            <th>ΤΙΜΗ</th>
+            <th>ΝΥΚΤΕΡΙΝΟ</th>
+            <th>ΠΑΓΙΟ</th>
+            <th>ΜΗΝΕΣ</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>ΕΛΙΝΟΙΛ</td>
+            <td>0,15</td>
+            <td>0,14</td>
+            <td>5€</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>ΖΕΝΙΘ</td>
+            <td>0,16</td>
+            <td>ΟΧΙ</td>
+            <td>5€</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>PROTERGIA</td>
+            <td>0,165</td>
+            <td>ΟΧΙ</td>
+            <td>3,5€</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>ΗΡΩΝ</td>
+            <td>0,165</td>
+            <td>OXI</td>
+            <td>7,5€</td>
+            <td>12</td>
+        </tr>        
+        <tr>
+            <td>Elpedison</td>
+            <td>0,17</td>
+            <td>ΟΧΙ</td>
+            <td>3€</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>ΔΕΗ</td>
+            <td>0,175-0,18</td>
+            <td>0,166</td>
+            <td>3,5-5€</td>
+            <td>12</td>                      
+        </tr>
 
-</dl>
-    </main>
+<tbody>
+    </table>
+</div>
+</main>
+    
 <center> <p>><b>κεράστε ένα καφέ ;)</b></p>
  <section id="contact">
             <h2>Contact</h2>
