@@ -111,15 +111,19 @@ h2{
 
 @media (max-width: 767px) {
             /* Adjust font size for smaller screens */
-            .fl-table td,
-            .fl-table th {
+            .fl-table tbody td,
+            .fl-table tbody th,
+            .fl-table thead td,
+            .fl-table thead th {
                 font-size: 10px;
                 padding: 8px;
             }
 
             /* Remove fixed width for cells on smaller screens */
-            .fl-table td,
-            .fl-table th {
+            .fl-table tbody td,
+            .fl-table tbody th,
+            .fl-table thead td,
+            .fl-table thead th {
                 width: auto;
             }
         }
