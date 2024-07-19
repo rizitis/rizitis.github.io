@@ -157,7 +157,15 @@
  // Disable right-click
     window.addEventListener('contextmenu', function(e) {
       e.preventDefault();
-      alert('LOL! You are Window user, right?');
+      alert('LOL! You are Windows user, right?');
+    });
+    
+// Intercept Ctrl+U
+    window.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+        e.preventDefault();
+        alert('Yup! You are Windows guy, its clear.');
+      }
     });
   </script>
 
