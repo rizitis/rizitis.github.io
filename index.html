@@ -135,14 +135,7 @@
     <div class="face6"><b>:::</b></div>
 </div>
   
-  <!-- Disable right click for new hackers :D -->
-  <script>
-window.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-});
-</script>
-  
-  
+
   <!-- Typing SVG -->
   <img src="https://readme-typing-svg.herokuapp.com?font=PT+Serif&pause=1000&center=true&random=true&width=435&lines=LONG+LIVE+SLACKWARE+1993-2023;ONES+YOU+GO+SLACK+YOU+NEVER+GO+BACK;Keep+It+Simple+Stupid;Slackware+Intelligent+" alt="Typing SVG" style="max-width: 100%; margin-top: 20px;">
 
@@ -159,6 +152,12 @@ window.addEventListener('contextmenu', function (e) {
       if (Math.random() < 0.1) { // Probability of 10% for the link to show
         hiddenLink.classList.add('show');
       }
+    });
+    
+ // Disable right-click
+    window.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      alert('Right-click is disabled on this page.');
     });
   </script>
 
