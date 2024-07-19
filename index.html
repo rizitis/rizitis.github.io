@@ -160,11 +160,18 @@
       alert('LOL! You are Windows user, right?');
     });
     
-// Intercept Ctrl+U
+// Intercept common keyboard shortcuts
     window.addEventListener('keydown', function(e) {
+      // Disable Ctrl + U (View Source)
       if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
         e.preventDefault();
-        alert('Yup! You are Windows guy, its clear.');
+        alert('Viewing source is disabled on this page.');
+      }
+
+      // Disable Ctrl + S (Save Page)
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        alert('Saving the page is disabled on this page.');
       }
     });
   </script>
