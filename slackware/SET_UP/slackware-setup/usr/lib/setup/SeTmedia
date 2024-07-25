@@ -1,0 +1,57 @@
+#!/bin/bash
+TMP=/var/log/setup/tmp
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP
+fi
+
+# Call the A-i-O (All-in-One Offline Installer) media handler.
+# This is for Slackware Installer images that contain a partition
+# labeled 'SLKins_aio' which holds the Slackware packages.
+# If a partition exists, passes the sanity checks and the user
+# wants to use the bundled media, we exit.
+# Otherwise, if the user creates a file named '/.no-allinone', the
+# the sanity checks fail or the user doesn't want to use the
+# media, we offer the set of options to select the source media.
+INS-all-in-one && exit 0
+
+dialog --backtitle "Select Slackware installation source." \
+--title "SOURCE MEDIA SELECTION" --menu \
+"Please select the media from which to install Slackware Linux:" \
+14 70 7 \
+"1" "Install from a Slackware CD or DVD" \
+"2" "Install from a Slackware USB stick" \
+"3" "Install from a hard drive partition" \
+"4" "Install from NFS (Network File System)" \
+"5" "Install from FTP/HTTP server" \
+"6" "Install from Samba share" \
+"7" "Install from a pre-mounted directory" \
+2> $TMP/media
+if [ ! $? = 0 ]; then
+ rm $TMP/media
+ exit
+fi
+
+SOURCE_MEDIA="`cat $TMP/media`"
+rm -f $TMP/media
+if [ "$SOURCE_MEDIA" = "1" ]; then
+ INSCD
+elif [ "$SOURCE_MEDIA" = "2" ]; then
+ INSUSB
+elif [ "$SOURCE_MEDIA" = "3" ]; then
+ INShd
+elif [ "$SOURCE_MEDIA" = "4" ]; then
+ SeTnet
+ INSNFS
+elif [ "$SOURCE_MEDIA" = "5" ]; then
+ SeTnet
+ INSURL 
+elif [ "$SOURCE_MEDIA" = "6" ]; then
+ SeTnet
+ INSSMB 
+elif [ "$SOURCE_MEDIA" = "7" ]; then
+ INSdir
+fi
+
+# Sorry, this goes the way of the dinosaur...
+#"5" "Install from floppy disks (A and N series only)" 
+

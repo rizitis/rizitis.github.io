@@ -1,0 +1,218 @@
+#!/bin/bash
+
+# Check if dialog is installed
+if ! command -v dialog &> /dev/null; then
+    echo "Error: dialog is not installed. Please install it first."
+    exit 1
+fi
+
+# Get a list of disks using ls and grep
+disks=$(ls /dev | grep -E "^sd|^nvme")
+
+# Check if disks are found
+if [ -z "$disks" ]; then
+    echo "Error: No disks found."
+    exit 1
+fi
+
+# Initialize the disks_selected variable
+disks_selected=""
+
+# Create an array to hold dialog options
+dialog_options=()
+
+# Loop through disks and add them to dialog options array
+for disk in $disks; do
+    dialog_options+=("$disk" "Disk $disk" off)
+done
+
+# Use dialog to create a checklist menu for selecting disks
+selected_disks=$(dialog --stdout --checklist "Select disks to convert to Bcachefs:" 25 60 15 "${dialog_options[@]}")
+
+# Read the selections from dialog output
+while read line; do
+    disks_selected="$disks_selected $line"
+done <<< "$selected_disks"
+
+# Show selected disks
+echo "Selected disks: $disks_selected"
+
+# Display menu for selecting options
+selected_options=$(dialog --stdout --checklist "Select options for conversion:" 35 80 25 \
+    "format" "(Safe Choice) format (mkfs.bcachefs)" on \
+    "show-super" "Show superblock information (bcachefs show-super)" off \
+    "set-option" "Set Bcachefs options (bcachefs set-option)" off \
+    "reset-counters" "Reset Bcachefs counters (bcachefs reset-counters)" off \
+    "mount" "Mount Bcachefs filesystem (mount.bcachefs)" off \
+    "fsck" "Run Bcachefs filesystem check (bcachefs fsck)" off \
+    "fs-usage" "Display filesystem usage (bcachefs fs usage)" off \
+    "device-add" "Add device to Bcachefs (bcachefs device add)" off \
+    "device-remove" "Remove device from Bcachefs (bcachefs device remove)" off \
+    "device-online" "Online device in Bcachefs (bcachefs device online)" off \
+    "device-offline" "Offline device in Bcachefs (bcachefs device offline)" off \
+    "device-evacuate" "Evacuate device in Bcachefs (bcachefs device evacuate)" off \
+    "device-set-state" "Set state of device in Bcachefs (bcachefs device set-state)" off \
+    "device-resize" "Resize device in Bcachefs (bcachefs device resize)" off \
+    "device-resize-journal" "Resize journal device in Bcachefs (bcachefs device resize-journal)" off \
+    "subvolume-create" "Create subvolume in Bcachefs (bcachefs subvolume create)" off \
+    "subvolume-delete" "Delete subvolume in Bcachefs (bcachefs subvolume delete)" off \
+    "subvolume-snapshot" "Take snapshot of subvolume in Bcachefs (bcachefs subvolume snapshot)" off \
+    "data-rereplicate" "Rereplicate data in Bcachefs (bcachefs data rereplicate)" off \
+    "data-job" "Perform data job in Bcachefs (bcachefs data job)" off \
+    "unlock" "Unlock Bcachefs (bcachefs unlock)" off \
+    "set-passphrase" "Set passphrase for Bcachefs (bcachefs set-passphrase)" off \
+    "remove-passphrase" "Remove passphrase from Bcachefs (bcachefs remove-passphrase)" off \
+    "migrate" "Migrate Bcachefs (bcachefs migrate)" off \
+    "migrate-superblock" "Migrate Bcachefs superblock (bcachefs migrate-superblock)" off \
+    "setattr" "Set attributes in Bcachefs (bcachefs setattr)" off \
+    "fusemount" "Fusemount Bcachefs (fusemount.bcachefs)" off \
+    "completions" "Show completions for Bcachefs commands (bcachefs completions)" off \
+    "version" "Show Bcachefs version (bcachefs version)" off)
+
+# Function to display Bcachefs error message and exit
+set -e
+display_error() {
+    echo "Error occurred at line $1 with exit status $2."
+    exit $2
+}
+
+# Trap errors and call display_error function
+trap 'display_error $LINENO $?' ERR
+
+
+# Check if any option is selected
+if [ -z "$selected_options" ]; then
+    echo "No options selected. Exiting."
+    exit 1
+fi
+
+# Process the selected options
+for option in $selected_options; do
+    echo "Executing command for option: $option"
+    case "$option" in
+        "format")
+            # Process format command
+            mkfs.bcachefs
+            ;;
+        "show-super")
+            # Process show-super command
+            bcachefs show-super
+            ;;
+        "set-option")
+            # Process set-option command
+            bcachefs set-option
+            ;;
+        "reset-counters")
+            # Process reset-counters command
+            bcachefs reset-counters
+            ;;
+        "mount")
+            # Process mount command
+            mount.bcachefs
+            ;;
+        "fsck")
+            # Process fsck command
+            bcachefs fsck
+            ;;
+        "fs-usage")
+            # Process fs-usage command
+            bcachefs fs usage
+            ;;
+        "device-add")
+            # Process device-add command
+            bcachefs device add
+            ;;
+        "device-remove")
+            # Process device-remove command
+            bcachefs device remove
+            ;;
+        "device-online")
+            # Process device-online command
+            bcachefs device online
+            ;;
+        "device-offline")
+            # Process device-offline command
+            bcachefs device offline
+            ;;
+        "device-evacuate")
+            # Process device-evacuate command
+            bcachefs device evacuate
+            ;;
+        "device-set-state")
+            # Process device-set-state command
+            bcachefs device set-state
+            ;;
+        "device-resize")
+            # Process device-resize command
+            bcachefs device resize
+            ;;
+        "device-resize-journal")
+            # Process device-resize-journal command
+            bcachefs device resize-journal
+            ;;
+        "subvolume-create")
+            # Process subvolume-create command
+            bcachefs subvolume create
+            ;;
+        "subvolume-delete")
+            # Process subvolume-delete command
+            bcachefs subvolume delete
+            ;;
+        "subvolume-snapshot")
+            # Process subvolume-snapshot command
+            bcachefs subvolume snapshot
+            ;;
+        "data-rereplicate")
+            # Process data-rereplicate command
+            bcachefs data rereplicate
+            ;;
+        "data-job")
+            # Process data-job command
+            bcachefs data job
+            ;;
+        "unlock")
+            # Process unlock command
+            bcachefs unlock
+            ;;
+        "set-passphrase")
+            # Process set-passphrase command
+            bcachefs set-passphrase
+            ;;
+        "remove-passphrase")
+            # Process remove-passphrase command
+            bcachefs remove-passphrase
+            ;;
+        "migrate")
+            # Process migrate command
+            bcachefs migrate
+            ;;
+        "migrate-superblock")
+            # Process migrate-superblock command
+            bcachefs migrate-superblock
+            ;;
+        "setattr")
+            # Process setattr command
+            bcachefs setattr
+            ;;
+        "fusemount")
+            # Process fusemount command
+            fusemount.bcachefs
+            ;;
+        "completions")
+            # Process completions command
+            bcachefs completions
+            ;;
+        "version")
+            # Process version command
+            bcachefs version
+            ;;
+        *)
+            # Handle unknown options
+            echo "Unknown option: $option"
+            ;;
+    esac
+done
+
+echo "Well done..."
+exit 0
+

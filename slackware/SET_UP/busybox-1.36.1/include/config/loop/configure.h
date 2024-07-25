@@ -1,0 +1,1 @@
+#define CONFIG_LOOP_CONFIGURE 1

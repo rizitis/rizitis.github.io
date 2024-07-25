@@ -1,0 +1,8 @@
+# Device nodes to trigger on-demand module loading.
+vhost_vsock vhost-vsock c10:241
+ppp_generic ppp c108:0
+loop loop-control c10:237
+vhost_net vhost-net c10:238
+uhid uhid c10:239
+tun net/tun c10:200
+vfio vfio/vfio c10:196

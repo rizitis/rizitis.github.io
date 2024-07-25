@@ -1,0 +1,1 @@
+ xzcat initrd.img | cpio -i --make-directories

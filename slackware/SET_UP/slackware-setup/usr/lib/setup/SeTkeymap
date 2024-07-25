@@ -1,0 +1,67 @@
+#!/bin/sh
+# Copyright 1993, 1999, 2002 Patrick Volkerding, Moorhead, MN.
+# Copyright 2009, 2023  Patrick J. Volkerding, Sebeka, MN, USA
+# Use and redistribution covered by the same terms as the "setup" script.
+TMP=/var/log/setup/tmp
+RDIR=/dev/tty4
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP
+fi
+while [ 0 ]; do
+
+# Construct the list of available keymaps:
+MAPLIST="$(cd /usr/share/kbd/keymaps/i386 ; find azerty bepo carpalx colemak dvorak fgGIod neo olpc qwerty qwertz | grep / | grep .map.gz$ | rev | cut -f 2- -d . | rev | less | sort | less | sed "s|^|\"|g" | sed "s|$|\" \"\" |g" | tr -d "\n")"
+
+cat << EOF > $TMP/select_keymap.sh
+dialog --title "KEYBOARD MAP SELECTION" --menu "You may select one \
+of the following keyboard maps. If you do not select a keyboard \
+map, 'us.map' (the US keyboard map) is the default. Use the UP/DOWN \
+arrow keys and PageUp/PageDown to scroll \
+through the whole list of choices." \
+22 55 11 \
+"qwerty/us.map" "" "qwerty/uk.map" "" $MAPLIST \
+ 2> $TMP/SeTkeymap
+EOF
+ sh $TMP/select_keymap.sh
+ if [ ! $? = 0 ]; then
+  rm -f $TMP/SeTkeymap $TMP/select_keymap.sh
+  exit
+ fi
+ rm -f $TMP/select_keymap.sh
+ MAPNAME="$(cat $TMP/SeTkeymap)"
+ MAPNAME="$(basename $MAPNAME)"
+ echo $MAPNAME > $TMP/SeTkeymap
+ loadkeys -q $MAPNAME
+
+ while [ 0 ]; do
+  # Match the dialog colors a little while doing the keyboard test:
+  setterm -background cyan -foreground black -blank 0
+  clear
+  cat << EOF
+
+
+    OK, the new map is now installed. You may now test it by typing
+    anything you want. To quit testing the keyboard, enter 1 on a
+    line by itself to accept the map and go on, or 2 on a line by
+    itself to reject the current keyboard map and select a new one.
+
+EOF
+  echo -n "    "
+  read REPLY
+  if [ "$REPLY" = "1" -o "$REPLY" = "2" ]; then
+   break;
+  fi
+ done
+ setterm -background black -foreground white -blank 0
+ if [ "$REPLY" = "1" ]; then
+  # Make a persistent (P) copy so starting setup won't erase it:
+  cp $TMP/SeTkeymap $TMP/Pkeymap
+  break;
+ else
+  rm -f $TMP/$MAPNAME
+  rm -f $TMP/SeTkeymap $TMP/Pkeymap
+  # Clear bad selection:
+  loadkeys -q us.map
+  continue;
+ fi
+done

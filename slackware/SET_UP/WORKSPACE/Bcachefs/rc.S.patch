@@ -1,0 +1,13 @@
+--- rc.S	2024-05-26 15:38:18.187973829 -0500
++++ rc.S.new	2024-05-26 15:37:41.617975328 -0500
+@@ -204,6 +204,10 @@
+   if grep -q ' / f2fs ' /proc/mounts ; then
+     echo "Remounting root device with read-write enabled."
+     /sbin/mount -w -v -n -o remount /
++  # bcachefs can fsck itself at mount time:
++  elif grep -q ' / bcachefs ' /proc/mounts ; then
++    echo "Remounting root bcachefs device(s) with read-write enabled."
++    /sbin/mount -o remount,rw,fsck,fix_errors /
+   elif [ ! $READWRITE = yes ]; then
+     # Check the root filesystem:
+     RETVAL=0
