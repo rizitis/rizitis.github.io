@@ -1,2 +1,0 @@
-#enoli gia patch
-diff -Naur file-original file-new > file.patch
