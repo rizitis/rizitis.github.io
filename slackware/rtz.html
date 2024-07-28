@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directory Listing for /slackware/</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #121212; 
+            color: #ffffff; 
+            margin: 0; 
+            padding: 20px; 
+        }
+        h1 { 
+            color: #bb86fc; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: #1e1e1e; 
+            padding: 20px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+        }
+        .section { 
+            margin-bottom: 20px; 
+        }
+        .section h2 { 
+            border-bottom: 2px solid #3a3a3a; 
+            padding-bottom: 10px; 
+            color: #03dac6; 
+        }
+        ul { 
+            list-style-type: none; 
+            padding: 0; 
+        }
+        li { 
+            margin: 10px 0; 
+        }
+        a { 
+            text-decoration: none; 
+            color: #bb86fc; 
+        }
+        a:hover { 
+            text-decoration: underline; 
+        }
+        .file-icon { 
+            width: 20px; 
+            vertical-align: middle; 
+            margin-right: 10px; 
+        }
+        .img-thumbnail { 
+            max-width: 100px; 
+            margin-right: 10px; 
+            border: 2px solid #03dac6; 
+        }
+        .cube {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #03dac6;
+            transform-style: preserve-3d;
+            animation: rotate 5s infinite linear;
+        }
+        @keyframes rotate {
+            from { transform: rotateX(0) rotateY(0); }
+            to { transform: rotateX(360deg) rotateY(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="cube"></div>
+    <div class="container">
+        <h1>Directory Listing for /slackware/</h1>
+        
+        <div class="section">
+            <h2>Folders</h2>
+            <ul>
+                <li><img class="file-icon" src="folder-icon.png" alt="Folder"><a href="SET_UP/">SET_UP/</a></li>
+                <li><img class="file-icon" src="folder-icon.png" alt="Folder"><a href="Templates/">Templates/</a></li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Files</h2>
+            <ul>
+                <li><img class="file-icon" src="file-icon.png" alt="File"><a href="VBoxGuestAdditions.iso">VBoxGuestAdditions.iso</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Images</h2>
+            <ul>
+                <li><a href="images/example1.png"><img class="img-thumbnail" src="images/example1.png" alt="Example Image 1"></a></li>
+                <li><a href="images/example2.jpg"><img class="img-thumbnail" src="images/example2.jpg" alt="Example Image 2"></a></li>
+            </ul>
+        </div>
+        
+    </div>
+</body>
+</html>
+
