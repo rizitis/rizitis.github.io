@@ -153,14 +153,14 @@ SOFTWARE.
             So, <code>User ID ('UID') [ defaults to next available ]: 12345</code> (is a good example that crackers will not find it).(Dont start users IDs up to 40000)<p>
             <b>2.</b> Dont add user to wheel group or sudoers etc...<br>
             You dont need wheel or sudo. You dont even need root, but thats a long story...<br>
-            Just download <a href="binaries/xudo">xudo</a></li> someware in your path and thats all.<br>
+            Just download <a href="binaries/xudo">xudo</a></li> someware in your <code>$PATH</code> and thats all.<br>
             Your user if know root password can execute any command need root access. 
             example: <code>xudo slackpkg update</code>, <code>xudo ./some.SlackBuild</code> etc...<br>
             To make it even better you can rename xudo to what ever you like, assume wns(WhoNeedSudo) ;)<br>
             Command: <code>wns slackpkg upgrade-all</code> , <code>wnd ./some.SlackBuild</code> , <code>wns ls /root</code> etc... ;)<br>
-            Conclusion: cracker dont know your user ID and cant guess it because its not 1000, you are not in wheel groups, you dont have sudo and
+            Conclusion: cracker dont know your user ID and cant guess it because its not 1000, you are not in wheel group, you dont have sudo and
 <br>you can even disable root...Note that with xudo or what ever you name it, during command is executed you are in full root mode (<code>su -l</code>) but after finsh you are back in <code>$USER $PATH</code> ;).<p>
-            <b>3.</b> xudo is a fork of <a href="https://github.com/nomius/ktsuss"">ktsuss</a> BUT with lot of patches and since it will never be adopted from Slackware (lol), its not for public view... <br>If you want to build your own "xudo", download it from <a href="builds/xudo.SlackBuildANDsource.tar.xz">.builds/</a> <br>
+            <b>3.</b> If you ask, xudo is a fork of <a href="https://github.com/nomius/ktsuss"">ktsuss</a> BUT with lot of patches and since it will never be adopted from Slackware (lol), its not for public view... <br>If you want to build your own "xudo", download it from <a href="builds/xudo.SlackBuildANDsource.tar.xz">.builds/</a> <br>
            <p class="terminal-text">
             <b>CLEVER PASSWD</b><br>
             ======<br></p>
