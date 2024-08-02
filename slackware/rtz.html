@@ -127,8 +127,8 @@
         <!-- New paragraph added here with terminal-like style -->
         <div class="section">
             <h2>Tips and Tricks...</h2>
-            <p class="terminal-text">Since you are here...some security tips for your Slackware systems:
-            ===================<br>
+            <p class="terminal-text">Since you are here...some security tips for your Slackware systems:</p>
+            <p class="terminal-text">===================<br>
             <b>FIRST USER - NEW SYSTEM</b><br>
             ===================<br></p> 
             1. After installation finish create your <b>first user</b> BUT DONT use as <code>User ID ('UID') [ defaults to next available ]:</code> <br>
@@ -145,15 +145,15 @@
             Conclusion: cracker dont know your user ID and cant guess it because its not 1000, you are not in wheel groups, you dont have sudo and
 <br>you can even disable root...Note that with xudo or what ever you name it, during command is executed you are in full root mode (<code>su -l</code>) but after finsh you are back in <code>$USER $PATH</code> ;).<p>
             3. xudo is a fork of <a href="https://github.com/nomius/ktsuss"">ktsuss</a> BUT with lot of patches and since it will never be adopted from Slackware (lol), its not for public view... <br>If you want to build your own "xudo", ping me on <a href="https://discord.gg/5wasgf2vWw">discord #Slackware</a> and I will give you the source ofcource and the SlackBuild. <br>
-            ===================<br>
+           <p class="terminal-text"> ===================<br>
             <b>PICK CORECT PASWD</b><br>
-            ===================<br>
+            ===================<br></p>
             1. Adopt clever paswords for root and users.That you can remember.<br>
             Like your favorite song refrain. Assume "Twinkle Twinkle Little Star How I wonder what you are"<br>
             Example: take the first letter of every word <code>(TTLSHIWWYA)</code>and make it passw like this: <code>"T+L5?1WwY@"</code> if this is for root add a 'R/r' in first or last place, if its for user add a 'U/u'.<br>
-            ===================<br>
+            <p class="terminal-text">===================<br>
             <b>FIREWALL-SECURITY</b><br>
-            ===================<br>
+            ===================<br></p>
             1. Install a firewall.<br>
             2. Do NOT store paswords in system special as plain text.<br>
             3. Do not run Windows containers. If a system is vulnerable and communicate/interact with other system, no matter what system is lot bad things can happen... <br>
