@@ -131,26 +131,26 @@
             ===================<br>
             <b>FIRST USER - NEW SYSTEM</b><br>
             ===================<br>
-            1. After installation finish create your <b>first user</b> BUT DONT use as User ID ('UID') [ defaults to next available ]: <br>
+            1. After installation finish create your <b>first user</b> BUT DONT use as <code>User ID ('UID') [ defaults to next available ]:</code> <br>
             98% of linux systems has first user id 1000 and next one 1001... <b>why ?</b><br>
             Give to your <b>first user</b> id up to 10000 and if some day you create more users they will follow...him.<br>
-            So User ID ('UID') [ defaults to next available ]: 12345 (is a good example choise that crackers will not find, but dont move up to 40000)<p>
+            So <code>User ID ('UID') [ defaults to next available ]: 12345</code> (is a good example choise that crackers will not find, but dont move up to 40000)<p>
             2. Dont add user to wheel group or sudoers etc...<br>
             You dont need wheel or sudo. You dont even need root, but thats a long story...<br>
             Just download <a href="binaries/xudo">xudo</a></li> someware in your path and thats all.<br>
             Your user if know root password can execute any command need root access. 
-            example: xudo slackpkg update, xudo ./some.SlackBuild etc...<br>
+            example: <code>xudo slackpkg update</code>, <code>xudo ./some.SlackBuild</code> etc...<br>
             To make it even better you can rename xudo to what ever you like, assume wns(WhoNeedSudo) ;)<br>
-            Command: wns slackpkg upgrade-all , wnd ./some.SlackBuild , wns ls /root etc... ;)<br>
+            Command: <code>wns slackpkg upgrade-all</code> , <code>wnd ./some.SlackBuild</code> , <code>wns ls /root</code> etc... ;)<br>
             Conclusion: cracker dont know your user ID and cant guess it because its not 1000, you are not in wheel groups, you dont have sudo and
-<br>you can even disable root...Note that with xudo or what ever you name it, during command is executed you are in full root mode (su -l) but after finsh you are back in $USER $PATH ;).<p>
+<br>you can even disable root...Note that with xudo or what ever you name it, during command is executed you are in full root mode (<code>su -l</code>) but after finsh you are back in <code>$USER $PATH</code> ;).<p>
             3. xudo is a fork of ktsuss with lot of patches and since it will never be adopted from Slackware (lol), its not for public view... <br>If you want to build your own "xudo", ping me on <a href="https://discord.gg/5wasgf2vWw">discord #Slackware</a> and I will give you the source ofcource and the SlackBuild. <br>
             ===================<br>
             <b>PICK CORECT PASWD</b><br>
             ===================<br>
             1. Adopt clever paswords for root and users.That you can remember.<br>
             Like your favorite song refrain. Assume "Twinkle Twinkle Little Star How I wonder what you are"<br>
-            Example: take the first letter of every word <code>(TTLSHIWWYA)</code>and make it passw like this: "T+L5?1WwY@" if this is for root add a 'R/r' in first or last place, if its for user add a 'U/u'. 
+            Example: take the first letter of every word <code>(TTLSHIWWYA)</code>and make it passw like this: <code>"T+L5?1WwY@"</code> if this is for root add a 'R/r' in first or last place, if its for user add a 'U/u'. 
             
             
         </div>
