@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directory Listing for /slackware/</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #121212; 
+            color: #ffffff; 
+            margin: 0; 
+            padding: 20px; 
+        }
+        h1 { 
+            color: #bb86fc; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: #1e1e1e; 
+            padding: 20px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+        }
+        .section { 
+            margin-bottom: 20px; 
+        }
+        .section h2 { 
+            border-bottom: 2px solid #3a3a3a; 
+            padding-bottom: 10px; 
+            color: #03dac6; 
+        }
+        ul { 
+            list-style-type: none; 
+            padding: 0; 
+        }
+        li { 
+            margin: 10px 0; 
+        }
+        a { 
+            text-decoration: none; 
+            color: #bb86fc; 
+        }
+        a:hover { 
+            text-decoration: underline; 
+        }
+        .file-icon { 
+            width: 20px; 
+            vertical-align: middle; 
+            margin-right: 10px; 
+        }
+        .img-thumbnail { 
+            max-width: 100px; 
+            margin-right: 10px; 
+            border: 2px solid #03dac6; 
+        }
+        .cube {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #03dac6;
+            transform-style: preserve-3d;
+            animation: rotate 5s infinite linear;
+        }
+        @keyframes rotate {
+            from { transform: rotateX(0) rotateY(0); }
+            to { transform: rotateX(360deg) rotateY(360deg); }
+        }
+        .terminal-text {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #000000;
+            color: #00ff00;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap; /* To preserve white space and line breaks */
+        }
+    </style>
+</head>
+<body>
+    <div class="cube"></div>
+    <div class="container"><img src=images/rizitis.png>
+        <h1>Section 2</h1>
+        <h4>License</h4>
+        <code>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</code>
+        
+        <div class="section">
+            <h2>HOME PC - LAPTOPS</h2>
+            <p class="terminal-text">First Level</p>
+            <p class="terminal-text">
+            <b></b><br>
+            ======<br></p> 
+            <b><i>HARDWARE</i></b>
+          <ul>
+            <li>Encrypt you disks</li>
+            <li>Create for <code>/boot</code> a usb flash disk (laptops)</li>
+            <li>Dont connect to unknown wifi networks</li>
+          </ul>
+            <p class="terminal-text">
+            <b>OS</b><br>
+            ======<br></p> 
+            <b><i>LINUX</i></b>
+          <ul>
+            <li>Apache server</li>
+            <li>Database (SQL,Orcale etc)</li>
+            <li>Any other applications</li>
+          </ul>
+          <p class="terminal-text">
+            <b>Applications</b><br>
+            ======<br></p> 
+            <b><i>Host is next target...</i></b>
+          <ul>
+            <li>File Coraptions</li>
+            <li>Complite shutdown</li>
+            <li>Process Managent(CPU RAM)</li>
+          </ul>
+            <p class="terminal-text">
+            <b>USERS</b><br>
+            ======<br></p> 
+            <b><i>Privilege</i></b>
+          <ul>
+            <li>Who gets what?</li>
+            <li>Who can access what?</li>
+            <li>How can access ?</li>
+          </ul>
+          1. Always access you system and login <b>manually</b>.<br>
+          2. Specify what files needed to have access your user(s), and what limits:<br>
+             * User acounts<br>
+             * File Systems<br>
+             * System access<br>
+             * System conf files<br>
+             * OS network<br>
+             All above must have carefully and manually configuration, speaking for personal pc...<br>
+             We had speak earlier how to give ID to your first user in your Linux. Also we had speak about xudo.<br> 
+             <b>Learn how to read:</><br>
+             <p class="terminal-text"> cat /etc/group<br>
+root:x:0:root<br>
+bin:x:1:root,bin<br>
+daemon:x:2:root,bin,daemon<br>
+sys:x:3:root,bin,adm<br>
+adm:x:4:root,adm,daemon<br>
+tty:x:5:<br>
+disk:x:6:root,adm<br>
+lp:x:7:lp,omen,test2<br>
+mem:x:8:<br>
+kmem:x:9: <br>
+cat /etc/shadow<br>
+root:$6$Mrg0wCRDMovdedqC$O.eg9SdqagfA64kOMkteyTyvz6oIp0wA18wS8PDSfQbDacN8DFcs13LiIe25gQVBtqjuqXpwC2FgtSSTzRTI61:19628:0:::::
+<br>bin:*:9797:0:::::<br>
+daemon:*:9797:0:::::<br>
+adm:*:9797:0:::::<br>
+lp:*:9797:0:::::<br>
+sync:*:9797:0:::::<br>
+shutdown:*:9797:0:::::<br>
+halt:*:9797:0:::::<br>
+mail:*:9797:0:::::<br>
+news:*:9797:0:::::<br>
+uucp:*:9797:0:::::<br>
+operator:*:9797:0:::::<br>
+games:*:9797:0:::::<br>
+ftp:*:9797:0:::::<br>
+</p>
+        </div>
+    </div>
+
+        <p class="terminal-text"><a href="./rtz2.html"> <~~ </a>|| <a href="./rtz4.html"> --> </a> </p>
+    </div>
+    <footer>
+        <section id="contact">
+            <code>rizitis@gmail.com</code> <i>  Αναγνωστάκης Ιωάννης</i>
+        </section> 
+    </footer>
+</body>
+<!-- No more comments BTW: I dont use Arch :D -->
+</html>
