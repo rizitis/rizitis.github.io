@@ -81,7 +81,7 @@
 <body>
     <div class="cube"></div>
     <div class="container"><img src=images/rizitis.png>
-        <h1>~> ls -l slackware/</h1>
+        <h1>Section 2</h1>
         <h4>License</h4>
         <code>
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -94,42 +94,61 @@ SOFTWARE.
 </code>
         
         <div class="section">
-            <h2>Tips and Tricks...</h2>
-            <p class="terminal-text">Since you are here...some security tips for your Slackware systems:</p>
+            <h2>Explain Better</h2>
+            <p class="terminal-text">Types of Security issues</p>
             <p class="terminal-text">
-            <b>FIRST USER - NEW SYSTEM</b><br>
+            <b>DATA</b><br>
             ======<br></p> 
-            <b>1.</b> Installation finish, time for your <b>first user.</b> Why you use as <code>User ID ('UID') [ defaults to next available ]:</code>? <br>
-            98% of linux systems has first user id 1000 and next one 1001... <b>why ?</b><br>
-            Give to your <b>first user</b> id up to 10000 and if some day you create more users they will follow...him.<br>
-            So, <code>User ID ('UID') [ defaults to next available ]: 12345</code> (is a good example that crackers will not find it).(Dont start users IDs up to 40000)<p>
-            <b>2.</b> Dont add user to wheel group or sudoers etc...<br>
-            You dont need wheel or sudo. You dont even need root, but thats a long story...(thats a blasphemy for most Slackers)<br>
-            Just download <a href="binaries/xudo">xudo</a></li> someware in your <code>$PATH</code> and thats all.<br>
-            Your user if know root password can execute any command need root access. 
-            example: <code>xudo slackpkg update</code>, <code>xudo ./some.SlackBuild</code> etc...<br>
-            To make it even better you can rename xudo to what ever you like, assume wns (WhoNeedSudo) ;)<br>
-            So lets do it <code>mv /usr/bin/xudo /usr/bin/wns</code><br>
-            Now your commands should be: <code>wns slackpkg upgrade-all</code> , <code>wnd ./some.SlackBuild</code> , <code>wns ls /root</code> etc... ;)<br>
-            Conclusion: cracker dont know your user ID and cant guess it because its not 100?, you are not in wheel group, you dont have sudo and you can even disable root...<br>
-<b>Note:</b> that with xudo or what ever you name it, during command is executed you are in full root mode (<code>su -l</code>) but after finsh you are back in <code>$USER $PATH</code> ;).<p>
-            <b>3.</b> If you ask, xudo is a fork of <a href="https://github.com/nomius/ktsuss"">ktsuss</a> BUT with lot of patches and since it will never be adopted from Slackware (lol), its not for public view... <br>If you want to build your own "xudo", download it from <a href="builds/xudo.SlackBuildANDsource.tar.xz">.builds/</a> <br>
-           <p class="terminal-text">
-            <b>CLEVER PASSWD</b><br>
-            ======<br></p>
-            <b>1.</b> Adopt clever paswords for root and users.That you can remember.<br>
-            Like your favorite song refrain. Assume "Twinkle Twinkle Little Star How I wonder what you are"<br>
-            Example: take the first letter of every word <code>(TTLSHIWWYA)</code>and make it passw like this: <code>"T+L5?1WwY@"</code> if this is for root add a 'R/r' in first or last place, if its for user add a 'U/u'.<br>
+            <b><i>Its very simple, they just want your system data.</i></b>
+          <ul>
+            <li>Steel</li>
+            <li>Corrupt</li>
+            <li>Remove</li>
+          </ul>
             <p class="terminal-text">
-            <b>SECURITY</b><br>
-            ======<br></p>
-            <b>1.</b> Install a firewall.<br>
-            <b>2.</b> Do NOT store paswords in system special as plain text.<br>
-            <b>3.</b> Do not run Windows containers. If a system is vulnerable and communicate/interact with other system, no matter what system is lot bad things can happen... <br>
-            <b>4.</b> Encrypt your disks and use a usb-stick for <code>/boot</code><br>
-            <b>5.</b> Always remember that: "<i>everything is locking it also unlocking</i>."<br>
+            <b>Software-Apps</b><br>
+            ======<br></p> 
+            <b><i>If target data cant be touched, next target is Applications</i></b>
+          <ul>
+            <li>Apache server</li>
+            <li>Database (SQL,Orcale etc)</li>
+            <li>Any other applications</li>
+          </ul>
+          <p class="terminal-text">
+            <b>Operating System</b><br>
+            ======<br></p> 
+            <b><i>Host is next target...</i></b>
+          <ul>
+            <li>File Coraptions</li>
+            <li>Complite shutdown</li>
+            <li>Process Managent(CPU RAM)</li>
+          </ul>
+            <p class="terminal-text">
+            <b>HARDWARE</b><br>
+            ======<br></p> 
+            <b><i>Last target is hardware.</i></b>
+          <ul>
+            <li>Attack CPU, RAM, external connected devices</li>
+            <li>Disable, remove, corrupt them^</li>
+          </ul>
         </div>
-        
+    </div>
+    
+    <div class="section">
+            <h2>Explain Better</h2>
+            <p class="terminal-text">Types of Security issues</p>
+            <p class="terminal-text">
+            <b>DATA</b><br>
+            ======<br></p> 
+            <b><i>Its very simple, they just want your system data.</i></b>
+          <ul>
+            <li>Steel</li>
+            <li>Corrupt</li>
+            <li>Remove</li>
+          </ul>
+          
+        </div>
+        <p class="terminal-text"><a href="./rtz.html"> <~~ </a>|| <a href="./rtz3.html"> --> </p>
     </div>
     <footer>
         <section id="contact">
