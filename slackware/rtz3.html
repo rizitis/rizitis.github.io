@@ -100,7 +100,7 @@ SOFTWARE.
             <b><i>HARDWARE</i></b><br>
             ======<br> 
             </p>
-          <ul>
+          <lo>
             <li>Encrypt you disks</li>
             <li>Create for <code>/boot</code> a usb flash disk (laptops)</li>
             <li>Dont connect to unknown wifi networks</li>
@@ -109,7 +109,7 @@ SOFTWARE.
             <b>OS</b><br>
             ======<br></p> 
             <b><i>LINUX</i></b>
-          <ul>
+          <lo>
             <li>Now days things are very complicate. Linux systems are not KISS systems, and modern philosophy is more close to windows boxes than old UNIX...<br>
             Thats why I dont like systemd. <br>Because <h4>1. log files must always be plain.txt files and not binaries files</h4>
             <br>So I can pipe them ... Not only for debug but mostly for <b>security</b> reasons...<br>
@@ -120,68 +120,70 @@ So these systems or must have Linux systemd or nothing? Really? <br>
 And one more question, who is now developing systemd? A microsoft guy? hm...<br>
 <p><h4>2. PAM</h4>
             <li>Learn PAM, how it work and how you can modify it. and connect your services/users.<br>
-            * Auth <br>
-            * Account <br>
-            * Password<br>
-            * Session <br>
-            <b>ALSO:</b><br>
+            <li> Auth <br>
+            <li> Account <br>
+            <li> Password<br>
+            <li> Session <br>
+            <p>   <b>ALSO:</b><br>
             <li>Requisite</li>
 <li>Required</li>
 <li>Sufficient</li>
 <li>optional</li>
-Investigate <code>/lib64/security/</code> those modules and libs are speaking to system for get access <br>
+<i>Investigate <code>/lib64/security/</code> those modules and libs are speaking to system for get access <br>
 Most module there are pre-build and come with your Linux system. But also new can be added there if needed.<br> If this option was not include in PAM then we should rebuild pam every time new RSA token or other login methond was out...<br>
 <code>man pam_unix</code> is your friend... <br> 
 On the other hand all modules in <code>/lib64/security/</code> are <b>encrypted</b> so you can find something, but you can find what modules your new package call if so...and why or how?.<br>
 
 Then <code>man module_name</code> and read what this module do...<br>
-Or is there any module that you should add to your configuration?<br>
+Or is there any module that you should add to your configuration?<br></i>
 </li>
             <li>pam is not only for logins but also for <code>/var/logs/</code> read logs...</li>
           </ul>
           <p class="terminal-text">
             <b>Applications</b><br>
             ======<br></p> 
-            <b><i>Remember that first target is your data</i></b>
-          <ul>
-            <li>keyword is your information</li>
-            You probably think that I will say:
+            <b><i>Remember that first target is your data</i></b><p>
+          <lo>
+            <b>In other words your information</b><br>
+            <p>You probably think that I will say:
             <li>Dont install binaries</li>
             <li>Dont run AppImages</li>
             <li>Build your own packages..etc</li>
-          </ul>
-            I won`t<br>
-            Althought these are true and correct, how many of you can understand the code you build?
-            <br>Well I dont most of the times and if I can, should I have to read all code first and then build? <br>
+          </lo>
+            <b>I won`t</b><br>
+            Althought these are true and correct, how many of you can understand the code you build? So what is the point? 
+            <br>Well I almost dont most of the times but when and  if I can, should I have to read all code first and then build it? <br>
             Again now days things are very complicate, Linux systems are not KISS systems, and modern philosophy is more close to windows boxes than old UNIX...<br>
-            Thats why I dont like systemd. <br>Because <h4>log files must always be plain.txt files and not binaries files</h4>
-            <br>So I can pipe them and read them. Not only for debug but mostly for <b>security</b> reasons...<br>
-            For the same reason <code>/etc</code> is the<b> most</b> importand directory in a Linux system. <br>
+            Thats why I dont like systemd. <br>
+            
+            <h4>Because log files must always be txt files and not binaries files</h4>
+            <br>So I can pipe them, use them in other apps, read them, edit them... Not only for debug but mostly for <b>security</b> reasons now days...<br>
+            For the same reason <code>/etc</code> is the<b> most</b> important directory in a Linux system. <br>
             So command: <code>egrep -v "bash|false" /etc/passwd</code> and <code>egrep -v "bash|nologin" /etc/passwd</code><br>
-Read and understand wtf is going on with your services, apps etc...<br>
-           Thats more or the same importand like from were you build or install a packages...
+            Read and understand wtf is going on with your services, apps etc...<br>
+           Thats things are more or the same important like from were you build or install packages...
             
             <p class="terminal-text">
             <b>USERS</b><br>
             ======<br></p> 
             <b><i>Privilege</i></b>
-          <ul>
+          <lo>
             <li>Who gets what?</li>
             <li>Who can access what?</li>
             <li>How can access ?</li>
-          </ul>
-          1. Always access you system and login <b>manually</b>.<br>
-          2. Specify what files needed to have access your user(s), and what limits:<br>
+          </lo>
+         <p> <b>1. Always access you system and login <b>manually</b>.<br>
+          <p>2. Specify what files needed to have access your user(s), and what limits:<br></b>
              * User acounts<br>
              * File Systems<br>
              * System access<br>
              * System conf files<br>
              * OS network<br>
-             All above must have carefully and manually configuration, speaking for personal pc...<br>
-             We had speak earlier how to give ID to your first user in your Linux. Also we had speak about xudo.<br> 
+            <p> <i>All above must have carefully and manually configuration, speaking for personal pc...<br>
+             We had speak earlier how to give smart ID to your first user in your Linux. Also we had speak about xudo.<br> </i>
             <p> <b>Learn how to read:</><br>
              <p class="terminal-text"> cat /etc/group<br>
-root:x:0:root<br>
+<i>root:x:0:root<br>
 bin:x:1:root,bin<br>
 daemon:x:2:root,bin,daemon<br>
 sys:x:3:root,bin,adm<br>
@@ -207,15 +209,15 @@ operator:*:9797:0:::::<br>
 games:*:9797:0:::::<br>
 ftp:*:9797:0:::::<br>
 $ id $(whoami)<br>
-uid=10000(test2) gid=100(users) groups=100(users),7(lp),11(floppy),<br>17(audio),18(video),19(cdrom),71(input),83(plugdev),84(power),86(netdev),93(scanner)<br>
+uid=10000(test2) gid=100(users) groups=100(users),7(lp),11(floppy),<br>17(audio),18(video),19(cdrom),71(input),83(plugdev),84(power),86(netdev),93(scanner)<br></i>
 </p></b>
-Something useful is to learn how to edit <code>/etc/security/faillock.conf</code> and 
-<code>/etc/pam.d/system-auth </code> since old pam_tally2 is not in Slackware.<br>
+<i>Something useful is to learn how to edit <code>/etc/security/faillock.conf</code> and 
+<code>/etc/pam.d/system-auth </code> since old pam_tally2 is not in Slackware.<br><p>
 But more useful would be to understand <code>/etc/default/useradd </code> and modify it exaclty for your user needs <br>
 <p>
 Now, one very unknown file for "regular" linux users that you must focus and learn is <code>/etc/login.defs</code>
 <br>
-By reading and understand these files you should secure your users as needed...<br>
+<p><b>By reading and understand these files you should secure your users as needed...<br></b>
   </div>
   <p class="terminal-text"><a href="./rtz2.html"> <~~ </a>|| <a href="./rtz4.html"> --> </a> </p>
     </div>
