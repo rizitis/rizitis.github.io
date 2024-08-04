@@ -115,11 +115,11 @@ SOFTWARE.
             <p>So I can pipe them ... Not only for debug but mostly for <b>security</b> reasons...<br>
             If you can understand that then keep going here, else there is no reason loosing your time!<br></li>
             I dont like the way that distros configure systemd as a root commander and do things that kernel must do.<br>
-Also systems that are designed to be simple , with systemd using windows philosophy of interlocking depencencies.<br> Thats the best way to break things.<br>
-So these systems or must have Linux systemd or nothing? Really? <br>
+Also systems that are designed to be simple , with systemd using windows philosophy of interlocking depencencies,<br> well thats the best way to break things.<br>
+So these systems or must have Linux systemd or nothing! Really? <br>
 And one more question, who is now developing systemd? A microsoft guy? hm...<br>
 <p><dl><b>2. PAM</b>
-            <dd>Learn PAM, how it work and how you can modify it. and connect your services/users.<br>
+            <dd>Learn PAM, how it works and how you can modify things to connect your services/users etc...<br>
             <li> Auth <br>
             <li> Account <br>
             <li> Password<br>
@@ -134,8 +134,8 @@ And one more question, who is now developing systemd? A microsoft guy? hm...<br>
 <p><i><b>3. Investigate: </b>
 <br><code>/lib64/security/</code> those modules and libs are speaking to system for get access <br>
 Most module there are pre-build and come with your Linux system. But also new can be added there if needed.<br> If this option was not include in PAM then we should rebuild pam every time new RSA token or other login methond was out...<br>
-<code>man pam_unix</code> is your friend... <br> 
-On the other hand all modules in <code>/lib64/security/</code> are <b>encrypted</b> so you cant find something, but you can find what modules your new package call if so...and why or how?.<br>
+I think <code>man pam_unix</code> is your friend... <br> 
+On the other hand all modules in <code>/lib64/security/</code> are <b>encrypted</b> so you cant find something, but what you can find is what modules your new installed package call, if so... why or how?.<br>
 
 Then <code>man module_name</code> and read what this module do...<br>
 Or is there any module that you should add to your configuration?<br></i>
