@@ -159,18 +159,23 @@
     
 // Intercept common keyboard shortcuts
     window.addEventListener('keydown', function(e) {
-      // Disable Ctrl + U (View Source)
-      if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
-        e.preventDefault();
-        alert('YUP! You are the typical windows guy, its clear...');
-      }
+  if ((e.ctrlKey || e.metaKey) && (e.key === 'u' || e.key === 'U')) {
+    e.preventDefault();
+    alert('YUP! You are the typical windows guy, it’s clear...');
+  }
 
-      // Disable Ctrl + S (Save Page)
-      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-        e.preventDefault();
-        alert('Hm... Advance windows guy appears! or OSX? LOL');
-      }
-    });
+  if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+    e.preventDefault();
+    alert('Hm... Advanced windows guy appears! or OSX? LOL');
+  }
+});
+
+// beforeunload for save attempts
+window.addEventListener('beforeunload', function(e) {
+  e.preventDefault();
+  e.returnValue = ''; // This is required for some browsers to show a confirmation dialog
+});
+
   </script>
 
 </body>
