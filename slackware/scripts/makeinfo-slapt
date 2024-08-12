@@ -1,0 +1,160 @@
+#!/bin/bash
+# makeinfo-slapt-tlz
+# 
+# By Eko M. Budi, from slapt-get FAQ
+# Released under GNU GPL
+#
+
+function usage() {
+cat <<_EOF_
+makeinfo-slapt - make slapt-get dependency info
+
+This script scans the current directory for all slackware packages
+then create the necessary repository info to be used by slapt-get:
+  package-*.meta
+  PACKAGES.TXT
+  CHECKSUMS.MD5
+
+usage: makeinfo-slapt <all|new> <format>
+
+all    : recreate the info from all packages
+new    : update the info from newer packages only (default)
+format : tgz, tlz, or tbz. Default is tlz
+         If you want any format, give t[glb]z
+_EOF_
+
+exit 0
+
+}
+
+function gen_info {
+    echo "Making PACKAGES.TXT & CHECKSUMS.MD5"
+    echo '' > PACKAGES.TXT
+    echo '' > CHECKSUMS.md5
+    for pkg in `find . -type f -name '*.meta' -print | sort` ; do
+	grep -ve "^PACKAGE MD5:" $pkg >> PACKAGES.TXT
+	MD5SUM=`grep -e "^PACKAGE MD5:" $pkg | cut -f2- -d:` 
+	echo $MD5SUM >> CHECKSUMS.md5
+    done
+}
+
+function uncompress() {
+    case ${1##*.} in
+        tgz) gunzip -c $1 ;;
+        tbz|tbz2) bunzip2 -c $1 ;;
+        tlz) /sbin/explodepkg $1 ;;
+    esac
+}
+
+
+
+function gen_meta {
+    if [ ! -f $1 ]; then
+	echo "File not found: $1"
+	exit 1;
+    fi
+    #if [ "`echo $1|grep -E '(.*{1,})\-(.*[\.\-].*[\.\-].*).$PEXT[ ]{0,}$'`" == "" ]; then
+    #	return;
+    #fi
+
+    # Ok, here we go ..
+    PLONG=$1
+    PSHORT=${PLONG%.*}
+    PEXT=${PLONG##*.}
+    NAME=`echo $PLONG|sed -re "s/(.*\/)(.*.$PEXT)$/\2/"`
+    LOCATION=`echo $PLONG|sed -re "s/(.*)\/(.*.$PEXT)$/\1/"`
+    MDSUM=`md5sum $PLONG`
+    SIZE=$(expr `ls -l $1 | awk '{print $5}'` / 1024)
+
+    METAFILE=${NAME%$PEXT}meta
+    echo "Generating $LOCATION/$METAFILE"
+
+    # extract install info first & get uncompressed size
+    rm -rf install
+
+    # teesize is not a standard program, so test it first
+    if which teesize &>/dev/null; then
+      rm -f /tmp/pkgsize
+      uncompress $PLONG | teesize /tmp/pkgsize | tar xf - install
+      USIZE=$( expr `cat /tmp/pkgsize | cut -f 1 -d ' '` / 1024 )
+    else
+      uncompress $PLONG > $PSHORT.tar
+      USIZE=$(expr `ls -l $PSHORT.tar | awk '{print $5}'` / 1024)
+      echo "tar xvf $PSHORT.tar install"
+      
+      tar xvf $PSHORT.tar install
+      rm -f $PSHORT.tar
+    fi
+    #echo $PLONG = $SIZE $USIZE
+    if [ ! -d install  ]; then 
+       echo "ERROR: could not extract the package $1"
+       exit 1
+    fi     
+
+    REQUIRED=""
+    if [ -f install/slack-required ]; then
+	REQUIRED=$(cat ./install/slack-required |xargs -r -iZ echo -n "Z,"|sed -e "s/,$//")
+	#echo "  required=$REQUIRED"
+    fi
+    CONFLICTS=""
+    if [ -f install/slack-conflicts ]; then
+	CONFLICTS=$(cat install/slack-conflicts |xargs -r -iZ echo -n "Z,"|sed -e "s/,$//")
+	#echo "  conflicts=$CONFLICTS"
+    fi
+    SUGGESTS=""
+    if [ -f install/slack-suggests ]; then
+	SUGGESTS=$(cat install/slack-suggests |xargs -r -iZ echo -n "Z,"|sed -e "s/,$//")
+	#echo "  suggests=$SUGGESTS"
+    fi
+
+    echo "PACKAGE NAME:  $NAME" > $LOCATION/$METAFILE
+    echo "PACKAGE LOCATION:  $LOCATION" >> $LOCATION/$METAFILE
+    echo "PACKAGE SIZE (compressed):  $SIZE K" >> $LOCATION/$METAFILE
+    echo "PACKAGE SIZE (uncompressed):  $USIZE K" >> $LOCATION/$METAFILE
+    echo "PACKAGE MD5: $MDSUM" >> $LOCATION/$METAFILE
+    echo "PACKAGE REQUIRED:  $REQUIRED" >> $LOCATION/$METAFILE
+    echo "PACKAGE CONFLICTS:  $CONFLICTS" >> $LOCATION/$METAFILE
+    echo "PACKAGE SUGGESTS:  $SUGGESTS" >> $LOCATION/$METAFILE
+    echo "PACKAGE DESCRIPTION:" >> $LOCATION/$METAFILE
+    PKGNAME=`basename $1`
+    PKGNAME=${PKGNAME%%-*}
+    if [ -f install/slack-desc ]; then
+	cat install/slack-desc |grep -e "^$PKGNAME" >> $LOCATION/$METAFILE
+    fi
+    echo "" >> $LOCATION/$METAFILE
+
+    # cleaning up
+    rm -rf install
+}
+
+#############################################
+# main program
+NEWER=1
+
+
+case "$1" in
+    all) NEWER=0;;
+    new) NEWER=1;;
+    *) usage ;;
+esac
+
+PFORMAT=${PKGFORMAT:-tlz}
+case "$2" in
+    tlz|tgz|tbz|t*z) PFORMAT=$2;;
+    "") ;;
+    *) usage ;;
+esac
+
+# Here we go, scans the current dir
+if [ "$NEWER" = "1" ]; then
+    for pkg in `find . -type f -name "*.$PFORMAT" -print`; do
+	if [ $pkg -nt ${pkg%$PEXT}meta ]; then
+	    gen_meta $pkg
+	fi
+    done
+else
+    for pkg in `find . -type f -name "*.$PFORMAT" -print`; do
+	gen_meta $pkg
+    done
+fi
+gen_info
