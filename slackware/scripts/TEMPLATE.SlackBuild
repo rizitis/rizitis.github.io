@@ -36,7 +36,7 @@ Packager="Anagnostakis Ioannis (rizitis@gmail.com) GR"
    # IF you need:git checkout, else leave it empty.    
    GITCHEK=
    # Supported COMPRESS types are: tar.gz, tar.xz, bz2, rar, gz, tar, tbz2, tgz, zip, Z, 7z
-   #OR repos: cvn, cvs, git
+   #OR repos: cvn, cvs, git, lftp
    COMPRESS="tar.gz"
    SRCNAM=coppwr
    PRGNAM=coppwr
@@ -253,9 +253,12 @@ CXXFLAGS="$SLKCFLAGS" \
           }
 
 
-        preserve_perms etc/rc.d/rc.INIT.new
-        config etc/configfile.new
+#        preserve_perms etc/rc.d/rc.INIT.new
+#        config etc/configfile.new
 
+        if [ -x /usr/bin/fc-cache ]; then
+          /usr/bin/fc-cache -fv /usr/share/fonts/
+        fi
 
         if [ -x usr/bin/update-desktop-database ]; then
           chroot . /usr/bin/update-desktop-database usr/share/applications > /dev/null 2>&1
@@ -359,7 +362,7 @@ MKINS
    } 
    
    
-   # END OF EDIT # Just uncomment needed functions 
+   # END OF EDIT # Just uncomment needed functions at the end of script!
 
    if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -455,6 +458,9 @@ download_src(){
   elif [[ $COMPRESS = "cvs" ]]; then
     CVS="$(which cvs)"
     $CVS -z3 -f "$SRCURL"
+  elif [[ $COMPRESS = "lftp" ]]; then
+    LFTP="$(which lftp)"
+    $LFTP -c mirror "$SRCURL"
   else
     wget -O "$SRCNAM"-"$VERSION"."$COMPRESS" "$SRCURL"
   fi
@@ -489,7 +495,7 @@ download_src(){
        }
    	
         cd "$TMP" || exit 
-        if [[ $COMPRESS != "git" && $COMPRESS != "svn" && $COMPRESS != "cvs" ]]; then
+        if [[ $COMPRESS != "git" && $COMPRESS != "svn" && $COMPRESS != "cvs" && $COMPRESS != "lftp" ]]; then
           get_out "$CWD"/"$SRCNAM"-"$VERSION"."$COMPRESS" || exit
            cd $SRCNAM-$VERSION || cd $PRGNAM-$VERSION ||exit
           else
@@ -499,7 +505,7 @@ download_src(){
    }
    
 
-# default most of the times
+# default most of times #
 download_src
 prepare_build
 
@@ -515,11 +521,11 @@ cargo_build
 #golang_build
 #custom_build
 
+# default most of times #
 after_build
 package_build
-
-#pkg_install
 clean_src
-sig_package
+#pkg_install
+#sig_package
 
 
