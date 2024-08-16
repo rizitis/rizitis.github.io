@@ -21,26 +21,34 @@ Packager="Anagnostakis Ioannis (rizitis@gmail.com) GR"
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
    cd $(dirname "$0") ; CWD=$(pwd)
+# Setup build log file
+LOGFILE="$CWD/build.log"
+exec > >(tee -a "$LOGFILE") 2>&1
+
+echo "Starting build process..."
+start_time=$(date +%s)
+
 
 ##########################-slackdesc-########################################
 # If you have slackdesc installed you need these, else ignore them and comment them.
 # https://slack-desc.sourceforge.net/
 # example of use:
    mkdesc="$(which slackdesc)" || true
-   Homepage="Homepage: https://github.com/dimtpap/coppwr"
-   SortDesc="Low level PipeWire control GUI"
-   LongDesc="coppwr is a tool that provides low level control over the PipeWire multimedia server.It aims to expose and provide as many ways to inspect and control the many aspects of the PipeWire multimedia server as possible.It can be used as a diagnostic tool for PipeWire and to help develop software that interacts with it. End-users of PipeWire that want to configure it should look into simpler tools recommended by the PipeWire devs."
+   Homepage="Homepage: https://obsproject.com/"
+            #|--------------------------------------|#
+   SortDesc="video capturing,recording, streaming..."
+   LongDesc="OBS Studio is software designed for capturing, compositing, encoding, recording, and streaming video content, efficiently.It's distributed under the GNU General Public License v2 (or any later version) - see the accompanying COPYING file for more details."
 #############################################################################
 # EDIT FOLLOWING AS NEEDED:
-   SRCURL="https://github.com/dimtpap/coppwr/archive/refs/tags/1.6.0.tar.gz"
+   SRCURL="https://github.com/obsproject/obs-studio/archive/30.2.2/obs-studio-30.2.2.tar.gz"
    # IF you need:git checkout, else leave it empty.    
    GITCHEK=
    # Supported COMPRESS types are: tar.gz, tar.xz, bz2, rar, gz, tar, tbz2, tgz, zip, Z, 7z
    #OR repos: cvn, cvs, git, lftp
    COMPRESS="tar.gz"
-   SRCNAM=coppwr
-   PRGNAM=coppwr
-   VERSION=1.6.0
+   SRCNAM=obs-studio
+   PRGNAM=obs-studio
+   VERSION=30.2.2
 
    BUILD=${BUILD:-1}
    TAG=${TAG:-_rtz}
@@ -53,11 +61,10 @@ Packager="Anagnostakis Ioannis (rizitis@gmail.com) GR"
    
 # START EDIT FUNCTIONS AS FOR YOUR NEEDS    
 
-   patch_build(){
-#	patch -p0 < smallpatch || exit
-#	zcat $CWD/bigpatch.diff.gz | patch -p1 || exit
-	true
-   }
+   patch_build() { 
+true
+}
+
 
    chrooting(){
    	chown -R root:root .
@@ -113,18 +120,18 @@ Packager="Anagnostakis Ioannis (rizitis@gmail.com) GR"
    }
    
    cmake_build(){
-	mkdir -p build
-	cd build
-	  cmake \
-	    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
-	    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
-	    -DCMAKE_INSTALL_PREFIX=/usr \
-	    -DLIB_SUFFIX=${LIBDIRSUFFIX} \
-	    -DMAN_INSTALL_DIR=/usr/man \
-	    -DCMAKE_BUILD_TYPE=Release ..
-	  make
-	  make install/strip DESTDIR=$PKG
-	cd ..
+	  mkdir -p build
+cd build
+  cmake \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_SUFFIX=${LIBDIRSUFFIX} \
+    -DEXCLUDE_PLPLOT=true \
+    -DCMAKE_BUILD_TYPE=Release ..
+  make
+  make install/strip DESTDIR=$PKG
+cd ..
    }
 
    perl_build(){
@@ -180,15 +187,7 @@ CXXFLAGS="$SLKCFLAGS" \
 /usr/bin/cargo build --release 
 
         install -Dm755 "target/release/$PRGNAM" "$PKG/usr/bin/$PRGNAM"
-        install -Dm644 "assets/io.github.dimtpap.coppwr.desktop" "$PKG/usr/share/applications/io.github.dimtpap.coppwr.desktop"
-	install -Dm644 "assets/io.github.dimtpap.coppwr.metainfo.xml" "$PKG/usr/share/metainfo/io.github.dimtpap.coppwr.metainfo.xml"
-	install -Dm644 "assets/icon/scalable.svg" "$PKG/usr/share/icons/hicolor/scalable/apps/io.github.dimtpap.coppwr.svg"
-	install -Dm644 "assets/icon/512.png" "$PKG/usr/share/icons/hicolor/512x512/apps/io.github.dimtpap.coppwr.png"
-	install -Dm644 "assets/icon/256.png" "$PKG/usr/share/icons/hicolor/256x256/apps/io.github.dimtpap.coppwr.png"
-	install -Dm644 "assets/icon/128.png" "$PKG/usr/share/icons/hicolor/128x128/apps/io.github.dimtpap.coppwr.png"
-	install -Dm644 "assets/icon/64.png" "$PKG/usr/share/icons/hicolor/64x64/apps/io.github.dimtpap.coppwr.png"
-	install -Dm644 "assets/icon/48.png" "$PKG/usr/share/icons/hicolor/48x48/apps/io.github.dimtpap.coppwr.png"
-	install -Dm644 "assets/icon/32.png" "$PKG/usr/share/icons/hicolor/32x32/apps/io.github.dimtpap.coppwr.png"
+        # rest of commands...
 
    }
 
@@ -321,7 +320,9 @@ MKINS
 
    }
    
+   
    package_build() {
+   cd $PKG || exit 66
 	  rm -f "$PKG"/{,usr/}lib${LIBDIRSUFFIX}/*.la
 	  find "$PKG" | xargs file | grep -e "executable" -e "shared object" | grep ELF \
 	  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
@@ -363,7 +364,8 @@ MKINS
    
    
    # END OF EDIT # Just uncomment needed functions at the end of script!
-
+   
+   
    if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
     i?86) ARCH=i586 ;;
@@ -396,7 +398,7 @@ fi
      
    DATE="$(date)"
    NUMJOBS=${NUMJOBS:-"-j$(getconf _NPROCESSORS_ONLN)"}
-   DOCS=\
+DOCS=\
 "ABOUT \
 ABOUT-NLS \
 ANNOUNCE \
@@ -472,27 +474,44 @@ download_src(){
 	mkdir -p "$TMP" "$PKG" "$OUTPUT"
 	rm -rf "$TMP"/$PRGNAM-$VERSION
 	
-	get_out () {
-		if [ -f $1 ] ; then
-			case $1 in
-				*.tar.bz2)   tar xvjf $1    ;;
-				*.tar.gz)    tar xvzf $1    ;;
-				*.tar.xz)    tar xvJf $1    ;;
-				*.bz2)       bunzip2 $1     ;;
-				*.rar)       rar x $1       ;;
-				*.gz)        gunzip $1      ;;
-				*.tar)       tar xvf $1     ;;
-				*.tbz2)      tar xvjf $1    ;;
-				*.tgz)       tar xvzf $1    ;;
-				*.zip)       unzip $1       ;;
-				*.Z)         uncompress $1  ;;
-				*.7z)        7z x $1        ;;
-				*)           echo "don't know how to extract '$1'..." ;;
-			esac
-		else
-			echo "'$1' is not a valid file!"
-		fi
-       }
+	get_out() {
+    if [ -f "$1" ] ; then
+        case "$1" in
+            *.tar.bz2)  tar xvjf "$1" ;;
+            *.tar.gz)   tar xvzf "$1" ;;
+            *.tar.xz)   tar xvJf "$1" ;;
+            *.bz2)      bunzip2 "$1"  ;;
+            *.rar)      rar x "$1"    ;;
+            *.gz)       gunzip "$1"   ;;
+            *.tar)      tar xvf "$1"  ;;
+            *.tbz2)     tar xvjf "$1" ;;
+            *.tgz)      tar xvzf "$1" ;;
+            *.zip)      unzip "$1"    ;;
+            *.Z)        uncompress "$1" ;;
+            *.7z)       7z x "$1"     ;;
+            *)          echo "Error: Don't know how to extract '$1'." ;;
+        esac
+    elif [ -n "$SRCNAM" ] && [ -n "$VERSION" ] && [ -f "$SRCNAM-$VERSION" ]; then
+        case "$SRCNAM-$VERSION" in
+            *.tar.bz2)  tar xvjf "$SRCNAM-$VERSION" ;;
+            *.tar.gz)   tar xvzf "$SRCNAM-$VERSION" ;;
+            *.tar.xz)   tar xvJf "$SRCNAM-$VERSION" ;;
+            *.bz2)      bunzip2 "$SRCNAM-$VERSION"  ;;
+            *.rar)      rar x "$SRCNAM-$VERSION"    ;;
+            *.gz)       gunzip "$SRCNAM-$VERSION"   ;;
+            *.tar)      tar xvf "$SRCNAM-$VERSION"  ;;
+            *.tbz2)     tar xvjf "$SRCNAM-$VERSION" ;;
+            *.tgz)      tar xvzf "$SRCNAM-$VERSION" ;;
+            *.zip)      unzip "$SRCNAM-$VERSION"    ;;
+            *.Z)        uncompress "$SRCNAM-$VERSION" ;;
+            *.7z)       7z x "$SRCNAM-$VERSION"     ;;
+            *)          echo "Error: Don't know how to extract '$SRCNAM-$VERSION'." ;;
+        esac
+    else
+        echo "Error: '$1' is not a valid file!"
+    fi
+}
+
    	
         cd "$TMP" || exit 
         if [[ $COMPRESS != "git" && $COMPRESS != "svn" && $COMPRESS != "cvs" && $COMPRESS != "lftp" ]]; then
@@ -508,16 +527,17 @@ download_src(){
 # default most of times #
 download_src
 prepare_build
+patch_build
+chrooting
 
 # uncomment what you need:
-chrooting
 #auto_build
 #meson_build
 #python_build
-#cmake_build
+cmake_build
 #perl_build
 #haskel_build
-cargo_build
+#cargo_build
 #golang_build
 #custom_build
 
@@ -526,6 +546,9 @@ after_build
 package_build
 clean_src
 #pkg_install
-#sig_package
+sig_package
 
-
+# Calculate and display build time
+end_time=$(date +%s)
+elapsed_time=$((end_time - start_time))
+echo "Build process completed in $((elapsed_time / 60)) minutes and $((elapsed_time % 60)) seconds."
