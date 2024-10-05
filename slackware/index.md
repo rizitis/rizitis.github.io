@@ -26,5 +26,4 @@ If you're tired of following the beaten path, you're in the right place.
 - [Kernel Tweaks](kernel-tweaks.md)
 
 ### Copyrights
-Slackware® is a Registered Trademark of Patrick Volkerding.
-Linux is a Registered Trademark of Linus Torvalds.
+Slackware™ is a trademark of Patrick Volkerding. Linux® is the registered trademark of Linus Torvalds
