@@ -1,5 +1,5 @@
 title: "Heretic Slackware Wiki"
 description: "Unofficial Hacks, Tips, and Tricks for Slackware Linux"
-#theme: jekyll-theme-slate  # or any other supported theme
+theme: jekyll-theme-slate  # or any other supported theme
 markdown: kramdown
 
