@@ -1,46 +1,54 @@
 /* Set the background color for the whole page */
 body {
-  background-color: #282a36; /* Set a darker background color */
-  color: #f8f8f2;
-  font-family: Arial, sans-serif; /* Set the font */
+  background-color: #1a1a1a; /* A very dark gray, easier on the eyes */
+  color: #d7d7d7;            /* Light gray for better readability */
+  font-family: 'Courier New', Courier, monospace; /* Terminal-style font */
 }
 
 /* Style for the content area */
 .content {
-  background-color: #44475a; /* Darker background for the content area */
-  color: #f8f8f2;            /* Light text color */
+  background-color: #222222; /* Slightly lighter dark background for content */
+  color: #d7d7d7;            /* Light gray text color for readability */
   padding: 20px;
   margin: 20px auto;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2); /* Neon green shadow for hacker glow effect */
   max-width: 900px;
 }
 
 /* Style for the links */
 a {
-  color: #8be9fd; /* Light cyan for links */
+  color: #00ffcc; /* Bright cyan for links, terminal feel */
   text-decoration: none;
 }
 
 a:hover {
-  color: #50fa7b; /* Green color when hovering */
+  color: #00ff00; /* Neon green when hovering, feels "hacker" */
   text-decoration: underline;
 }
 
 /* Specific hacker-style colors for different header levels */
 h1 {
-  color: #00ff00; /* Bright neon green for h1 */
+  color: #00ff00; /* Neon green for the main header */
 }
 
 h2 {
-  color: #00cc00; /* Slightly darker green for h2 */
+  color: #00cc00; /* Slightly toned-down green for subheaders */
 }
 
 h3 {
-  color: #009900; /* Dark green for h3 */
+  color: #00b300; /* Darker green for third-level headers */
 }
 
 h4, h5, h6 {
-  color: #008000; /* Darker shades of green for smaller headers */
+  color: #008000; /* Even darker green for smaller headers */
+}
+
+/* Optional: Style the code blocks for the hacker theme */
+code {
+  background-color: #333333; /* Dark background for code blocks */
+  color: #00ff00;            /* Neon green text */
+  padding: 5px;
+  border-radius: 5px;
 }
 
