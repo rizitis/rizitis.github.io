@@ -24,3 +24,7 @@ If you're tired of following the beaten path, you're in the right place.
 - [Installation Hacks](installation-hacks.md)
 - [Package Management](package-management.md)
 - [Kernel Tweaks](kernel-tweaks.md)
+
+### Copyrights
+Slackware® is a Registered Trademark of Patrick Volkerding.
+Linux is a Registered Trademark of Linus Torvalds.
