@@ -1,26 +1,46 @@
 /* Set the background color for the whole page */
 body {
-  background-color: #f0f0f0; /* Light gray background */
-  color: #333;               /* Dark text */
+  background-color: #282a36; /* Set a darker background color */
+  color: #f8f8f2;
   font-family: Arial, sans-serif; /* Set the font */
 }
 
 /* Style for the content area */
 .content {
-  background-color: white;  /* White background for the content */
+  background-color: #44475a; /* Darker background for the content area */
+  color: #f8f8f2;            /* Light text color */
   padding: 20px;
   margin: 20px auto;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   max-width: 900px;
 }
 
 /* Style for the links */
 a {
-  color: #0056b3;  /* Link color */
+  color: #8be9fd; /* Light cyan for links */
   text-decoration: none;
 }
 
 a:hover {
+  color: #50fa7b; /* Green color when hovering */
   text-decoration: underline;
 }
+
+/* Specific hacker-style colors for different header levels */
+h1 {
+  color: #00ff00; /* Bright neon green for h1 */
+}
+
+h2 {
+  color: #00cc00; /* Slightly darker green for h2 */
+}
+
+h3 {
+  color: #009900; /* Dark green for h3 */
+}
+
+h4, h5, h6 {
+  color: #008000; /* Darker shades of green for smaller headers */
+}
+
