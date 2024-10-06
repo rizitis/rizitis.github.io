@@ -10,8 +10,10 @@ That means you need to have a full Slackware installation for having all Slackwa
 Of course you are free to skip some packages during installation but that's not a guaranty that system will work as accepted if you do it...
 
 What we can say in one line is:<br>
-Everything provided as `SlackBuild` script or precompiled Slackware package `(tgz,txz,tlz...)` out of Slackware.ISO **is not official**. <p>
+Everything provided as `SlackBuild` script or precompiled Slackware package `(tgz,txz,tlz...)` out of Slackware.ISO **is not official**.
+ <p>
 ---
+
 ### Package Manager
 Slackware don't have officially package manager, officially it have a collection of bash scripts for maintain the system.<br>
  User can install,update,upgrade,remove packages from system using this collection of scripts `(pkgtools)`. <br> 
