@@ -36,7 +36,8 @@ This is a slpkg example  setup for Slackware-**current**:
 # https://repo.greeklug.gr/data/pub/linux/salix/x86_64/slackware-15.0/
 # https://repo.greeklug.gr/data/pub/linux/salix/x86_64/slackware-15.0/extra/
 # https://repo.greeklug.gr/data/pub/linux/salix/x86_64/slackware-15.0/patches/
-
+```
+```
 [DEFAULT]
 # This is the DEFAULT REPOSITORY.
 # You can change it with one that you see below.
@@ -56,7 +57,8 @@ REPOSITORIES = ["gnome"]
 # that are fully installed on the system. Example ["slack", "gnome"].
 # WARNING: Always check which packages are going to remove before proceed.
 REPOSITORIES = []
-
+```
+```
 [SBO]
 ENABLE = false
 #MIRROR = "https://slackbuilds.org/slackbuilds/15.0/"
@@ -185,7 +187,8 @@ DIALOG = true
 # Some repositories include packages as dependencies,
 # but not as main packages. Default is true. [true/false]
 VIEW_MISSING_DEPS = true
-
+```
+```
 # There are two different methods to choose when you want to upgrade
 # your installed packages, "version" method and "package" method.
 # With the "version" method (it is by default), it will compare
@@ -248,7 +251,8 @@ BORDER_COLOR = "bold_green"
 # Keep process log files on /var/log/slpkg/ folder.
 # Default is true. [true/false]
 PROCESS_LOG = true
-
+```
+```
 # Slackware command for installation packages, instead, you can use
 # 'installpkg'. Normally upgradepkg only upgrades packages that are
 # already installed on the system, and will skip any packages that
