@@ -14,7 +14,6 @@ Of course you are free to skip some packages during installation but that's not 
 
 What we can say in one line is:<br>
 Everything provided as `SlackBuild` script or precompiled Slackware package `(tgz,txz,tlz...)` out of Slackware.ISO **is not official**.
- <p>
  
 
 
