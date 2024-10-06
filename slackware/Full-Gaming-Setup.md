@@ -3,16 +3,18 @@ layout: default
 title: "Gaming SetUp"
 ---
 
-# Titile
+# Title
 
 ```
-code 
+wget -O htts://something.com/filename.tar.gz
 ```
 ---
 
 ## Something
 
 1234
+
+4321
 
 
 ## Quick Links
