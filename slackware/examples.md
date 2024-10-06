@@ -87,6 +87,7 @@ Here is a statement with a footnote.[^1]
 ---
 
 **Blockquotes**
+
 > "Slackware is about simplicity and elegance."
 > — Patrick Volkerding
 
@@ -102,6 +103,7 @@ Here is a statement with a footnote.[^1]
 ---
 
 **Tables**
+
 | Command          | Description                           |
 |------------------|---------------------------------------|
 | `slackpkg update`| Updates the list of available packages|
