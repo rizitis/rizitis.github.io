@@ -51,7 +51,7 @@ Here are the most famous:
 #### sbopkg
 
 In my opinion sbopkg is a must for every Slackware system. And it should be by default in officially Slackware.ISO. But  PAT answered to this request :**Forget it**<br> 
-so there is no chance for happening. :( <br>
+so there is no chance for happening. :(  <br>
 As I said before sbopkg works only with [SlackBuilds.org](https://slackbuilds.org/) repo. This is unofficially community repo by volunteers but if we call it *officially* it not wrong. <br>
 If we want to be honest, PAT doing great job but without SlackBuilds.org Slackware couldn't be a very useful OS now days... <br>
 Everything a user need and its not already in the installation there is the place to find it. <br>  
