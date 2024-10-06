@@ -1,3 +1,11 @@
+---
+layout: default
+title: "Samples.md"
+---
+```
+view code: https://github.com/rizitis/rizitis.github.io/tree/main/slackware/sample.md
+```
+
 # Header 1
 
 This is a quote:
