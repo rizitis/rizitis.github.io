@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Samples.md"
+title: "Sample"
 ---
 ```
 view code: https://github.com/rizitis/rizitis.github.io/tree/main/slackware/sample.md
