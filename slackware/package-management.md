@@ -19,17 +19,16 @@ Everything provided as `SlackBuild` script or precompiled Slackware package `(tg
 
 ### Package Manager
 
+
 Slackware don't have officially package manager, officially it have a collection of bash scripts for maintain the system.<br>
- User can install,update,upgrade,remove packages from system using this collection of scripts `(pkgtools)`. <br> 
+ User can install,update,upgrade,remove packages from system using this collection of scripts `pkgtools`. <br> 
  
- ![pkgtools](./images/pkgtools.png)
  
  What is called package manager `(slackpkg)` is a collection of scripts that also interact with remote servers  `(it read them from /etc/slackpkg/mirrors)` for update , upgrade a Slackware system using the official patches or packages from those mirrors.  <br> 
 So this is Slackware package manager, but its not what most people understand as Linux system package manager.<br>
 
-![slackpkg](./images/slackpkg.png)
 
-**Why?**<br>
+#### Why?
 
 Because Slackware has the philosophy to not provide dependency resolution.  So `slackpkg` do not do it. Remember that everything a package need `(build dep or run time dep)` already included in the installation. Also remember that you did a full installation and if so then you have everything needed in its place. <br>
 One other reason that `slackpkg` is not like other package managers is that  not editing config files. That's `$user or root` job. 
@@ -68,8 +67,6 @@ As root start sbopkg and rsync it to the correct repo (default is for Slackware 
 ```
 sbopkg
 ```
-
-![sbopkg](./images/sbopkg.png)
 
 
 
