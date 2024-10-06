@@ -1,5 +1,7 @@
 # slpkg setup 
 
+[![slpkg](https://gitlab.com/dslackw/slpkg/-/raw/site/docs/images/logo.png)](https://dslackw.gitlab.io/slpkg/)
+
 This is a slpkg example  setup for Slackware-**current**:
 
 ### /etc/slpkg/repositories.toml
