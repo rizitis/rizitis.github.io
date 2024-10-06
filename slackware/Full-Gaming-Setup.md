@@ -27,6 +27,6 @@ wget -O htts://something.com/filename.tar.gz
 
 
 ---
-![image](https://media.licdn.com/dms/image/v2/D4D12AQFJ-yVdJ30KQg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1686471202907?e=2147483647&v=beta&t=zsy_K1JLhv-k0y9RkDd9gSQi6jM3ZotbSQldM3pNpgs)
+![image](./images/GamerRoomDiy.jpg)
 
 
