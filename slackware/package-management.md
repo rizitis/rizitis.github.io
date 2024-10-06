@@ -16,7 +16,7 @@ What we can say in one line is:<br>
 Everything provided as `SlackBuild` script or precompiled Slackware package `(tgz,txz,tlz...)` out of Slackware.ISO **is not official**.
  <p>
  
----
+
 
 ### Package Manager
 
@@ -38,7 +38,6 @@ One other reason that `slackpkg` is not like other package managers is that  not
 The funny thing is that Slackware is the distro with the most 3rd part package managers. <br>
 Maybe is more than 15 last time i count them!   <br>
 
----
 
 Here are the most famous:
 1. [slackpkg+](https://github.com/zuno/slackpkgplus) [(its a plugin for slackpkg)](https://slackware.nl/slakfinder/)
@@ -46,7 +45,7 @@ Here are the most famous:
 3. [sbopkg](https://sbopkg.org/) (only for SlackBuilds building from Slackbuilds.org)
 4.  [slpkg](https://gitlab.com/dslackw/slpkg)
 
----
+
 
 #### sbopkg
 
@@ -58,7 +57,7 @@ Everything a user need and its not already in the installation there is the plac
 Slackbuilds.org is the AUR of Slackware.<br>
 sbopkg is a must because its bash written and has 0 deps. You just install it and rsync it with SBo repo (SlackBuilds.org) and thats all...<br>
 
-Download
+Download<br>
 ```
 wget https://github.com/sbopkg/sbopkg/releases/download/0.38.2/sbopkg-0.38.2-noarch-1_wsr.tgz
 ```
@@ -73,7 +72,7 @@ sbopkg
 
 ![sbopkg](./images/sbopkg.png)
 
----
+
 
 #### slpkg
 
