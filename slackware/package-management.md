@@ -3,6 +3,7 @@ layout: default
 title: "Package Managment"
 ---
 
+
 ### Official Packages
 Package Management for Slackware is a very special case. By default Slackware depends you install all packages provided in Slackware.ISO.<br>
 That means you need to have a full Slackware installation for having all Slackware quality *enabled* in your system.   <br>
