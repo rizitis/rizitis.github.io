@@ -23,6 +23,7 @@ If you're tired of following the beaten path, you're in the right place.
 ## Quick Links
 - [Installation Hacks](installation-hacks.md)
 - [Package Management](package-management.md)
+  - [slpkg](slpkg.md)
 - [Kernel Tweaks](kernel-tweaks.md)
 - [Gaming](Full-Gaming-Setup.md)
 - [Desktop Environments](desktop-environments.md)
