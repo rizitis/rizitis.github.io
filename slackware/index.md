@@ -26,6 +26,7 @@ If you're tired of following the beaten path, you're in the right place.
 - [Kernel Tweaks](kernel-tweaks.md)
 - [Gaming](Full-Gaming-Setup.md)
 - [Desktop Environments](desktop-environments.md)
+- [Examples](examples.md)
 
 ### Copyrights
 Slackware™ is a trademark of Patrick Volkerding. Linux® is the registered trademark of Linus Torvalds
