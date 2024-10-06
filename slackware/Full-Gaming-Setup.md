@@ -6,7 +6,7 @@ title: "Gaming SetUp"
 # Title
 
 ```
-wget -O htts://something.com/filename.tar.gz
+full examples here: https://github.com/rizitis/rizitis.github.io/tree/main/slackware/sample.md
 ```
 ---
 
