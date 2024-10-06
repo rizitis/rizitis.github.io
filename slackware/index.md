@@ -25,6 +25,7 @@ If you're tired of following the beaten path, you're in the right place.
 - [Package Management](package-management.md)
   - [slpkg](slpkg.md)
 - [Kernel Tweaks](kernel-tweaks.md)
+- [init](init-system.md)
 - [Gaming](Full-Gaming-Setup.md)
 - [Desktop Environments](desktop-environments.md)
 - [Examples](examples.md)
