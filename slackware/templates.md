@@ -1,3 +1,8 @@
+---
+layout: default
+title: "SlackBuilds Template"
+---
+
 ## SlackBuilds Template?
 
 Well the correct answer for this question is **I Dont Know**...<br>
