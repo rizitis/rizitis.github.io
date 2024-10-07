@@ -13,8 +13,8 @@ Why you just hit enter and use as User ID ('UID') [ defaults to next available ]
 98% of Linux systems has first user id 1000 and next one 1001... **why ?** <br>
 Give to your first user id up to 10000 and if some day you create more users they will follow...him. <br>
 If I a cracker target a Linux system he know that 100{1,2,3} is user ID, lets make his life not so obviously... 
-So, User ID ('UID') [ defaults to next available ]: 1200 (is a good example that crackers will not find it).<br>
-**NOTE:** (Don't start users IDs up to 40000) its not wrong but not good practice for busy systems... 
+So, User ID ('UID') [ defaults to next available ]: `1200` (is a good example that crackers will not find it).<br>
+**NOTE:** (Don't start users IDs up to `40000`) its not wrong but not good practice for busy systems... 
 
 ---
 
@@ -131,7 +131,7 @@ Or are there any modules that you should add to your configuration...?<br>
 - Dont run AppImages
 - Build your own packages..etc
 
-    **I won`t** `:D`<br>
+    **I wont** `:D`<br>
     
     Again, now days things are very complicate, Linux systems are not KISS systems, <br>
     and modern philosophy is more close to windows boxes than old UNIX...<br>
