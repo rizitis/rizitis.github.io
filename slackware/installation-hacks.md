@@ -94,10 +94,12 @@ If you can understand that then keep going here, else there is no reason loosing
    - [x] Account
    - [x] Password
    - [x] Session
-   - [x] 
+   
+
 
 
 >        ALSO:
+>
 >>   Requisite
 >
 >>   Required
