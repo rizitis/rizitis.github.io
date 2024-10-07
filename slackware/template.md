@@ -5,6 +5,8 @@ In theory there is none officially SlackBuild Template! <br>
 Why?<br>
 I think that it not needed the way distro introduce it self.<br>
 
+![ALT](./images/slackware_whitelogo_med.png)
+
 **Explain better**
 
 Keep in mind these:<br>
