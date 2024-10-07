@@ -6,7 +6,7 @@ This is the Slackware init system for boot:
 
 > runlevel 1 executes `/etc/rc.d/rc.S`. <br>
 >runlevel 3 executes `/etc/rc.d/rc.S`, then `/etc/rc.d/rc.M`.<br>
- >runlevel 4 executes `/etc/rc.d/rc.S`, `/etc/rc.d/rc.M` and `/etc/rc.d/rc.4`. 
+ >runlevel 4 executes `/etc/rc.d/rc.S`, `/etc/rc.d/rc.M` and `/etc/rc.d/rc.4`. <br>
  >Shutting down executes `/etc/rc.d/rc.K`.
  
  There is also `/etc/rc.d/rc.local` and you can create an `/etc/rc.d/rc.local_shutdown` for specific scripts/services. <br>
