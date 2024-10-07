@@ -18,14 +18,16 @@ As **heretics** what will provided here are some alternatives you might want...<
 
 #### backup_custom kernel
 
-If you want a *traditional* builded backup kernel just in case... you can use [SBKS](./scripts/SBKS)<br>
-requires: yad.<br>
-READ script and then add it in your $PATH, I have it in `/usr/local/bin` <br>  
-It will build a backup kernel that slackpkg will not delete it when officially kernel upgrade come.
+![kernel](https://www.kernel.org/theme/images/logos/tux.png)
+
+If you want a *traditional* builded backup kernel just in case... You can use [SBKS](./scripts/SBKS)<br>
+*requires: yad*<br>
+READ script first  and then add it in your $PATH, I have it in `/usr/local/bin` or just run it as root always... <br>  
+It will build a backup kernel that slackpkg will not delete  when officially kernel upgrade comes in.
 
 #### Tip
 
-Build NVIDIA drivers in this backup kernel.  And then boot in stock kernel and install only modules to that kernel<br>
+Build NVIDIA drivers in this backup kernel `sh NVIDIA-xxxx.sh`. Then boot in stock kernel and install only nvidia modules for stock kernel<br>
 `sh NVIDIA-xxxx.sh -K`  <br>
-This way if you are on current always you will have nvidia drivers installed in your backup kernel and on first boot of new stock kernel just `sh NVIDIA-xxxx.sh -K` <br>
-`exit 0`
+This way if you are on current, always you will have nvidia drivers installed in your backup kernel and on first boot of new stock kernel only need to  command `sh NVIDIA-xxxx.sh -K` <br>
+
