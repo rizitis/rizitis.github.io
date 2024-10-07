@@ -20,7 +20,7 @@ So, User ID ('UID') [ defaults to next available ]: 1200 (is a good example that
 
  2. Don't add user to sudoers group.<br>
 You don't need sudo. You don't even need root, but that's a long story...(that's a blasphemy for most Slackers) <br>
-Just download `xudo` some ware in your $PATH and that's all.<br>
+Just download [xudo](https://rizitis.github.io/slackware/binaries/xudo) some ware in your $PATH and that's all.<br>
 If your user  know root password can execute any command need root access. <br>
 example: `xudo slackpkg update` , `xudo ./some.SlackBuild` etc...<br>
 To make it even better you can rename xudo to what ever you like, assume wns (WhoNeedSudo) ;)<br>
