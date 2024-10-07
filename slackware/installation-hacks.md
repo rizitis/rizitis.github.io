@@ -180,6 +180,18 @@ We had speak earlier how to give smart ID to your first user in your Linux.
 
 Hack your Slackware, read and understand ALL these files you and should secure your users as needed because **Slackware** is  not only the best Linux distro, it is a learning machine...
 
+---
+
+- Linux system is secure by default and Slackware stable true never break, but you must do often your updates.
+- Install slpkg and build packages from SlackBuilds.org
+- Install a firewall, its very simple...
+- Be careful with your browser. You are clever enough to know who need your data...Use open-source trusted browsers.
+- Dont run localy AIs using their API and give them access to your files.
+- Dont connect to unknown wifi networks.
+- Build your own kernel with only what you need...
+- Keep learning, every day you will learn something more... We all learning none is a teacher!
+- Happy Slacking!!! 
+
 
 
  
