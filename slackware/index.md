@@ -28,6 +28,7 @@ If you're tired of following the beaten path, you're in the right place.
 - [init](init-system.md)
 - [Gaming](Full-Gaming-Setup.md)
 - [Desktop Environments](desktop-environments.md)
+- [TEMPLATES](templates.md)
 - [Examples](examples.md)
 
 ### Copyrights
