@@ -30,6 +30,7 @@ If you're tired of following the beaten path, you're in the right place.
 - [Gaming](Full-Gaming-Setup.md)
 - [Desktop Environments](desktop-environments.md)
 - [TEMPLATES](templates.md)
+- [AI artificial intelligence](ai.md)
 - [Examples](examples.md)
 
 ### Copyrights
