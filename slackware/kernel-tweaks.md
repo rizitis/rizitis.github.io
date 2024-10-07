@@ -107,7 +107,7 @@ CONFIG_ANDROID_BINDER_DEVICES="binder,hwbinder,vndbinder"
 37. `su -c "ln -s System.map-"$version"-zen+  System.map"`
 38. `su -c "/usr/share/mkinitrd/mkinitrd_command_generator.sh -k "$version"-zen+"`
  - copy output but remove the `-c` option and paste it terminal then hit enter.
- - example: `su -k "mkinitrd  -k 6.11.2-zen+ -f ext4 -r /dev/nvme0n1p2 -m xhci-pci:ohci-pci:ehci-pci:xhci-hcd:uhci-hcd:ehci-hcd:hid:usbhid:i2c-hid:hid_generic:hid-asus:hid-cherry:hid-logitech:hid-logitech-dj:hid-logitech-hidpp:hid-lenovo:hid-microsoft:hid_multitouch:ext4 -u -o /boot/initrd.gz"`
+ - example: `su -c "mkinitrd  -k 6.11.2-zen+ -f ext4 -r /dev/nvme0n1p2 -m xhci-pci:ohci-pci:ehci-pci:xhci-hcd:uhci-hcd:ehci-hcd:hid:usbhid:i2c-hid:hid_generic:hid-asus:hid-cherry:hid-logitech:hid-logitech-dj:hid-logitech-hidpp:hid-lenovo:hid-microsoft:hid_multitouch:ext4 -u -o /boot/initrd.gz"`
 39. `su -c "grub-mkconfig -o /boot/grub/grub.cfg"`
 40. `echo "Good luck"`
 
