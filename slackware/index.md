@@ -18,7 +18,8 @@ If you're tired of following the beaten path, you're in the right place.
 
 ---
 
-**Disclaimer**: The methods and configurations here are **unofficial** and may void your warranty (if you had one). Proceed with caution!
+**Disclaimer**: The methods and configurations here are **unofficial** and may void your warranty (if you had one). Proceed with caution!<br>
+ You are on your own if you choose to build and use what suggested here.  As there is a high chance you may need to fix a broken boot or system at all.
 
 ## Quick Links
 - [Installation Hacks](installation-hacks.md)
