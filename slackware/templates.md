@@ -68,7 +68,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 872948 (852K) [application/octet-stream]
 Saving to: ‘/tmp/tmp.4SrKMwByWB/FILE_LIST’
 
-/tmp/tmp.4SrKMwByWB/FILE_LIST                               100%[========================================================================================================================================>] 852.49K  3.35MB/s    in 0.2s    
+/tmp/tmp.4SrKMwByWB/FILE_LIST                               100%
 
 2024-10-07 16:02:14 (3.35 MB/s) - ‘/tmp/tmp.4SrKMwByWB/FILE_LIST’ saved [872948/872948]
 
