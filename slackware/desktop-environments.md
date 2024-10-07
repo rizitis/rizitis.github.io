@@ -1,3 +1,9 @@
+---
+layout: default
+title: "DESKTOP ENVIRONMENTS"
+------
+
+
 # DESKTOP ENVIRONMENTS
 
 Long story! Slackware officially support KDE and XFCE, also some Window Managers.<br>
