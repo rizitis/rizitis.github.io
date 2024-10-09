@@ -10,6 +10,8 @@ R.I.P:
 Welcome:
 - dracut
 - modules_build_in
+- remove-orphaned-initrds
+- kernel-backup
 
 And more good news or bad for some are here...<br>
 As **heretics** what will provided here are some alternatives you might want...<br>
