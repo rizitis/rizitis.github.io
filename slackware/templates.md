@@ -37,7 +37,7 @@ From above the most famous are SBo and alienBOB. Also slkbuild is used from Slax
 
 ### Tip
 
-In case you really want to use a script for download,edit,build official SlackBuilds provided by distro, you can use the unofficial [slackpkg_build](./scripts/slackpkg_build.sh) script.<br>
+In case you really want to use a script (download,edit,build) from official SlackBuilds provided by distro, you can use the unofficial [slackpkg_build](./scripts/slackpkg_build.sh) script.<br>
 It works with most of official SlackBuilds as long as a package.SlackBuild exist appstream.<br>
 If a package provided from a different name SlackBuild will not work.<br>
 By default it read your `/etc/slackpkg/mirrors` and download from this mirror what you ask.<br>
