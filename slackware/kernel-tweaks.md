@@ -33,6 +33,9 @@ Build NVIDIA drivers in this backup kernel `sh NVIDIA-xxxx.sh`. Then boot in sto
 `sh NVIDIA-xxxx.sh -K`  <br>
 This way if you are on current, always you will have nvidia drivers installed in your backup kernel and on first boot of new stock kernel only need to  command `sh NVIDIA-xxxx.sh -K` <br>
 
+---
+
+
 ### ZEN kernel
 
 [Check](https://github.com/zen-kernel/zen-kernel/blob/6.11/main/Documentation/process/changes.rst) Current Minimal Requirements to build and run a zen kernel.<br>
