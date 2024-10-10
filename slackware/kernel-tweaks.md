@@ -52,17 +52,21 @@ Everything you need is [HERE](https://github.com/rizitis/linux-zen)
 README:
 
 
-> KERNEL_CONFIG=config-generic-x.y.z-xanmod1.x64 VERSION=x.y.z-xanmod1 /bin/bash kernel-source.SlackBuild
-> installpkg /tmp/kernel-source-x.y.z-noarch-1.txz
-> ./kernel-xanmod.SlackBuild
-> installpkg /tmp/kernel-xanmod1-x.y.z-znver3-1.txz
-> ./kernel-headers.SlackBuild
-> upgradepkg --reinstall --install-new /tmp/kernel-headers-x.y.z-x86-1.txz
+1. KERNEL_CONFIG=config-generic-x.y.z-xanmod1.x64 VERSION=x.y.z-xanmod1 /bin/bash kernel-source.SlackBuild
 >
+2. installpkg /tmp/kernel-source-x.y.z-noarch-1.txz
 >
-> grub-mkconfig -o /boot/grub/grub.cfg
+3. ./kernel-xanmod.SlackBuild
 >
-> sh /usr/share/mkinitrd/mkinitrd_command_generator.sh -k x.y.z-xanmod1 -a "-o /boot/initrd-x.y.z-xanmod1.img"
+4. installpkg /tmp/kernel-xanmod1-x.y.z-znver3-1.txz
+>
+5. ./kernel-headers.SlackBuild
+>
+6. upgradepkg --reinstall --install-new /tmp/kernel-headers-x.y.z-x86-1.txz
+>
+7. grub-mkconfig -o /boot/grub/grub.cfg
+>
+8. sh /usr/share/mkinitrd/mkinitrd_command_generator.sh -k x.y.z-xanmod1 -a "-o /boot/initrd-x.y.z-xanmod1.img"
 >
 
 Dowonload SlackBuild [HERE](./scripts/heretic-kernel.tar.gz)
