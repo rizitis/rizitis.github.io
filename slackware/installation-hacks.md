@@ -1,5 +1,12 @@
 # installation-hacks
 
+### slackwareaarch64-current
+For [aarch64/arm64](https://slackware.lngn.net/) <~ thats your heretic-place
+
+---
+
+**FOR PC/LAPTOPS**
+
 
 ### TIPS
 
