@@ -31,7 +31,7 @@ If you're tired of following the beaten path, you're in the right place.
 - [Desktop Environments](desktop-environments.md)
 - [TEMPLATES](templates.md)
 - [AI artificial intelligence](ai.md)
-- [Examples](examples.md)
+- [Contribution](examples.md)
 
 ### Copyrights
 Slackware™ is a trademark of Patrick Volkerding. Linux® is the registered trademark of Linus Torvalds

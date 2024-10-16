@@ -1,17 +1,24 @@
 ---
 layout: default
-title: "Sample"
+title: "Contribution"
 ---
 
-Here are examples of md code. You can download this template for [here](https://raw.githubusercontent.com/rizitis/rizitis.github.io/refs/heads/main/slackware/examples.md) <br>
-or just type in terminal
+# Contribution
+
+If you want to contribute a HowTo:<br>
+
+Here are examples of md code we use. You can download this template from [here](https://raw.githubusercontent.com/rizitis/rizitis.github.io/refs/heads/main/slackware/examples.md) <br>
+or just command in terminal
 ```
 wget https://raw.githubusercontent.com/rizitis/rizitis.github.io/refs/heads/main/slackware/examples.md
 ```
 
-Make your modifications and rename `examples.md` to `my_hacks_blabla.md`<br>
-Then create an issue [here](https://github.com/rizitis/rizitis.github.io/issues) discribe what you did and attach the `my_hacks_blabla.md` <br>
+Make it your own and just rename the file with a title related to the theme. <br>
+Assume `examples.md` to `vpn.md`<br>
+Then create an issue [here](https://github.com/rizitis/rizitis.github.io/issues) discribe what you did and attach the `vpn.md` <br>
 
+---
+EXAMPLES:
 ---
 
 
