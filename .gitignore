@@ -1,0 +1,27 @@
+# Ignore core dump files (often named "core" or "core.*")
+core
+core.*
+*.core
+
+# Ignore compiled files or executables
+*.out
+*.o
+*.obj
+
+# Ignore build artifacts and caches
+node_modules/
+dist/
+build/
+.cache/
+
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore other unnecessary or temporary files
+.idea/
+.vscode/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
