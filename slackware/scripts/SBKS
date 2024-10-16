@@ -120,27 +120,16 @@ make oldconfig
 #make menuconfig
 make "$JOBS"
 make modules_install
-# Put this here after modules installed but before we touch System.map and vmlizuz
-# so if something went wrong with modules mkinitrd wont find them, SBKS will stop before your system break.
-# If everything is ok SBKS will continue and at the right time will execute mkinitrd
-/usr/share/mkinitrd/mkinitrd_command_generator.sh -k "$VERSION2" > /boot/mymkinitrd.sh
-sleep 2
-filename="mymkinitrd.sh"
-Clear="mkinitrd -c"
-NOClear="mkinitrd"
-sed -i "s/$Clear/$NOClear/" /boot/$filename
 
-# fix vmlinuz and System.map. Some things are optional but just in case...not hurt.
-cp arch/x86_64/boot/bzImage /boot/vmlinuz-"$VERSION2"
-cp System.map /boot/System.map-"$VERSION2"
 
-cd /boot
-rm System.map
-ln -s System.map-"$VERSION2" System.map
+cp arch/x86_64/boot/bzImage /boot/vmlinuz-"$VERSION2"-"$PRGNAM2"
+ cp System.map /boot/System.map-"$VERSION2"-"$PRGNAM2"
+cd /boot || exit
+ rm System.map
+ ln -s System.map-"$VERSION2"-"$PRGNAM2" System.map
 
-# now its the time, make a generic initrd
-sh $filename
-sleep 2
+# now its the time, make an initrd
+dracut --kver "$VERSION2" /boot/initramfs-"$VERSION2"-"$PRGNAM2".img
 
 # update-bootloader
 if [[ "$BOOTLOADER" == 7 ]] 
