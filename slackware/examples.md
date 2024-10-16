@@ -3,9 +3,18 @@ layout: default
 title: "Sample"
 ---
 
+Here are examples of md code. You can download this template for [here](https://raw.githubusercontent.com/rizitis/rizitis.github.io/refs/heads/main/slackware/examples.md) <br>
+or just type in terminal
 ```
-view code: https://github.com/rizitis/rizitis.github.io/tree/main/slackware/sample.md
+wget https://raw.githubusercontent.com/rizitis/rizitis.github.io/refs/heads/main/slackware/examples.md
 ```
+
+Make your modifications and rename `examples.md` to `my_hacks_blabla.md`<br>
+Then create an issue [here](https://github.com/rizitis/rizitis.github.io/issues) discribe what you did and attach the `my_hacks_blabla.md` <br>
+
+---
+
+
 
 # Header 1
 
