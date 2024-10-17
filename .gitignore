@@ -2,7 +2,7 @@
 core
 core.*
 *.core
-
+widgets.qss
 # Ignore compiled files or executables
 *.out
 *.o
