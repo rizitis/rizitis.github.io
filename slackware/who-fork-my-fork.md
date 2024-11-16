@@ -99,7 +99,7 @@ more hackers appears who was building gnome for slackware as you can see.<br> Th
 The funny thing was that **none** i repeat **NONE** was using gnome as main DE, haha! <br>
 Even me was xfce4 since 1337 and *rearly* gnome DE user.<br>
 
-Things developed ανδ οne day we decided to share roles and let everyone take on something, and where someone needs help, let them say so!<βρ>
+Things developed and οne day we decided to share roles and let everyone take on something, and where someone needs help, let them say so!<br>
 1. So someone else took the build for Slackware 15.0 and also uploaded all the packages to SBo. 
 2. Another the Slackware-current
 3. Another the gnome live iso and aarch64 <br>
