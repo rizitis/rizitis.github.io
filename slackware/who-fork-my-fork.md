@@ -34,7 +34,7 @@ I think you don't dispute everything I say because its the true and **«Verba vo
 **2.** In fact, because I, the fool as Lucky called all of us, always believed that you wanted to help, and you goal was the good of Slackware, *yes I'm a fool I admit it*, I made a post on Discord server and said to others: <br>
 That I sent you an invitation. ![scripta manent](./images/scripta-manent.png) <br> Now take alook to image and open your eyes, can you see how the other *fools* and the *thief* Mr X welcomed the invitation...? <br>
  If someone had bad ideas for **YOUR** scripts not welcome do you think?
- ` || exit 2`<br>
+ `|| exit 2`<br>
 
 That said, let the fairy tale and the egos end. If you do everything for glory, put a label glorify me and a big copy right on top. `|| exit 256`
 
