@@ -48,7 +48,7 @@ Oh yes, that's UNIX philosophy and not the KISS you all believe.<br>
 KISS came **much later** to the fore of UNIX philoshophy.<br>
 And do you know why they should be piped? Because that's how unix was developed. By clicking on **already existing programs and systems** that it piped and linking them with new ones of its own.<br>
 That's how it was developed and that's how it became what it was and is. <br>
-*NOT FROM SRATCH*.<br>
+*NOT FROM SCRATCH*.<br>
 And this is called development and evolution into something new and better.<br>
  If you can't pipe, you stay stagnant and the product can't be improved nor can something new be created without having to build it from scratch in future. And thats what happened now with systemd. Linux will never be forked to something new or better as it is systemd or nothing because log files are *NOT* piped.
 
