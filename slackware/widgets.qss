@@ -234,8 +234,8 @@ QMainWindow QPlainTextEdit {
     color: #bdc3c7;
     selection-color: #bdc3c7;
     selection-background-color: #074051;
-    font-family: Serif;
-    font-size: 14pt;
+    font-family: Noto Sans Mono;
+    font-size: 12pt;
 }
 
 QMainWindow QSplitter::handle {
@@ -466,7 +466,7 @@ QStatusBar QComboBox::down-arrow {
     padding: 0;
     height: 14px;
     width: 14px;
-    image: url(/tmp/UCkfgF.png)
+    image: url(/tmp/rzeTnG.png)
 }
 
 QStatusBar QComboBox::drop-down:hover {
