@@ -63,7 +63,8 @@ Take a look [here](https://slackware.lngn.net/pub/x86_64/slackware64-current/nwg
 
 # KDE 6
 
-Your link is [this](https://slackware.lngn.net/pub/x86_64/slackware64-current/kde6/)
+Your link is [this](https://slackware.lngn.net/pub/x86_64/slackware64-current/kde6/)<br>
+If you preffer building your own Plasma [here](https://github.com/rizitis/PLASMA_WORLD) is my turn... 
 
 ---
 
