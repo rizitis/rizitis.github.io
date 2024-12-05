@@ -191,8 +191,10 @@ This is my setup for `hp omen 16 cpu 12700h`
 5. `slpkg -s package_name -o '*'` search for in all repos
 6. `slpkg -i package_name` build and install or install binary from default repo
 7. `slpkg -i package_name -o repo_name` install from specific repo
-8. `sudo slpkg -t package_name` list deps of package
-9. `sudo slpkg -e package_name` list which packages dependes-on this package
-10. ....
+8. `slpkg -t package_name` list deps of package
+9. `slpkg -e package_name` list which packages dependes-on this package
+10. `slpkg -ir package_name` reinstall a package and optional its deps if user agree
+
+Note: *slpkg* is better to used in full root mode (`su -l`) or (`su -`) not always work fine with sudo...
 
 ---
