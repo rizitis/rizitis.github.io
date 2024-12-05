@@ -28,7 +28,7 @@ What we have are several kind of unofficial SlackBuilds. Which will be listed he
 * [Aliens SlackBuild Toolkit](https://alien.slackbook.org/AST/) Eric Hameleers (aka alienBOB)
 * [slkbuild](https://github.com/gapan/slkbuild) arch-like wrapper script for easy slackware packaging
 * [Martin Lefebvre](https://www.slackwiki.com/Different_Approach_To_Buildscripts) Different Approach To Buildscripts
-* [One4All](https://raw.githubusercontent.com/rizitis/One4All_SlackBuild/refs/heads/main/TEMPLATE.SlackBuild) this is what i use for personal builds.
+* [AthOS](https://github.com/rizitis/PLASMA_WORLD) this is what i use for personal builds. Its totaly different for classic SlackBuild from first view but that not true...
 * [Writing_A_SlackBuild_Script](https://www.slackwiki.com/Writing_A_SlackBuild_Script) How to write your own.
 
 From above the most famous are SBo and alienBOB. Also slkbuild is used from SlaxiOS,Slint and Slackel. And its more combative with slap-get package manager. 
@@ -172,4 +172,11 @@ Binary stored in /tmp/slackpkg-build/emacs, ready for installation.
  
 
 ```
+---
+
+### Captain-Slack
+
+You might like it or find it helpful... <br>
+[cptn](https://github.com/rizitis/captain-slack)
+
 
