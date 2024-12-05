@@ -5,8 +5,39 @@ For [aarch64/arm64](https://slackware.lngn.net/) <~ thats your heretic-place
 
 ---
 
-**FOR PC/LAPTOPS**
+**FOR PC/LAPTOPS**<br>
+---
 
+- History notes
+  - Slackware Linux was first released before CD-ROMs became a standard in systems  and before fast Internet connections were cheap.<br>
+  Because of this, the distribution was broken down into software sets. Each set contains a different group of programs.<br>
+  This allowed for someone to get the Slackware Linux distribution quickly. For example, if you know you don't want the X Window System, just skip all of the X software set.<br>
+  - Now days things are better, but for historical reasons Slackware kept the same structure.
+  Any way a full Slackware installation is always the better and safe choise, but sometime we dont realy like or want or need it...<br>
+  So **A**, **AP**, **F**, **L**, and **N** are for sure what **MUST** be installed for a very minimal installation.<br>
+  That not mean other sets are optionals but ok lets say you dont want emacs,howtos,KDE,xfce etc... <br>
+  What Ι can say (but not suggest) is this: Every set has inside a `tagfile` if some day you think you need one more set but not all of it at least install<br> from `tagfile` everything has `:REC` option. But even this its not a mandatory for example gcc is :OPT which is true,<br> in theory its not requitment for a Linux system but do you need it? You know... What i can say is that if you install everything is :REC in tagfile(s) you will have a booting Slackware system 100%, **but** if you need to install something more or compile etc... you are on your own for deps resolution. You and Arch wiki ;)
+  
+  **SETS**
+
+| set |                                                   Description                                                           |
+|-----|-------------------------------------------------------------------------------------------------------------------------|
+| `A` | The base system. Contains enough software to get up and running and have a text editor and basic communications programs|
+| `AP`| Various APplications that do not require the X Window System.                                                           |
+| `D` | Program Development tools. Compilers, debuggers, interpreters, and man pages. It's all here.                            |
+| `E` | GNU Emacs. Yes, Emacs is so big it requires its own series.                                                             |
+| `F` | FAQs, HOWTOs, and other miscellaneous documentation.                                                                    |
+| `K` | The source code for the Linux Kernel.                                                                                   |
+|`KDE`| KDE-PLASMA The Qt widget library is also in this series, as KDE requires it to function.                                |
+| `L` | System Libraries.                                                                                                       |
+| `N` | Networking programs. Daemons, mail programs, telnet, news readers, and so on.                                           |
+| `T` | teTeX document formatting system.                                                                                       |
+|`TCL`| The Tool Command Language                                                                                               |
+| `X` | The base X Window System X11, Wayland..                                                                                 |
+|`XAP`| X APplications that are not part of a major desktop environment                                                         |
+| `Υ` | Games (the BSD games collection, Sasteroids, Koules, and Lizards).                                                      |
+
+---
 
 ### TIPS
 
