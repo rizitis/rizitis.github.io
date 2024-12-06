@@ -14,9 +14,15 @@ For [aarch64/arm64](https://slackware.lngn.net/) <~ thats your heretic-place
   This allowed for someone to get the Slackware Linux distribution quickly. For example, if you know you don't want the X Window System, just skip all of the X software set.<br>
   - Now days things are better, but for historical reasons Slackware kept the same structure.
   Any way a full Slackware installation is always the better and safe choise, but sometime we dont realy like or want or need it...<br>
-  So **A**, **AP**, **F**, **L**, and **N** are for sure what **MUST** be installed for a very minimal installation.<br>
-  That not mean other sets are optionals but ok lets say you dont want emacs,howtos,KDE,xfce etc... <br>
-  What Ι can say (but not suggest) is this: Every set has inside a `tagfile` if some day you think you need one more set but not all of it at least install<br> from `tagfile` everything has `:REC` option. But even this its not a mandatory for example gcc is :OPT which is true,<br> in theory its not requitment for a Linux system but do you need it? You know... What i can say is that if you install everything is :REC in tagfile(s) you will have a booting Slackware system 100%, **but** if you need to install something more or compile etc... you are on your own for deps resolution. You and Arch wiki ;)
+  So **A**, **AP**, **F**, **L**, and **N** are for sure what **MUST** be installed for a very minimal installation of custom Slackware system<br>
+  That not mean other sets are optionals but lets say you dont want emacs,howtos,KDE,xfce etc... <br>
+  What Ι can say (but not suggest) is this: 
+  - Every set has inside a `tagfile` if some day you think you need one more set but not all of it at least install<br> from `tagfile` everything has `:REC` and `:ADD` option. But even this its not a mandatory for example gcc is :OPT which is true,<br> in theory its not requitment for a Linux system but do you realy not need it? You know... 
+  Again what i can say but not suggest is:
+  - If you install everything is :REC and :ADD in tagfile(s) you will have a `custom` booting Slackware system 100%, **but** if you need to install something more or compile etc... you are on your `own` for deps resolution. 
+  Presonally I always have a full Slackware installation.
+  
+  --- 
   
   **SETS**
 
@@ -36,6 +42,37 @@ For [aarch64/arm64](https://slackware.lngn.net/) <~ thats your heretic-place
 | `X` | The base X Window System X11, Wayland..                                                                                 |
 |`XAP`| X APplications that are not part of a major desktop environment                                                         |
 | `Υ` | Games (the BSD games collection, Sasteroids, Koules, and Lizards).                                                      |
+
+
+Note that [volkerdi](https://www.linuxquestions.org/questions/showpost.php?p=5766773) the founder , owner, and maintainer of Slackware said:<br>
+- Arguing about which series any particular package belongs in is even more pointless than having separate package series in the first place. Really, everything should just be dumped in one big package directory so that people don't get carried away with the idea that the divisions actually mean something.
+- [Also](https://www.linuxquestions.org/questions/showpost.php?p=5856424), it's strange to keep fixating on which series a package belongs in, as if it's a dependency system or something.
+- [AND](https://www.linuxquestions.org/questions/showpost.php?p=5920588)I'll change the status from OPT to REC at some point soon, though I'll note that none of those tags are any guarantee that dependencies in Slackware will actually be met. Only a full install is.<br>
+
+Since libunistring is a rather large library I'm not inclined to add it to the aaa_elflibs package, especially since wget isn't part of the A series. And again, I'll note that these series divisions are largely legacy and shouldn't really be paid much attention.
+---
+
+**tagfile**<br>
+**The old but true** [slackbook](https://slackbook.org/html/package-management-making-tags-and-tagfiles.html) explain better:<br>
+
+The Slackware setup program handles installation of the software packages on your system. There are files that tell the setup program which packages must be installed, which ones are optional, and which ones are selected by default by the setup program.<br>
+
+A tagfile is in the first software series directory and is called tagfile. It lists the packages in that particular disk set and their status. The status can be:
+
+
+|Option| 	              Meaning                          |
+|------|---------------------------------------------------|
+| `ADD`|The package is required for proper system operation|
+| `SKP`|The package will be automatically skipped          |
+| `REC`|The package is not required, but recommended       |
+| `OPT`|The package is optional                            |
+
+
+One package per line. The original tagfiles for each software series are stored as tagfile.org. So if you mess up yours, you can restore the original one.<br>
+
+Many administrators prefer writing their own tagfiles and starting the installer and selecting “full”. The setup program will read the tagfiles and perform the installation according to their contents.<br> If you use REC or OPT, a dialog box will be presented to the user asking whether or not they want a particular package.<br> Therefore, it is recommended that you stick with ADD and SKP when writing tagfiles for automated installs.
+<br>
+Just make sure your tagfiles are written to the same location as the originals. Or you can specify a custom tagfile path if you have custom tagfiles.
 
 ---
 
