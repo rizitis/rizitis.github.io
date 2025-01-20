@@ -7,4 +7,8 @@ There you can ask SlackHacks for gaming setup... :)
 ---
 ![image](./images/GamerRoomDiy.jpg)
 
+---
+
+![image](./images/slackgame.png)
+
 
