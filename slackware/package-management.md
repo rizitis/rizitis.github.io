@@ -42,6 +42,7 @@ Here are the most famous:
 2. [slapt-get](https://github.com/jaos/slapt-get) 
 3. [sbopkg](https://sbopkg.org/) (only for SlackBuilds building from Slackbuilds.org)
 4.  [slpkg](https://gitlab.com/dslackw/slpkg)
+5. [sbotool](https://slackbuilds.org/result/?search=sbotool&sv=15.0)
 
 
 
@@ -68,7 +69,9 @@ As root start sbopkg and rsync it to the correct repo (default is for Slackware 
 sbopkg
 ```
 
-
+#### sbotool 
+Historical package manager that lot of people still use. There are several forks you can find them in SBo...<br>
+It was my first package manager back to old days, as I remember no complains at all...
 
 #### slpkg
 
