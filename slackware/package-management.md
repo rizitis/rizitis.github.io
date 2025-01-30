@@ -42,7 +42,7 @@ Here are the most famous:
 2. [slapt-get](https://github.com/jaos/slapt-get) 
 3. [sbopkg](https://sbopkg.org/) (only for SlackBuilds building from Slackbuilds.org)
 4.  [slpkg](https://gitlab.com/dslackw/slpkg)
-5. [sbotool](https://slackbuilds.org/result/?search=sbotool&sv=15.0)
+5. [sbotool](https://slackbuilds.org/result/?search=sbotool&sv=15.0) [sbotool3](https://www.linuxquestions.org/questions/slackware-14/sbotools-3-x-4175744323/)
 
 
 
