@@ -40,12 +40,12 @@ else
 fi
 
 # ADD Linux Kernel version you want to build here
-KERNEL_VERSION=$(kdialog --inputbox "Enter the kernel version you want to build. Example: 6.13")
+KERNEL_VERSION=$(kdialog --inputbox "Enter the kernel version you want to build. Example: 6.2.8")
 echo "Kernel version selected: $KERNEL_VERSION"  # Echo to terminal
 
 # If your oldconfig was built by u and your old kernel’s name is tagged by you assume: "6.0.13-tag"
 # then add your TAG in VERSION2. Example VERSION2=6.0.14-TAG else script will fail using oldconfig.
-VERSION2=$(kdialog --inputbox "Enter kernel version again full name-version if needed.Example: 6.13.0")
+VERSION2=$(kdialog --inputbox "Enter kernel version again. If your current kernel version custom with TAG, then add it here also. Example: 6.2.8-rtz")
 echo "Kernel version again if tag also: $VERSION2"  # Echo to terminal
 
 # script asks for current bootloader
@@ -161,11 +161,12 @@ kdialog --warning \
        --text "Finally, you have successfully broken your system. Congrats!"
 echo "Script has finished execution."  # Echo to terminal
 
-if kdialog --yesno "Do you want to reboot the PC?" --title "Reboot?" --no-wrap; then
-    /sbin/reboot
-    kdialog --msgbox --title "Success" --text="System rebooting..." --no-wrap
+if kdialog --yesno "Do you want to reboot the PC?" --title "Reboot?"; then
+    kdialog --msgbox "System rebooting..." --title "Success"
     echo "System is rebooting..."  # Echo to terminal
+    /sbin/reboot
 else
-    kdialog --msgbox --text="OK! SBKS finished its job. Have a nice Slacky Day." --width=500
+    kdialog --msgbox "OK! SBKS finished its job. Have a nice Slacky Day." --title "Goodbye"
     echo "Script finished. No reboot."  # Echo to terminal
 fi
+

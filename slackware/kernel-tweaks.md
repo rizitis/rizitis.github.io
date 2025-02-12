@@ -23,7 +23,7 @@ As **heretics** what will provided here are some alternatives you might want...<
 ![kernel](https://www.kernel.org/theme/images/logos/tux.png)
 
 If you want a *traditional* builded backup kernel just in case... You can use [SBKS](./scripts/SBKS)<br>
-*requires: yad*<br>
+*requires: kdialog*<br>
 READ script first  and then add it in your $PATH, I have it in `/usr/local/bin` or just run it as root always... <br>  
 It will build a backup kernel that slackpkg will not delete  when officially kernel upgrade comes in.
 
