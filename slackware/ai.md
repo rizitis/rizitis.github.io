@@ -19,8 +19,8 @@ In special cases you might need to use `pip` but thats ok!.<br>
 #### security issues
 
 In any case be carefully when you ran local an AI model or when use its API and give it access to your local files (docs,images etc...)<br>
-AIs want your data, that is something it must be clear. THEY WANT YOUR DATA.<br>
-If a company is know as personal data tracker from other projects it has... how you can trust it now? Because ?<br>
+AIs want your data, that is something it must be clear. **THEY WANT YOUR DATA**.<br>
+If a company is well known as personal data tracker from other projects it has... how/why you can trust it now? Because ?<br>
 Some small project say that run locally and private. Maybe its true maybe not, maybe its true now maybe not in future...who knows? who read 1.000.000 python code lines to be sure?<br>
 Some other had simple code easy to read in theory but a sqlite exist in `~/.config/some_name/12345/54321/some_other_name/wtf/*` <br>
 hm...<br>
@@ -37,3 +37,7 @@ Requires: `numpy,sentencepiece,gguf` from python and `git lfs`<br>
 You can find it [here](https://raw.githubusercontent.com/rizitis/Quantizing_with_LlamaCpp/refs/heads/main/quantizing_ai_models.sh)
 <br>
 After that you can use model as you like with the correct app of your choice... ;)
+
+**ΝΟΤΕ** (Wed Feb-2 11:15:07am)<br>
+Above script not working anymore as most of times `https://huggingface.co/` will not permit you to download as anonymous and if you use personal_token it might block you AIs devs policy... <br>
+I will leave script here for historical reasons only.  
