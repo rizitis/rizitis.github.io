@@ -34,7 +34,7 @@ For [aarch64/arm64](https://slackware.lngn.net/) <~ thats your heretic-place
 | `E` | GNU Emacs. Yes, Emacs is so big it requires its own series.                                                             |
 | `F` | FAQs, HOWTOs, and other miscellaneous documentation.                                                                    |
 | `K` | The source code for the Linux Kernel.                                                                                   |
-|`KDE`| KDE-PLASMA The Qt widget library is also in this series, as KDE requires it to function.                                |
+|`KDE`| KDE-PLASMA                                |
 | `L` | System Libraries.                                                                                                       |
 | `N` | Networking programs. Daemons, mail programs, telnet, news readers, and so on.                                           |
 | `T` | teTeX document formatting system.                                                                                       |
