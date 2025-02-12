@@ -174,9 +174,9 @@ Binary stored in /tmp/slackpkg-build/emacs, ready for installation.
 ```
 ---
 
-### Captain-Slack
+### Slackware-Commander
 
 You might like it or find it helpful... <br>
-[cptn](https://github.com/rizitis/captain-slack)
+[scmd](https://github.com/rizitis/Slackware-Commander)
 
 
