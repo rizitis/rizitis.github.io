@@ -31,7 +31,7 @@ What we have are several kind of unofficial SlackBuilds. Which will be listed he
 * [AthOS](https://github.com/rizitis/PLASMA_WORLD) this is what i use for personal builds. Its totaly different for classic SlackBuild from first view but that not true...
 * [Writing_A_SlackBuild_Script](https://www.slackwiki.com/Writing_A_SlackBuild_Script) How to write your own.
 
-From above the most famous are SBo and alienBOB. Also slkbuild is used from SlaxiOS,Slint and Slackel. And its more combative with slap-get package manager. 
+From above the most famous are SBo and alienBOB. Also slkbuild is used from SlaxOS,Slint and Slackel. And its more combative with slap-get package manager. 
 
 
 ---
