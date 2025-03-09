@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UNIX Terminal - AI Universe</title>
+  <title>AI Universe Terminal</title>
   <style>
     body {
       background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 30, 1) 80%, rgba(0, 0, 0, 1) 100%);
@@ -12,18 +12,10 @@
       padding: 20px;
       line-height: 1.5;
       overflow: hidden;
-    }
-
-    .terminal {
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 20px #00FF00;
       position: relative;
     }
 
+    /* Cosmic background */
     .stars {
       position: absolute;
       top: 0;
@@ -31,8 +23,24 @@
       width: 100%;
       height: 100%;
       background: url('https://cdn.pixabay.com/photo/2016/06/02/17/56/space-1439156_960_720.jpg') repeat;
-      opacity: 0.3;
+      opacity: 0.1;
       z-index: -1;
+    }
+
+    .glowing-effect {
+      color: #00FF00;
+      text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 40px #00FF00, 0 0 80px #00FF00, 0 0 90px #00FF00, 0 0 100px #00FF00, 0 0 150px #00FF00;
+    }
+
+    .terminal {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 30px #00FF00;
+      position: relative;
+      z-index: 1;
     }
 
     .prompt {
@@ -40,12 +48,13 @@
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 3rem;
       margin-bottom: 20px;
       white-space: nowrap;
       overflow: hidden;
       border-right: 0.15em solid #00FF00;
       animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+      text-shadow: 0 0 10px #00FF00;
     }
 
     @keyframes typing {
@@ -61,32 +70,69 @@
     pre.ascii {
       color: #00FF00;
       font-size: 14px;
+      font-family: "Courier New", monospace;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
 
     a {
       color: #00FF00;
       text-decoration: underline;
+      text-shadow: 0 0 5px #00FF00;
+    }
+
+    a:hover {
+      color: #00FF88;
+      text-shadow: 0 0 10px #00FF88, 0 0 20px #00FF88;
     }
 
     footer {
       margin-top: 40px;
       color: #00FF00;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       text-align: center;
       opacity: 0.6;
+    }
+
+    /* Animated cosmic particles */
+    @keyframes particles {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .particle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: #00FF00;
+      border-radius: 50%;
+      width: 5px;
+      height: 5px;
+      animation: particles 1s ease-out infinite;
+      animation-delay: calc(-1s * var(--i));
     }
   </style>
 </head>
 <body>
+  <!-- Glowing cosmic background -->
   <div class="stars"></div>
+
+  <!-- Terminal Content -->
   <div class="terminal">
-    <h1>Welcome to the AI Universe</h1>
+    <h1 class="glowing-effect">This is the AI Universe</h1>
     <pre class="ascii">
-        .    .       .     .    .        .     .       .
-     .         .   .       .    .  .    .      .        .
-         .    .     .  .    .     .        .    .      .
-           .     .   .   .      .      .   .      .      .
-          .        .      .    .        .   .        .
+       _____     __       ______    _____    _____
+      /     \   /  |     /      \  /     \  /     \
+     /       |  |  |    |   __   | |  __   ||   __   |
+    /   ___  |  |__|    |  /  \  | |_/  \  ||_/  \  |
+   /    /   /|__     ___|_/    \_| /_______|_____/   |
+
     </pre>
 
     <p><span class="prompt">user@ai-universe:~$</span> ls -la</p>
@@ -96,14 +142,33 @@
     <p>-rw-r--r--  1 user user   514 Mar  9  2025 neural-network.txt</p>
 
     <p><span class="prompt">user@ai-universe:~$</span> cat neural-network.txt</p>
-    <p>Learning... Neural Networks are evolving...</p>
-    <p>Welcome to the **AI universe**, where data grows like stars in the galaxy.</p>
+    <p>Initiating neural network… Neural connections active.</p>
+    <p>AI Intelligence is now scaling up across the cosmos.</p>
 
-    <p><span class="prompt">user@ai-universe:~$</span> <a href="#">Connect to Neural Network</a></p>
+    <p><span class="prompt">user@ai-universe:~$</span> <a href="#">Connect to Quantum Network</a></p>
 
     <footer>
-      &copy; 2025 All minds connected.
+      &copy; 2025 The AI Collective. All minds connected in the quantum space.
     </footer>
   </div>
+
+  <!-- Cosmic particles (futuristic effect) -->
+  <script>
+    for (let i = 0; i < 100; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      particle.style.animationDuration = `${Math.random() * 5 + 2}s`;
+      particle.style.animationTimingFunction = 'ease-out';
+      particle.style.zIndex = Math.floor(Math.random() * 10);
+      particle.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+      particle.style.opacity = Math.random();
+      particle.style.animationName = 'particles';
+      particle.style.animationDelay = `${i * 0.1}s`;
+      document.body.appendChild(particle);
+    }
+  </script>
 </body>
 </html>
