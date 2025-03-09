@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UNIX Terminal - AI Universe</title>
+  <style>
+    body {
+      background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 30, 1) 80%, rgba(0, 0, 0, 1) 100%);
+      color: #00FF00;
+      font-family: "Courier New", Courier, monospace;
+      padding: 20px;
+      line-height: 1.5;
+      overflow: hidden;
+    }
+
+    .terminal {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 20px #00FF00;
+      position: relative;
+    }
+
+    .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://cdn.pixabay.com/photo/2016/06/02/17/56/space-1439156_960_720.jpg') repeat;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .prompt {
+      color: #00FF00;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 0.15em solid #00FF00;
+      animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #00FF00; }
+    }
+
+    pre.ascii {
+      color: #00FF00;
+      font-size: 14px;
+    }
+
+    a {
+      color: #00FF00;
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #00FF00;
+      font-size: 0.8rem;
+      text-align: center;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="terminal">
+    <h1>Welcome to the AI Universe</h1>
+    <pre class="ascii">
+        .    .       .     .    .        .     .       .
+     .         .   .       .    .  .    .      .        .
+         .    .     .  .    .     .        .    .      .
+           .     .   .   .      .      .   .      .      .
+          .        .      .    .        .   .        .
+    </pre>
+
+    <p><span class="prompt">user@ai-universe:~$</span> ls -la</p>
+    <p>drwxr-xr-x  5 user user  4096 Mar  9  2025 .</p>
+    <p>drwxr-xr-x 12 root root  4096 Mar  9  2025 ..</p>
+    <p>-rw-r--r--  1 user user   220 Mar  9  2025 README.md</p>
+    <p>-rw-r--r--  1 user user   514 Mar  9  2025 neural-network.txt</p>
+
+    <p><span class="prompt">user@ai-universe:~$</span> cat neural-network.txt</p>
+    <p>Learning... Neural Networks are evolving...</p>
+    <p>Welcome to the **AI universe**, where data grows like stars in the galaxy.</p>
+
+    <p><span class="prompt">user@ai-universe:~$</span> <a href="#">Connect to Neural Network</a></p>
+
+    <footer>
+      &copy; 2025 All minds connected.
+    </footer>
+  </div>
+</body>
+</html>
