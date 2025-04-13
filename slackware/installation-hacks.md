@@ -78,6 +78,14 @@ Just make sure your tagfiles are written to the same location as the originals. 
 
 ### TIPS
 
+0. I like to create a separate partition for /home and one more for /usr/local
+So for UEFI we have:
+/dev/nvme0n1p1      EFI System 
+/dev/nvme0n1p2    Linux filesystem (root)
+/dev/nvme0n1p3    Linux filesystem (/usr/local)
+/dev/nvme0n1p4    Linux filesystem (/home)
+
+
 1. OK Slackware installation finish, time for your first reboot and for your first regular user.<br>
 Assume you command `adduser` and now you are in `$user UID` prompt.<br>
 
