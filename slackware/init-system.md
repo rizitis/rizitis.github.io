@@ -20,6 +20,5 @@ This is the Slackware init system for boot:
  * [systemd](https://slackernet.ddns.net/slackware/slackware64-15.0/testing/source/systemd/x86_64/) for fun!
 * [dinit](https://github.com/0xBOBF/dinit-slackware) for testing! (not 100% ready)
 * [OpenRC](https://docs.slackware.com/howtos:general_admin:openrc) for enjoy!
-* [vera](https://github.com/svarshavchik/vera) for the hack and the win! 
-
-Vera is a very promise project ...
+* [vera](https://github.com/svarshavchik/vera) for the hack and the win!
+* [Sl6ckware](https://github.com/mumahendras3/sl6ckware) s6 + s6-rc + s6-linux-init as the init system on Slackware!
