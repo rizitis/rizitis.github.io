@@ -1,0 +1,1 @@
+../slackware/scripts/stay_back
