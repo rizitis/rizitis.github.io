@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>SlackLog parsers &#8212; slacklog 10.0.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <script src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="static/nature.css" />
+    <script src="static/documentation_options.js"></script>
+    <script src="static/doctools.js"></script>
+    <script src="static/sphinx_highlight.js"></script>
     <link rel="canonical" href="/slacklog/parsers.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -51,7 +51,7 @@ of it.</p>
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slacklog.parsers.</span></span><span class="sig-name descname"><span class="pre">SlackLogParser</span></span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slacklog.parsers.</span></span><span class="sig-name descname"><span class="pre">SlackLogParser</span></span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Parser for Slackware ChangeLog.txt files.
 Works for Slackware 12.x and newer.</p>
@@ -81,85 +81,85 @@ Works for Slackware 12.x and newer.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.parse">
-<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse" title="Link to this definition">¶</a></dt>
 <dd><p>Return SlackLog object representing parsed data.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.split_log_to_entries">
-<span class="sig-name descname"><span class="pre">split_log_to_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.split_log_to_entries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.split_log_to_entries" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">split_log_to_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.split_log_to_entries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.split_log_to_entries" title="Link to this definition">¶</a></dt>
 <dd><p>Split the ChangeLog into individual entries.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.parse_entry">
-<span class="sig-name descname"><span class="pre">parse_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.parse_entry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_entry" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.parse_entry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_entry" title="Link to this definition">¶</a></dt>
 <dd><p>Parse a single entry.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.gen_entry_checksum">
-<span class="sig-name descname"><span class="pre">gen_entry_checksum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.gen_entry_checksum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.gen_entry_checksum" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">gen_entry_checksum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.gen_entry_checksum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.gen_entry_checksum" title="Link to this definition">¶</a></dt>
 <dd><p>Generate SHA512 checksum of entry.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.gen_entry_identifier">
-<span class="sig-name descname"><span class="pre">gen_entry_identifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checksum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.gen_entry_identifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.gen_entry_identifier" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">gen_entry_identifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checksum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.gen_entry_identifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.gen_entry_identifier" title="Link to this definition">¶</a></dt>
 <dd><p>Generate SHA512 identifier for entry.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.parse_entry_timestamp">
-<span class="sig-name descname"><span class="pre">parse_entry_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.parse_entry_timestamp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_entry_timestamp" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse_entry_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.parse_entry_timestamp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_entry_timestamp" title="Link to this definition">¶</a></dt>
 <dd><p>Parse timestamp of entry and return timestamp, timezone, 12-hour flag, and remaining data.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.parse_entry_description">
-<span class="sig-name descname"><span class="pre">parse_entry_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.parse_entry_description"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_entry_description" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse_entry_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.parse_entry_description"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_entry_description" title="Link to this definition">¶</a></dt>
 <dd><p>Parse entry description and return description + remaining data.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.split_entry_to_pkgs">
-<span class="sig-name descname"><span class="pre">split_entry_to_pkgs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.split_entry_to_pkgs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.split_entry_to_pkgs" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">split_entry_to_pkgs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.split_entry_to_pkgs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.split_entry_to_pkgs" title="Link to this definition">¶</a></dt>
 <dd><p>Split entry content into package blocks.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.parse_pkg">
-<span class="sig-name descname"><span class="pre">parse_pkg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.parse_pkg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_pkg" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse_pkg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.parse_pkg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_pkg" title="Link to this definition">¶</a></dt>
 <dd><p>Parse a package from a block of text.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.parse_pkg_name">
-<span class="sig-name descname"><span class="pre">parse_pkg_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.parse_pkg_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_pkg_name" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse_pkg_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.parse_pkg_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_pkg_name" title="Link to this definition">¶</a></dt>
 <dd><p>Extract package name and description from a line.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.parse_pkg_description">
-<span class="sig-name descname"><span class="pre">parse_pkg_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.parse_pkg_description"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_pkg_description" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse_pkg_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.parse_pkg_description"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_pkg_description" title="Link to this definition">¶</a></dt>
 <dd><p>Return package description.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.get_line">
-<span class="sig-name descname"><span class="pre">get_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.get_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.get_line" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.get_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.get_line" title="Link to this definition">¶</a></dt>
 <dd><p>Consume and return first line + remainder.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.parse_date">
-<span class="sig-name descname"><span class="pre">parse_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.parse_date"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_date" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.parse_date"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_date" title="Link to this definition">¶</a></dt>
 <dd><p>Parse date string to datetime in UTC.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slacklog.parsers.SlackLogParser.parse_date_with_timezone">
-<span class="sig-name descname"><span class="pre">parse_date_with_timezone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/slacklog/parsers.html#SlackLogParser.parse_date_with_timezone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_date_with_timezone" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse_date_with_timezone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="modules/slacklog/parsers.html#SlackLogParser.parse_date_with_timezone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#slacklog.parsers.SlackLogParser.parse_date_with_timezone" title="Link to this definition">¶</a></dt>
 <dd><p>Parse date string to datetime + original tzinfo.</p>
 </dd></dl>
 
@@ -214,7 +214,7 @@ Works for Slackware 12.x and newer.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/parsers.rst.txt"
+      <li><a href="sources/parsers.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
