@@ -31,16 +31,17 @@ Requirements
 
 In addition to Python, `python3-dateutil` from SlackBuilds.org is required.
 
-Python 3.12 is tested together with python3-dateutil-2.9.0.
+Python 3.09 and 3.12 is tested together with python3-dateutil-2.9.0.
 
 
 Installation
 ============
 
-Download the source archive and use the included SlackBuild.
+Recommended installation is using the SlackBuild from `SBo: <https://slackbuilds.org/repository/15.0/python/python3-slacklog/>`_
 
 The source code of this fork is available at
 `GitHub <https://github.com/rizitis/slacklog>`_ (python3 branch).
+`Latest Release <https://github.com/rizitis/slacklog/releases>`_
 
 
 Authors
