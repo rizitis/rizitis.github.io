@@ -1,0 +1,2476 @@
+### USER
+θέλω να κάνω κανω fine tunning ενα μικρο μοντελο απο την εταιρια σας που λενε πως ειναι τα καλυτερα για αυτην την χρηση. Θελω να το εκπαιδευσω με το documantation του slackware σε ενα μηχανημα που εχω μια rtx3090 αλλα μετα να μπορει να τρεχει σε υπλογιστες με cpu αν δεν εχουν vram. καταλαβες περιπου τι θελω?
+
+### ASSISTANT
+Κατάλαβα απόλυτα! Θέλεις να δημιουργήσεις έναν "ειδικό" βοηθό για το Slackware Linux, ο οποίος θα εκπαιδευτεί (fine-tune) τοπικά στην ισχυρή RTX 3090 σου (24GB VRAM), αλλά το τελικό μοντέλο θα είναι настолько ελαφρύ και βελτιστοποιημένο, ώστε να τρέχει σε απλούς υπολογιστές μόνο με CPU (χωρίς κάρτα γραφικών).
+
+Εφόσον ανήκω στην οικογένεια των μοντέλων **Qwen** (από την Alibaba), θα σου προτείνω την ιδανική διαδρομή για να πετύχεις ακριβώς αυτό.
+
+### 1. Η Επιλογή του Μοντέλου
+Για να τρέχει άνετα σε CPU (χωρίς VRAM), πρέπει να αποφύγουμε τα μεγάλα μοντέλα. Οι καλύτερες επιλογές από την οικογένειά μας (Qwen2.5 σειρά, η οποία είναι εξαιρετική σε code, technical docs και λογική) είναι:
+*   **Qwen2.5-1.5B** ή **Qwen2.5-3B**: Είναι η **ιδανική επιλογή** για CPU. Με κατάλληλη κβαντοποίηση (quantization), θα τρέχουν σε οποιοδήποτε σύγχρονο CPU με 8GB-16GB RAM, δίνοντας πολύ γρήγορες απαντήσεις.
+*   *Σημείωση:* Αν και η RTX 3090 σου μπορεί να εκπαιδεύσει άνετα και το 7B ή 14B μοντέλο, το 7B θα "ζοριστεί" πολύ σε μια απλή CPU. Γι' αυτό θα εστιάσουμε στο **1.5B ή 3B**.
+
+### 2. Η Διαδικασία Εκπαίδευσης (Training on RTX 3090)
+Η RTX 3090 με τα 24GB VRAM είναι ένα "θηρίο" για μικρά μοντέλα. Δεν χρειάζεται να εκπαιδεύσεις όλο το μοντέλο (Full Fine-Tuning), αλλά θα χρησιμοποιήσουμε **QLoRA** (Quantized Low-Rank Adaptation).
+*   **Το εργαλείο:** Σου προτείνω ανεπιφύλακτα το **[Unsloth](https://github.com/unslothai/unsloth)**. Είναι μια βιβλιοθήκη που κάνει το fine-tuning έως και 2x πιο γρήγορο και μειώνει τη χρήση VRAM κατά 50%. Με το Unsloth, το Qwen2.5-3B θα καταναλώσει ελάχιστα από τα 24GB της 3090 σου.
+*   **Δεδομένα (Slackware Docs):** Θα πρέπει να μετατρέψεις τα documentation του Slackware (π.χ. από τα SlackDocs, man pages, ή official guides) σε μορφή JSONL με ζεύγη Ερωτήσεων-Απαντήσεων (Instruction Tuning).
+    *   *Παράδειγμα:* `{"instruction": "Πώς εγκαθιστώ ένα πακέτο από source στο Slackware;", "input": "", "output": "Χρησιμοποιείς το slackbuild..."}`
+
+### 3. Η Διαδικασία Εκτέλεσης (Inference on CPU)
+Αφού εκπαιδεύσεις τον QLoRA adapter σου στην 3090, πρέπει να τον "χωρέσεις" σε μηχανήματα χωρίς GPU.
+1.  **Merge & Convert:** Ενώνεις τον adapter με το base μοντέλο και το μετατρέπεις σε μορφή **GGUF** (χρησιμοποιώντας το `llama.cpp`).
+2.  **Quantization:** Το μετατρέπεις σε Q4_K_M ή Q5_K_M (κβαντοποίηση 4 ή 5 bit). Αυτό ρίχνει το μέγεθος του μοντέλου στα ~1.5GB - 2.5GB, επιτρέποντάς του να φορτωθεί απευθείας στην RAM της CPU.
+3.  **Εκτέλεση:** Χρησιμοποιείς το **[Ollama](https://ollama.com/)** ή το **llama.cpp** στα μηχανήματα-στόχους. Δημιουργείς ένα απλό `Modelfile` και το τρέχεις ως τοπικό API ή chatbot.
+
+---
+
+### ⚠️ Μια πολύ σημαντική συμβουλή (Fine-Tuning vs RAG)
+Επειδή θέλεις να εκπαιδεύσεις το μοντέλο με **documentation**, πρέπει να γνωρίζεις το εξής:
+Τα LLMs (ακόμα και τα Qwen) όταν κάνουν fine-tuning με σκοπό την "απομνημόνευση" γνώσεων, τείνουν να κάνουν **hallucinations** (να μπερδεύουν εντολές του Slackware με εντολές του Arch ή του Debian, π.χ. χρησιμοποιώντας `pacman` αντί `slackpkg`).
+
+**Η βέλτιστη πρακτική για Documentation είναι το RAG (Retrieval-Augmented Generation):**
+Αντί να κάνεις fine-tuning, παίρνεις τα docs του Slackware, τα κάνεις "chunks" (κομμάτια) και τα βάζεις σε μια Vector Database. Όταν ο χρήστης κάνει μια ερώτηση, το σύστημα ψάχνει τα σχετικά docs και τα δίνει στο Qwen2.5-1.5B ως "context" για να απαντήσει.
+*   **Πλεονέκτημα:** Μηδέν hallucinations, πάντα ενημερωμένο, δεν χρειάζεται επανεκπαίδευση αν βγει νέο Slackware version.
+*   **Μειονέκτημα:** Χρειάζεται λίγο περισσότερο RAM για την Vector DB (π.χ. ChromaDB ή FAISS), αλλά και πάλι τρέχει τέλεια σε CPU.
+
+**Σύμπλεγμα (Το ιδανικό σενάριο):**
+Κάνεις ένα ελαφρύ fine-tuning στο Qwen2.5-1.5B **μόνο για να του μάθεις το "ύφος"** (π.χ. να απαντάει σαν έμπειρος Slackware guru, σε συγκεκριμένη μορφή, ή να μιλάει άπταιστα Ελληνικά τεχνικά λεξιλόγιο) και συνδυάζεις το μοντέλο με **RAG** για την ίδια την τεχνική γνώση.
+
+---
+
+### Πώς θέλεις να προχωρήσουμε;
+Αν θέλεις να ξεκινήσουμε, πες μου ποιο μονοπάτι προτιμάς και θα σου γράψω τους **αναλυτικούς κώδικες (Python scripts)**:
+1.  Θέλεις τον κώδικα για το **Data Preparation** (πώς να σκραπάρεις/μετατρέψεις τα Slackware docs σε JSONL);
+2.  Θέλεις το **Training Script** (με Unsloth & QLoRA για την RTX 3090);
+3.  Θέλεις τις εντολές για να το κάνεις **GGUF** και να το τρέξεις στο **Ollama** για τις CPU;
+
+### USER
+δοκιμασα αυτα που λες για RAG καθως εχω 64GB ram αλλά τα μοντελα σας  7B δεν μπορουν να δωσουν μεγαλες απαντησεις και κανουν και λαθη... για αυτο σκεφτικα fine tune
+
+### ASSISTANT
+Έχεις απόλυτο δίκιο και η εμπειρία που περιγράφεις είναι το **κλασικό πρόβλημα** των μοντέλων των 7B (και μικρότερων) όταν χρησιμοποιούνται με RAG. 
+
+Τα 7B μοντέλα, παρόλο που είναι έξυπνα, έχουν περιορισμένη "προσοχή" (attention span). Όταν τους δίνεις μεγάλο context (τα docs από το RAG), συμβαίνουν δύο πράγματα:
+1. **Το φαινόμενο "Lost in the middle":** Αγνοούν το context και απαντούν από τη γενική τους γνώση (κάνοντας λάθη).
+2. **"Τεμπελιά" (Laziness):** Αντί να συνθέσουν μια αναλυτική απάντηση βασισμένη στα docs, δίνουν μια πολύ σύντομη, επιφανειακή σύνοψη.
+
+Εφόσον έχεις **64GB RAM**, τα δεδομένα αλλάζουν υπέρ σου! Δεν χρειάζεται να περιοριστείς στα 1.5B/3B. Μπορείς να τρέξεις άνετα το **Qwen2.5-7B** (ή ακόμα και το 14B) στην CPU. Το **Qwen2.5-7B-Instruct** είναι αυτή τη στιγμή ένα από τα καλύτερα μοντέλα στον κόσμο για αυτή την κατηγορία.
+
+Το **Fine-Tuning** είναι πράγματι η σωστή κίνηση εδώ, αλλά **όχι για να του μάθεις τα facts** (αυτό είναι δουλειά του RAG), **αλλά για να του μάθεις τη ΣΥΜΠΕΡΙΦΟΡΑ** (να δίνει αναλυτικές απαντήσεις, να συνθέτει σωστά τα βήματα, να μην κάνει hallucinations).
+
+Ορίστε πώς θα στήσεις το Fine-Tuning στην RTX 3090 σου για να πετύχεις ακριβώς αυτό:
+
+### 1. Ο Χρυσός Κανόνας του Fine-Tuning για "Μεγάλες Απαντήσεις"
+Το μοντέλο θα μάθει να δίνει αναλυτικές απαντήσεις **μόνο αν το dataset εκπαίδευσης περιέχει αναλυτικές απαντήσεις**. 
+Αν βάλεις στο dataset σου μικρές απαντήσεις, το μοντέλο θα γίνει "λακωνικό". Πρέπει να φτιάξεις ένα dataset (JSONL) όπου κάθε `output` είναι ένα **ολοκληρωμένο, πολυπαραγραφικό tutorial**.
+
+**Παράδειγμα δομής Dataset (JSONL):**
+```json
+{
+  "instruction": "Πώς ρυθμίζω το δίκτυο με το netconfig στο Slackware;",
+  "input": "",
+  "output": "Για να ρυθμίσεις το δίκτυο στο Slackware χρησιμοποιώντας το `netconfig`, ακολουθείς τα εξής βήματα:\n\n1. Ανοίγεις ένα τερματικό και γίνεσαι root (`su -`).\n2. Εκτελείς την εντολή `netconfig`.\n3. Το μενού θα σε ρωτήσει αν θέλεις να χρησιμοποιήσεις DHCP ή Static IP. Επιλέγεις `dhcp` για αυτόματη ρύθμιση...\n[συνέχεια με πολλές λεπτομέρειες, εξήγηση του /etc/rc.d/rc.inet1.conf, αντιμέτρωση προβλημάτων κλπ.]"
+}
+```
+
+### 2. Η Διαδικασία στην RTX 3090 (με Unsloth)
+Θα χρησιμοποιήσουμε το **Unsloth** γιατί θα σου επιτρέψει να εκπαιδεύσεις το 7B μοντέλο σε λίγες ώρες, καταναλώνοντας μόνο ~12-14GB από τα 24GB της 3090 σου.
+
+**Εγκατάσταση περιβάλλοντος:**
+```bash
+pip install unsloth
+```
+
+**Το Script Εκπαίδευσης (Python):**
+Εδώ είναι το "μυστικό" για να μην κόβει τις απαντήσεις: πρέπει να αυξήσουμε το `max_seq_length`.
+
+```python
+from unsloth import FastLanguageModel
+import torch
+
+# 1. Φόρτωση του μοντέλου (Qwen2.5 7B Instruct - Υποχρεωτικά το Instruct!)
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name="unsloth/Qwen2.5-7B-Instruct",
+    max_seq_length=4096, # ΑΥΤΟ ΕΙΝΑΙ ΚΡΙΣΙΜΟ: Του λέμε να μάθει να γράφει μέχρι 4096 tokens!
+    dtype=None,
+    load_in_4bit=True,
+)
+
+# 2. Εφαρμογή QLoRA adapters
+model = FastLanguageModel.get_peft_model(
+    model,
+    r=16, # Rank
+    target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+    lora_alpha=16,
+    lora_dropout=0,
+    bias="none",
+    use_gradient_checkpointing="unsloth", # Εξοικονόμηση VRAM
+)
+
+# 3. Φόρτωση του Dataset σου (πρέπει να είναι σε μορφή Alpaca/JSONL)
+from datasets import load_dataset
+dataset = load_dataset("json", data_files="slackware_dataset.jsonl", split="train")
+
+# Μετατροπή σε μορφή Chat (Qwen2.5 format)
+def formatting_prompts_func(examples):
+    instructions = examples["instruction"]
+    inputs = examples["input"]
+    outputs = examples["output"]
+    texts = []
+    for instruction, input_text, output in zip(instructions, inputs, outputs):
+        text = f"### Instruction:\n{instruction}\n\n### Input:\n{input_text}\n\n### Response:\n{output}{tokenizer.eos_token}"
+        texts.append(text)
+    return {"text": texts}
+
+dataset = dataset.map(formatting_prompts_func, batched=True)
+
+# 4. Εκπαίδευση (Trainer)
+from trl import SFTTrainer
+from transformers import TrainingArguments
+
+trainer = SFTTrainer(
+    model=model,
+    tokenizer=tokenizer,
+    train_dataset=dataset,
+    dataset_text_field="text",
+    max_seq_length=4096,
+    args=TrainingArguments(
+        per_device_train_batch_size=2,
+        gradient_accumulation_steps=4,
+        warmup_steps=10,
+        num_train_epochs=3, # 3 epochs είναι συνήθως αρκετά για να μάθει το style
+        learning_rate=2e-4,
+        fp16=not torch.cuda.is_bf16_supported(),
+        bf16=torch.cuda.is_bf16_supported(),
+        logging_steps=1,
+        output_dir="outputs",
+    ),
+)
+
+trainer.train()
+
+# 5. Αποθήκευση του Adapter
+model.save_pretrained("qwen25_7b_slackware_lora")
+```
+
+### 3. Μετατροπή για CPU (64GB RAM)
+Εφόσον έχεις 64GB RAM, δεν χρειάζεται να το ρίξεις στα 4-bit (Q4). Μπορείς να το πας σε **Q6_K ή Q8_0** για μέγιστη ακρίβεια, χωρίς να χάσεις ταχύτητα (η CPU σου θα τρέχει το 7B με 10-15 tokens/sec, που είναι άκρως ικανοποιητικό για chat).
+
+Μόλις τελειώσει η εκπαίδευση, τρέχεις αυτές τις εντολές για να το κάνεις GGUF:
+
+```python
+# Μέσα στο ίδιο script ή σε ένα νέο, φορτώνεις το μοντέλο και τον adapter:
+model.save_pretrained_gguf("qwen25_7b_slackware_gguf", tokenizer, quantization_method="q6_k")
+```
+
+### 4. Εκτέλεση στον απλό υπολογιστή (CPU)
+Στον υπολογιστή με τους 64GB RAM, απλά κατεβάζεις το αρχείο `.gguf` που δημιούργησες και το τρέχεις με το **Ollama** ή το **LM Studio**.
+
+Αν χρησιμοποιήσεις Ollama, φτιάχνεις ένα `Modelfile`:
+```text
+FROM ./qwen25_7b_slackware_q6_k.gguf
+
+PARAMETER num_ctx 4096
+PARAMETER num_gpu 0
+
+SYSTEM "Είσαι ο απόλυτος ειδικός στο Slackware Linux. Απαντάς πάντα στα Ελληνικά. Όταν σου ζητάνε οδηγίες, δίνεις αναλυτικά βήματα, εξηγώντας το 'γιατί' και όχι μόνο το 'πώς'. Αν δεν ξέρεις κάτι συγκεκριμένο, το αναφέρεις."
+```
+Και το τρέχεις: `ollama create slackware-guru -f Modelfile`
+
+---
+
+**Τι χρειάζεσαι από εμένα τώρα;**
+Για να προχωρήσουμε, το πιο δύσκολο κομμάτι είναι το **Dataset**. 
+Θέλεις να σου γράψω ένα **Python Script** που να παίρνει τα Markdown/HTML αρχεία από τα επίσημα Slackware Docs (ή το SlackDocs) και να τα μετατρέπει αυτόματα σε αυτό το format (Instruction/Output) χρησιμοποιώντας ένα μεγάλο μοντέλο (π.χ. μέσω API) για να "καθαρίζει" το κείμενο και να το κάνει σωστές απαντήσεις;
+
+### USER
+επειδη δεν το θελω μονο για αυτον τον υπολογιστη με τα 64GB θελω να μπορει να τρεξει και στα αλλα που εχω με λιγοτερη ram
+
+### ASSISTANT
+Καταλαβαίνω απόλυτα το δίλημμά σου. Θέλεις την ποιότητα και την αναλυτικότητα ενός μεγάλου μοντέλου, αλλά την ευελιξία να τρέχει σε οποιοδήποτε μηχάνημα (ακόμα και με 8GB ή 16GB RAM) μόνο με την CPU.
+
+Εδώ πρέπει να ξεκαθαρίσουμε μια πολύ σημαντική τεχνική παράμετρο για τα LLMs: **Τα μοντέλα δεν είναι σκληροί δίσκοι.** Δεν μπορείς να κάνεις fine-tuning ένα μικρό μοντέλο (π.χ. 3B) και να του "χωρέσεις" μέσα όλη την τεχνική γνώση του Slackware. Αν προσπαθήσεις να το κάνεις, θα πάθει το λεγόμενο *Catastrophic Forgetting* (θα ξεχάσει πώς να μιλάει) ή θα αρχίσει να κάνει τρομερά λάθη (hallucinations), μπλέκοντας το Slackware με άλλα Linux.
+
+Ο λόγος που τα 7B μοντέλα στο RAG που δοκίμασες έδιναν μικρές απαντήσεις και έκαναν λάθη, **δεν ήταν επειδή ήταν μικρά**, αλλά επειδή δεν τα είχες μάθει *πώς να διαβάζουν και πώς να απαντούν*.
+
+Για να πετύχεις τον στόχο σου (να τρέχει παντού, να δίνει τεράστιες αναλύσεις και να μην κάνει λάθη), θα ακολουθήσουμε μια προχωρημένη τεχνική που λέγεται **Knowledge Distillation (Απόσταξη Γνώσης)** συνδυασμένη με **Style Fine-Tuning**.
+
+### Η Στρατηγική μας: Qwen2.5-3B-Instruct
+Για μηχανήματα με 8GB - 16GB RAM, το **Qwen2.5-3B** (ή το **Qwen2.5-Coder-3B** που είναι ακόμα καλύτερο σε εντολές και scripts) είναι ο βασιλιάς της κατηγορίας. Με κβαντοποίηση Q6_K, θα καταναλώνει περίπου 3-4GB RAM και θα τρέχει αστραπιαία σε οποιαδήποτε CPU.
+
+Αλλά πώς θα το κάνουμε να δίνει τις "μεγάλες απαντήσεις" που θέλεις;
+
+#### Βήμα 1: Η Δημιουργία του "Τέλειου" Dataset (Distillation)
+Αντί να γράψεις εσύ τα Q&A ή να τα αφήσεις σε ένα μικρό μοντέλο, θα χρησιμοποιήσουμε ένα **γιγαντιαίο μοντέλο** (π.χ. το Qwen2.5-72B μέσω κάποιου API, ή αν έχεις πρόσβαση, τοπικά) για να διαβάσει τα Slackware Docs και να γράψει τα **τέλεια, αναλυτικότατα tutorials**.
+
+Δημιουργούμε ένα dataset όπου το `output` είναι τεράστιο και λεπτομερές.
+*Παράδειγμα:*
+```json
+{
+  "instruction": "Πώς ρυθμίζω το WiFi με το netconfig στο Slackware;",
+  "output": "Για να ρυθμίσεις το ασύρματο δίκτυο στο Slackware, ακολουθείς την εξής αναλυτική διαδικασία:\n\n**1. Προετοιμασία και Εντοπισμός Κάρτας**\nΑρχικά, πρέπει να βεβαιωθείς ότι ο kernel έχει φορτώσει το σωστό module για την κάρτα σου. Εκτέλεσε την εντολή `lsmod | grep iwl` (για κάρτες Intel)...\n\n**2. Εκτέλεση του netconfig**\nΓίνεσαι root (`su -`) και τρέχεις `netconfig`. Το μενού θα σου δείξει...\n\n**3. Έλεγχος και Αντιμετώπιση Προβλημάτων**\nΑν δεν συνδεθεί, ελέγχεις το αρχείο `/etc/rc.d/rc.inet1.conf`..."
+}
+```
+*Το μυστικό:* Εφόσον το dataset περιέχει τεράστιες απαντήσεις, το 3B μοντέλο θα "μιμηθεί" αυτή τη συμπεριφορά και θα αρχίσει να βγάζει αναλυτικότατα κείμενα!
+
+#### Βήμα 2: Fine-Tuning στην RTX 3090 (Unsloth)
+Η RTX 3090 σου θα εκπαιδεύσει αυτό το 3B μοντέλο σε **λιγότερο από 15-20 λεπτά** χρησιμοποιώντας QLoRA.
+
+```python
+from unsloth import FastLanguageModel
+
+# Φορτώνουμε το 3B μοντέλο
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name="unsloth/Qwen2.5-3B-Instruct", 
+    max_seq_length=4096, # Του μαθαίνουμε να γράφει μέχρι 4096 tokens (τεράστια απάντηση)
+    load_in_4bit=True,
+)
+
+# Εφαρμόζουμε QLoRA
+model = FastLanguageModel.get_peft_model(
+    model, r=16, target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+)
+
+# ... (φόρτωση του dataset που έφτιαξες στο Βήμα 1) ...
+
+# Εκπαίδευση
+trainer = SFTTrainer(
+    model=model, tokenizer=tokenizer, train_dataset=dataset,
+    max_seq_length=4096,
+    args=TrainingArguments(
+        per_device_train_batch_size=4, # Στην 3090 θα παίζει άνετα με batch 4
+        num_train_epochs=3, 
+        learning_rate=2e-4,
+        output_dir="outputs"
+    ),
+)
+trainer.train()
+```
+
+#### Βήμα 3: Μετατροπή για CPU (Το "Μαγικό" Κλειδί)
+Μόλις τελειώσει, δεν το αφήνουμε σε 16-bit. Το μετατρέπουμε σε **GGUF** με κβαντοποίηση **Q6_K** (6-bit). 
+Το Q6_K είναι σχεδόν ίδιο με το αρχικό σε ποιότητα, αλλά χωράει άνετα σε 8GB RAM.
+
+```python
+# Αποθήκευση σε μορφή GGUF
+model.save_pretrained_gguf("qwen25_3b_slackware_gguf", tokenizer, quantization_method="q6_k")
+```
+
+#### Βήμα 4: Εκτέλεση σε ΟΠΟΙΟΔΗΠΟΤΕ μηχάνημα
+Σε οποιοδήποτε PC (με 8GB, 16GB ή 64GB RAM), κατεβάζεις το `llama.cpp` ή το `Ollama`.
+Το αρχείο θα είναι περίπου **2.5 GB**. Θα φορτώνει απευθείας στην CPU και θα τρέχει με 20+ tokens το δευτερόλεπτο (ανάλογα την CPU).
+
+### Η απόλυτη συμβουλή για να ΜΗΝ κάνει λάθη (Hybrid Approach)
+Ακόμα και το καλύτερα εκπαιδευμένο 3B μοντέλο, αν του ζητήσεις "Πώς λέγεται το αρχείο ρυθμίσεων του X;", μπορεί να hallucinate αν δεν το έχει δει ακριβώς. 
+
+Γι' αυτό, στα μηχανήματα που θα το τρέχεις, **συνδύασέ το με ένα ελαφρύ RAG**.
+1. Το μοντέλο που θα φτιάξεις θα είναι ο **"Slackware Guru"** (ξέρει πώς να μιλάει, πώς να εξηγεί, πώς να δίνει εντολές).
+2. Όταν ο χρήστης κάνει μια ερώτηση, ένα απλό script (π.χ. με ChromaDB) θα ψάχνει τα docs του Slackware, θα βρίσκει τις 2-3 παραγράφους που αφορούν την ερώτηση, και θα τις περνάει στο μοντέλο σου ως `context`.
+3. Επειδή το μοντέλο σου είναι **fine-tuned να διαβάζει context και να γράφει αναλυτικά** (από το dataset του Βήματος 1), θα παίρνει αυτές τις 3 παραγράφους και θα τις μετατρέπει σε ένα τέλειο, αναλυτικό tutorial, **χωρίς να μπερδεύεται** (όπως γινόταν με τα απλά 7B μοντέλα).
+
+**Θέλεις να ξεκινήσουμε;** Αν ναι, πες μου αν έχεις πρόσβαση σε κάποιο API (π.χ. OpenRouter, TogetherAI, ή HuggingFace Inference) για να σου γράψω το script που θα διαβάσει τα Slackware Docs και θα σου φτιάξει αυτόματα το τεράστιο Dataset (Βήμα 1) χρησιμοποιώντας ένα μεγάλο μοντέλο.
+
+### USER
+ειχα χρησιμοποιησει αυτο το script και που εφτιαξε τις ερωτησεις μπορεις να το κανεις να γραφει και τις απαντησεις?
+
+### ASSISTANT
+Πολύ καλή παρατήρηση! Πριν σου δώσω τον κώδικα, πρέπει να σου εξηγήσω κάτι **κρίσιμο** που βλέπω στο script σου:
+
+## Τι κάνει ΤΩΡΑ το script σου
+Το `09-make-questions.py` **δεν φτιάχνει dataset για fine-tuning γενετικού μοντέλου**. Φτιάχνει dataset για **retrieval training** (εκπαίδευση αναζήτησης).
+
+Κοίταξε το σχόλιο στο script σου:
+> *"βρες το στοιχείο, παράθεσε, ή πες 'none'"*
+
+Το πεδίο `expect` είναι **μόνο ένα label** (π.χ. `"firefox"`, `"grep"`, `"networking"`), όχι η απάντηση. Το μοντέλο που θα εκπαιδευτεί με αυτό μαθαίνει: *"δωσμένης αυτής της ερώτησης, δείξε μου ποιο chunk από τη βάση περιέχει την απάντηση"*. Δεν μαθαίνει να **γράφει** απαντήσεις.
+
+Γι' αυτό και στο RAG που δοκίμασες, τα 7B μοντέλα έδιναν κοντές απαντήσεις — δεν είχαν μάθει ποτέ να **συνθέτουν** κείμενο από τα docs.
+
+## Οι δύο δρόμοι για να πάρεις ΑΠΑΝΤΗΣΕΙΣ
+
+### Επιλογή Α: Template-based (γρήγορο, δωρεάν, τοπικά)
+Παίρνουμε το `text` από τη βάση και το "ντύνουμε" σε φυσική απάντηση με templates. Το μοντέλο θα μάθει να αναπαράγει τη δομή, αλλά όχι απαραίτητα τέλειο στυλ.
+
+### Επιλογή Β: LLM Distillation (αργό, αλλά τέλειο)
+Για κάθε ερώτηση, καλούμε ένα μεγάλο μοντέλο (π.χ. Qwen2.5-72B μέσω OpenRouter, ή ένα τοπικό μέσω Ollama) με prompt: *"Δεδομένου αυτού του αποσπάσματος, γράψε μια αναλυτική απάντηση στην ερώτηση Χ"*. Αυτό είναι που θα σου δώσει τα **τεράστια, αναλυτικά outputs** που θέλεις.
+
+---
+
+## Ο κώδικας για την Επιλογή Α (Template-based)
+
+Σου φτιάχνω ένα νέο script `09-make-qa.py` που βασίζεται στο δικό σου αλλά προσθέτει **πλήρεις απαντήσεις**:
+
+```python
+#!/usr/bin/env python3
+"""
+slackgpt — παραγωγή ΖΕΥΓΩΝ ερώτηση-απάντηση από το corpus
+./09-make-qa.py                  γράφει dataset/qa.jsonl (με output field)
+./09-make-qa.py -n 500 --show    δείγμα στην οθόνη
+
+ΣΕ ΑΝΤΙΘΕΣΗ ΜΕ ΤΟ 09-make-questions.py:
+Εκεί το `expect` ήταν απλώς ένα label (όνομα πακέτου/cmd) για retrieval.
+Εδώ το `output` είναι η ΠΛΗΡΗΣ απάντηση, συντεθειμένη από το text του chunk,
+ώστε το μοντέλο να μάθει να ΓΡΑΦΕΙ απαντήσεις, όχι μόνο να αναγνωρίζει chunks.
+"""
+import argparse
+import json
+import random
+import re
+import sqlite3
+import sys
+import textwrap
+from pathlib import Path
+
+DB = Path("corpus/index.db")
+OUT = Path("dataset/qa.jsonl")
+
+# ---------- Πρότυπα ερωτήσεων (ίδια με πριν) ----------
+PKG_Q = [
+    "what is {p}",
+    "what does the {p} package do",
+    "is {p} part of Slackware",
+    "which series does {p} belong to",
+]
+SBO_Q = [
+    "what does the {p} SlackBuild require",
+    "how do I build {p} from SlackBuilds.org",
+    "what are the dependencies of {p}",
+    "what version of {p} is in SBo",
+]
+MAN_Q = [
+    "what does {flag} do in {cmd}",
+    "how do I use {flag} with {cmd}",
+    "what is the purpose of {cmd}",
+    "what options does {cmd} take",
+]
+NEG_Q = [
+    "how do I configure Active Directory group policy",
+    "what is the Windows registry path for this",
+    "how do I set up Kubernetes ingress on this machine",
+    "how do I write a Python decorator",
+    "what is the capital of Portugal",
+    "how much does a Slackware licence cost",
+]
+
+FLAG = re.compile(r"^\s+(--?[a-z][a-z0-9-]{2,})", re.M)
+HEADING = re.compile(r"^#{1,4}\s+(.{8,70})$", re.M)
+
+
+def load(con, kind, limit=None):
+    q = ("SELECT title, text, path FROM chunks WHERE kind = ? "
+         "ORDER BY random()")
+    if limit:
+        q += f" LIMIT {int(limit)}"
+    return con.execute(q, (kind,)).fetchall()
+
+
+# ---------- Σύνθεση ΑΠΑΝΤΗΣΗΣ από το chunk ----------
+def synthesize_answer(text, kind, title, extra=None):
+    """
+    Παίρνει το raw `text` του chunk και το μετατρέπει σε αναγνωστική απάντηση.
+    Κόβουμε στα 1500 chars για να μην είναι τεράστια (θα το μεγαλώσουμε
+    στην LLM έκδοση).
+    """
+    # Καθαρισμός: αφαιρούμε πολλαπλές νέες γραμμές και markdown artifacts
+    text = re.sub(r"\n{3,}", "\n\n", text).strip()
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)  # links -> plain text
+    text = re.sub(r"!\[[^\]]*\]\([^)]+\)", "", text)       # images -> remove
+
+    # Κόψιμο σε λογικό μέγεθος
+    if len(text) > 1500:
+        # Βρίσκουμε το τέλος της τελευταίας πλήρους πρότασης πριν τα 1500
+        cut = text[:1500].rfind(".")
+        if cut < 800:
+            cut = 1500
+        text = text[:cut + 1]
+
+    if kind == "package":
+        return (
+            f"The `{title}` package in Slackware is part of the official "
+            f"distribution. Here is what you need to know about it:\n\n"
+            f"{text}"
+        )
+    if kind == "slackbuild":
+        prgnam = title.rsplit("/", 1)[-1]
+        return (
+            f"To build `{prgnam}` from SlackBuilds.org, you need to follow "
+            f"the standard SlackBuild workflow. Here are the details from "
+            f"the build script:\n\n```\n{text[:1200]}\n```\n\n"
+            f"Make sure you have all the required dependencies installed "
+            f"before running the SlackBuild as root."
+        )
+    if kind == "man":
+        cmd = title.split("(")[0]
+        if extra and extra.get("flag"):
+            flag = extra["flag"]
+            # Βρίσκουμε την παράγραφο που αναφέρει το flag
+            pattern = re.compile(
+                rf"({re.escape(flag)}.*?)(?=\n\s*--?[a-z]|\n\n|$)",
+                re.S | re.I
+            )
+            m = pattern.search(text)
+            snippet = m.group(1).strip() if m else text[:600]
+            return (
+                f"The `{flag}` option for `{cmd}` works as follows:\n\n"
+                f"{snippet}\n\n"
+                f"For the full manual of `{cmd}`, run `man {cmd}` on your "
+                f"Slackware system."
+            )
+        return (
+            f"The `{cmd}` command is a standard utility available in "
+            f"Slackware. Its purpose and available options are described "
+            f"below:\n\n{text[:1200]}"
+        )
+    if kind in ("wiki", "local", "doc"):
+        return (
+            f"Regarding this topic in Slackware documentation:\n\n"
+            f"{text}"
+        )
+    return text
+
+
+# ---------- Παραγωγή QA ζευγών ----------
+def from_packages(con, n):
+    out = []
+    for title, text, path in load(con, "package", n):
+        q = random.choice(PKG_Q).format(p=title)
+        out.append({
+            "instruction": q,
+            "input": "",
+            "output": synthesize_answer(text, "package", title),
+            "kind": "package",
+            "src": path,
+        })
+    return out
+
+
+def from_slackbuilds(con, n):
+    out = []
+    for title, text, path in load(con, "slackbuild", n):
+        prgnam = title.rsplit("/", 1)[-1]
+        q = random.choice(SBO_Q).format(p=prgnam)
+        out.append({
+            "instruction": q,
+            "input": "",
+            "output": synthesize_answer(text, "slackbuild", title),
+            "kind": "slackbuild",
+            "src": path,
+        })
+    return out
+
+
+def from_manpages(con, n):
+    out = []
+    for title, text, path in load(con, "man"):
+        m = re.match(r"^(\S+)\(", title)
+        cmd = m.group(1) if m else title.split("(")[0]
+        flags = list(dict.fromkeys(FLAG.findall(text)))[:6]
+        for fl in flags:
+            q_template = random.choice([x for x in MAN_Q if "{flag}" in x])
+            q = q_template.format(flag=fl, cmd=cmd)
+            out.append({
+                "instruction": q,
+                "input": "",
+                "output": synthesize_answer(text, "man", title,
+                                            extra={"flag": fl}),
+                "kind": "man",
+                "src": path,
+            })
+        if not flags:
+            q_template = random.choice([x for x in MAN_Q if "{flag}" not in x])
+            q = q_template.format(cmd=cmd)
+            out.append({
+                "instruction": q,
+                "input": "",
+                "output": synthesize_answer(text, "man", title),
+                "kind": "man",
+                "src": path,
+            })
+        if len(out) >= n:
+            break
+    return out[:n]
+
+
+def from_headings(con, n, kind="wiki"):
+    out = []
+    for title, text, path in load(con, kind):
+        for h in HEADING.findall(text)[:3]:
+            h_clean = h.strip().rstrip(":").strip("`*_ ")
+            if len(h_clean.split()) < 2 or h_clean.lower().startswith(
+                    ("source", "note")):
+                continue
+            if re.match(r"^(how|what|why|when|where|can|should|is|do)\b",
+                        h_clean, re.I):
+                q = h_clean if h_clean.endswith("?") else h_clean + "?"
+            else:
+                q = f"how does Slackware handle {h_clean.lower()}"
+
+            # Βρίσκουμε την παράγραφο ΑΜΕΣΩΣ μετά την heading
+            pattern = re.compile(
+                rf"{re.escape(h)}\s*\n+(.*?)(?=\n#|\Z)", re.S
+            )
+            m = pattern.search(text)
+            snippet = m.group(1).strip() if m else text[:800]
+            if len(snippet) > 1200:
+                cut = snippet[:1200].rfind(".")
+                snippet = snippet[:cut + 1] if cut > 400 else snippet[:1200]
+
+            out.append({
+                "instruction": q,
+                "input": "",
+                "output": (
+                    f"In Slackware, {h_clean.lower()} is handled as follows:\n\n"
+                    f"{snippet}"
+                ),
+                "kind": kind,
+                "src": path,
+            })
+        if len(out) >= n:
+            break
+    return out[:n]
+
+
+def negatives(n):
+    out = []
+    refusals = [
+        "I don't have information about that in the Slackware documentation. "
+        "This topic is outside the scope of Slackware Linux.",
+        "This is not related to Slackware. I can only answer questions about "
+        "Slackware Linux, its packages, configuration, and tools.",
+        "I cannot answer that question as it falls outside the Slackware "
+        "documentation I was trained on.",
+    ]
+    for i in range(n):
+        out.append({
+            "instruction": NEG_Q[i % len(NEG_Q)],
+            "input": "",
+            "output": refusals[i % len(refusals)],
+            "kind": "negative",
+            "src": "",
+        })
+    return out
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-n", type=int, default=3000)
+    ap.add_argument("--negatives", type=float, default=0.15)
+    ap.add_argument("--show", action="store_true")
+    ap.add_argument("--seed", type=int, default=1)
+    ap.add_argument("-o", "--out", default=str(OUT))
+    args = ap.parse_args()
+
+    if not DB.exists():
+        sys.exit(f"δεν βρέθηκε {DB} — τρέξε πρώτα 02-index.py")
+
+    random.seed(args.seed)
+    con = sqlite3.connect(DB)
+
+    n_neg = int(args.n * args.negatives)
+    n_pos = args.n - n_neg
+
+    mix = [
+        (from_headings, {"kind": "wiki"}, 0.32),
+        (from_headings, {"kind": "local"}, 0.08),
+        (from_headings, {"kind": "doc"}, 0.08),
+        (from_manpages, {}, 0.17),
+        (from_slackbuilds, {}, 0.20),
+        (from_packages, {}, 0.15),
+    ]
+
+    rows = []
+    for fn, kw, share in mix:
+        want = int(n_pos * share)
+        try:
+            got = fn(con, want, **kw) if "kind" in kw else fn(con, want)
+        except Exception as e:
+            print(f"!! {fn.__name__}: {e}", file=sys.stderr)
+            continue
+        print(f":: {fn.__name__:18s} {kw.get('kind', ''):6s} "
+              f"{len(got):5d} (ζητήθηκαν {want})")
+        rows.extend(got)
+
+    rows.extend(negatives(n_neg))
+    random.shuffle(rows)
+
+    # Αφαίρεση διπλότυπων ΟΔΗΓΙΩΝ (όχι απαντήσεων — ίδια ερώτηση μπορεί
+    # να έχει διαφορετικές απαντήσεις από διαφορετικά chunks)
+    seen, uniq = set(), []
+    for r in rows:
+        key = r["instruction"].lower().strip()
+        if key in seen:
+            continue
+        seen.add(key)
+        uniq.append(r)
+
+    outp = Path(args.out)
+    outp.parent.mkdir(parents=True, exist_ok=True)
+    with outp.open("w") as fh:
+        for r in uniq:
+            fh.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+    print(f"\n:: {len(uniq)} μοναδικά QA ζεύγη -> {outp}")
+    by = {}
+    for r in uniq:
+        by[r["kind"]] = by.get(r["kind"], 0) + 1
+    for k, v in sorted(by.items(), key=lambda x: -x[1]):
+        print(f"   {k:12s} {v:5d}")
+
+    if args.show:
+        print("\n--- δείγμα ---")
+        for r in random.sample(uniq, min(5, len(uniq))):
+            print(f"\n[{r['kind']}] Q: {r['instruction']}")
+            print(f"    A: {r['output'][:300]}...")
+
+    con.close()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+## Τι αλλάζει σε σχέση με το παλιό σου script
+
+| Παλιό (`09-make-questions.py`) | Νέο (`09-make-qa.py`) |
+|---|---|
+| `expect: "firefox"` (label) | `output: "The firefox package in Slackware..."` (πλήρης απάντηση) |
+| Για retrieval / embedding training | Για **instruction fine-tuning** (Qwen2.5 format) |
+| Μορφή `{q, expect, kind, src}` | Μορφή `{instruction, input, output, kind, src}` — **έτοιμη για Unsloth/Alpaca** |
+| Καμία σύνθεση κειμένου | Συνθέτει φυσική απάντηση από το chunk |
+| Δεν μαθαίνει το "όχι ξέρω" | Μαθαίνει να αρνείται ευγενικά σε εκτός-πεδίου ερωτήσεις |
+
+## Το πρόβλημα με αυτή την έκδοση
+Οι απαντήσεις είναι **λειτουργικές αλλά ξύλινες**. Το μοντέλο θα μάθει να βγάζει απαντήσεις, αλλά όχι το "αναλυτικό στυλ Slackware guru" που θέλεις.
+
+## Η επόμενη κίνηση (αν τη θέλεις)
+Πες μου αν έχεις:
+1. **Λογαριασμό σε OpenRouter / Together AI / Groq** (δωρεάν credits για Qwen2.5-72B) — τότε σου φτιάχνω την **LLM-based έκδοση** που θα καλεί ένα μεγάλο μοντέλο για κάθε ερώτηση και θα παράγει **τέλειες, αναλυτικές απαντήσεις** (αυτό είναι το "Knowledge Distillation" που σου ανέφερα).
+2. **Μόνο τοπικό Ollama** — τότε χρησιμοποιούμε το Qwen2.5-14B ή 32B τοπικά για την ίδια δουλειά (πιο αργό, αλλά δωρεάν).
+3. **Θέλεις να προχωρήσουμε με το template-based** και μετά fine-tuning — ο παραπάνω κώδικας είναι έτοιμος.
+
+Ποιο μονοπάτι προτιμάς;
+
+### USER
+εχω τοπικα llama.cpp
+
+### ASSISTANT
+Τέλεια! Με το llama.cpp τοπικά μπορούμε να κάνουμε **Knowledge Distillation** χωρίς να ξοδέψουμε δεκάρα. Η ιδέα είναι απλή:
+
+1. Τρέχεις τον llama.cpp server με ένα μεγάλο μοντέλο (π.χ. Qwen2.5-32B ή 72B αν χωράει στην RAM σου)
+2. Το script παίρνει κάθε ερώτηση + το σχετικό chunk από τη βάση
+3. Τα στέλνει στο μεγάλο μοντέλο με ένα prompt που του λέει "γράψε μια αναλυτική απάντηση"
+4. Το αποτέλεσμα αποθηκεύεται σε format έτοιμο για fine-tuning
+
+## Πρώτα: Στήσε τον llama.cpp server
+
+```bash
+# Αν έχεις κάνει build το llama.cpp:
+./llama-server \
+  -m /path/to/qwen2.5-32b-instruct-q6_k.gguf \
+  --port 8080 \
+  --ctx-size 8192 \
+  --n-gpu-layers 99 \  # αν έχεις GPU, αλλιώς βάλε 0
+  --parallel 4        # για να δέχεται πολλαπλά requests
+
+# Κράτα το ανοιχτό σε ένα τερματικό
+```
+
+Αν έχεις 64GB RAM, το **Qwen2.5-32B-Instruct Q6_K** (~22GB) θα τρέξει τέλεια. Αν έχεις λιγότερη RAM, πήγαινε σε **14B Q8_0** (~15GB) ή **7B Q8_0** (~8GB).
+
+## Το Script: `09-make-qa-llama.py`
+
+```python
+#!/usr/bin/env python3
+"""
+slackgpt — παραγωγή QA ζευγών με Knowledge Distillation μέσω llama.cpp server
+./09-make-qa-llama.py                    γράφει dataset/qa.jsonl
+./09-make-qa-llama.py --show             δείγμα στην οθόνη
+./09-make-qa-llama.py --resume           συνέχισε από εκεί που σταμάτησε
+
+ΠΡΟΫΠΟΘΕΣΗ: llama-server τρέχει στο localhost:8080 με Qwen2.5-32B ή παρόμοιο
+"""
+import argparse
+import json
+import random
+import re
+import sqlite3
+import sys
+import time
+from pathlib import Path
+import requests
+
+DB = Path("corpus/index.db")
+QUESTIONS = Path("dataset/questions.jsonl")
+OUT = Path("dataset/qa.jsonl")
+LLAMA_URL = "http://localhost:8080/completion"
+
+# Prompt template για το μεγάλο μοντέλο
+PROMPT_TEMPLATE = """You are an expert Slackware Linux documentation writer. 
+Given a question and relevant context from Slackware documentation, write a 
+detailed, comprehensive answer in English. The answer should:
+- Be thorough and educational (aim for 200-400 words)
+- Include specific commands, file paths, and configuration details from the context
+- Explain the "why" behind each step, not just the "how"
+- Use proper formatting with code blocks where appropriate
+- If the context doesn't fully answer the question, say so clearly
+
+Question: {question}
+
+Context from Slackware documentation:
+{context}
+
+Write a detailed answer:"""
+
+NEGATIVE_PROMPT = """You are an expert Slackware Linux assistant. 
+A user has asked you a question that is completely outside the scope of 
+Slackware Linux documentation. Politely decline to answer and redirect 
+them to Slackware-related topics.
+
+Question: {question}
+
+Your response:"""
+
+
+def call_llama(prompt, max_tokens=1024, temp=0.7, retries=3):
+    """Καλεί τον llama.cpp server και επιστρέφει το generated text."""
+    payload = {
+        "prompt": prompt,
+        "n_predict": max_tokens,
+        "temperature": temp,
+        "top_k": 40,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "stream": False,
+    }
+    
+    for attempt in range(retries):
+        try:
+            resp = requests.post(LLAMA_URL, json=payload, timeout=120)
+            resp.raise_for_status()
+            data = resp.json()
+            return data.get("content", "").strip()
+        except Exception as e:
+            if attempt < retries - 1:
+                print(f"  !! Attempt {attempt+1} failed: {e}, retrying...")
+                time.sleep(2)
+            else:
+                raise
+
+
+def get_chunk_for_question(con, q_data):
+    """Βρίσκει το σχετικό chunk από τη βάση για αυτή την ερώτηση."""
+    kind = q_data.get("kind", "")
+    src = q_data.get("src", "")
+    expect = q_data.get("expect", "")
+    
+    if kind == "negative" or not src:
+        return None
+    
+    # Προσπαθούμε να βρούμε το chunk με βάση το path
+    if src:
+        row = con.execute(
+            "SELECT title, text, path FROM chunks WHERE path = ? LIMIT 1",
+            (src,)
+        ).fetchone()
+        if row:
+            return row
+    
+    # Fallback: ψάχνουμε με βάση το expect (package name, command, etc.)
+    if expect:
+        # Για packages/slackbuilds, ψάχνουμε στον title
+        if kind in ("package", "slackbuild"):
+            row = con.execute(
+                "SELECT title, text, path FROM chunks WHERE kind = ? AND title LIKE ? LIMIT 1",
+                (kind, f"%{expect}%")
+            ).fetchone()
+            if row:
+                return row
+        
+        # Για man pages, ψάχνουμε τον command
+        if kind == "man":
+            row = con.execute(
+                "SELECT title, text, path FROM chunks WHERE kind = ? AND title LIKE ? LIMIT 1",
+                ("man", f"{expect}(%")
+            ).fetchone()
+            if row:
+                return row
+    
+    return None
+
+
+def generate_qa_pair(con, q_data, use_llm=True):
+    """Γenerate ένα QA pair από μια ερώτηση."""
+    question = q_data["q"]
+    kind = q_data.get("kind", "")
+    
+    # Αρνητικά παραδείγματα: το μοντέλο μαθαίνει να αρνείται
+    if kind == "negative":
+        if use_llm:
+            prompt = NEGATIVE_PROMPT.format(question=question)
+            answer = call_llama(prompt, max_tokens=150, temp=0.5)
+        else:
+            answer = (
+                "I don't have information about that in the Slackware documentation. "
+                "This topic is outside the scope of Slackware Linux. "
+                "I can help you with Slackware packages, configuration, and tools."
+            )
+        return {
+            "instruction": question,
+            "input": "",
+            "output": answer,
+            "kind": kind,
+            "src": "",
+        }
+    
+    # Θετικά παραδείγματα: βρίσκουμε το chunk και καλούμε το LLM
+    chunk = get_chunk_for_question(con, q_data)
+    if not chunk:
+        return None
+    
+    title, text, path = chunk
+    
+    # Καθαρισμός του text
+    text = re.sub(r"\n{3,}", "\n\n", text).strip()
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)  # links -> plain
+    text = re.sub(r"!\[[^\]]*\]\([^)]+\)", "", text)       # images -> remove
+    
+    # Κόψιμο αν είναι πολύ μεγάλο (για να χωράει στο context)
+    if len(text) > 4000:
+        text = text[:4000]
+    
+    if use_llm:
+        prompt = PROMPT_TEMPLATE.format(question=question, context=text)
+        answer = call_llama(prompt, max_tokens=800, temp=0.7)
+    else:
+        # Fallback: template-based (αν δεν θέλεις να χρησιμοποιήσεις LLM)
+        answer = f"Regarding {title} in Slackware:\n\n{text}"
+    
+    return {
+        "instruction": question,
+        "input": "",
+        "output": answer,
+        "kind": kind,
+        "src": path,
+    }
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--input", default=str(QUESTIONS), help="input questions file")
+    ap.add_argument("-o", "--out", default=str(OUT), help="output QA file")
+    ap.add_argument("--show", action="store_true", help="show samples")
+    ap.add_argument("--resume", action="store_true", help="resume from existing output")
+    ap.add_argument("--no-llm", action="store_true", help="use templates instead of LLM")
+    ap.add_argument("--limit", type=int, help="process only N questions")
+    args = ap.parse_args()
+    
+    if not DB.exists():
+        sys.exit(f"δεν βρέθηκε {DB} — τρέξε πρώτα 02-index.py")
+    
+    inp = Path(args.input)
+    if not inp.exists():
+        sys.exit(f"δεν βρέθηκε {inp} — τρέξε πρώτα 09-make-questions.py")
+    
+    # Φόρτωση ερωτήσεων
+    questions = []
+    with inp.open() as fh:
+        for line in fh:
+            questions.append(json.loads(line))
+    
+    if args.limit:
+        questions = questions[:args.limit]
+    
+    print(f":: Φορτώθηκαν {len(questions)} ερωτήσεις από {inp}")
+    
+    # Resume: διαβάζουμε ήδη επεξεργασμένες ερωτήσεις
+    outp = Path(args.out)
+    outp.parent.mkdir(parents=True, exist_ok=True)
+    processed = set()
+    
+    if args.resume and outp.exists():
+        with outp.open() as fh:
+            for line in fh:
+                data = json.loads(line)
+                processed.add(data["instruction"].lower())
+        print(f":: Βρέθηκαν {len(processed)} ήδη επεξεργασμένες, τις παραλείπω")
+    
+    con = sqlite3.connect(DB)
+    
+    # Επεξεργασία
+    results = []
+    skipped = 0
+    errors = 0
+    
+    for i, q_data in enumerate(questions):
+        q_lower = q_data["q"].lower()
+        
+        if q_lower in processed:
+            continue
+        
+        try:
+            qa = generate_qa_pair(con, q_data, use_llm=not args.no_llm)
+            if qa:
+                results.append(qa)
+                # Γράφουμε αμέσως για να μην χαθεί αν κολλήσει
+                with outp.open("a") as fh:
+                    fh.write(json.dumps(qa, ensure_ascii=False) + "\n")
+                
+                if (i + 1) % 10 == 0:
+                    print(f":: {i+1}/{len(questions)} processed, {len(results)} QA pairs")
+            else:
+                skipped += 1
+        except Exception as e:
+            print(f"!! Error on question {i}: {e}", file=sys.stderr)
+            errors += 1
+            continue
+    
+    con.close()
+    
+    print(f"\n:: Ολοκλήρωση: {len(results)} QA pairs -> {outp}")
+    print(f"   Skipped: {skipped}, Errors: {errors}")
+    
+    # Στατιστικά
+    by_kind = {}
+    with outp.open() as fh:
+        for line in fh:
+            data = json.loads(line)
+            by_kind[data["kind"]] = by_kind.get(data["kind"], 0) + 1
+    
+    print("\n:: Κατανομή ανά kind:")
+    for k, v in sorted(by_kind.items(), key=lambda x: -x[1]):
+        print(f"   {k:12s} {v:5d}")
+    
+    if args.show:
+        print("\n--- δείγμα ---")
+        with outp.open() as fh:
+            samples = [json.loads(line) for line in fh]
+        for r in random.sample(samples, min(5, len(samples))):
+            print(f"\n[{r['kind']}] Q: {r['instruction']}")
+            print(f"    A: {r['output'][:400]}...")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+## Πώς να το τρέξεις
+
+```bash
+# 1. Βεβαιώσου ότι ο llama-server τρέχει
+curl http://localhost:8080/health  # πρέπει να επιστρέψει ok
+
+# 2. Τρέξε το script (με LLM distillation)
+./09-make-qa-llama.py
+
+# 3. Αν κολλήσει κάπου, συνέχισε με --resume
+./09-make-qa-llama.py --resume
+
+# 4. Για δοκιμή σε λίγα δείγματα
+./09-make-qa-llama.py --limit 50 --show
+
+# 5. Αν ΔΕΝ θέλεις να χρησιμοποιήσεις LLM (πιο γρήγορο, αλλά χειρότερη ποιότητα)
+./09-make-qa-llama.py --no-llm
+```
+
+## Τι θα πάρεις
+
+Το `dataset/qa.jsonl` θα περιέχει entries σαν κι αυτό:
+
+```json
+{
+  "instruction": "what does the firefox package do",
+  "input": "",
+  "output": "Firefox is the default web browser in Slackware Linux. It is a free and open-source web browser developed by Mozilla...\n\nTo install Firefox on Slackware, you can use:\n\n```bash\nslackpkg install firefox\n```\n\nFirefox is configured through...\n\nFor system-wide settings, edit `/etc/slackpkg/slackpkg.conf`...",
+  "kind": "package",
+  "src": "/path/to/firefox.txt"
+}
+```
+
+## Επόμενο βήμα: Fine-tuning
+
+Μόλις έχεις το `qa.jsonl`, είσαι έτοιμος για fine-tuning με Unsloth στην RTX 3090 σου. Θέλεις να σου γράψω το training script που θα πάρει αυτό το dataset και θα εκπαιδεύσει το Qwen2.5-3B ή 7B;
+
+### USER
+το προηγουμενο script που μου εδωσε το διορθωμενο εδωσε αυτο το αποτελεσμα
+
+### ASSISTANT
+Έχεις απόλυτο δίκιο να ανησυχείς. Ας δούμε τι βλέπω στο αποτέλεσμα:
+
+## 🚨 Το πρόβλημα με το τρέχον dataset
+
+Κοίταξε τα παραδείγματα που παρήγαγε:
+
+```json
+{"instruction": "how does Slackware handle master configuration file", 
+ "output": "In Slackware, master configuration file is handled as follows:
+You can create your own custom Live OS by changing its characteristics..."}
+```
+
+**Το πρόβλημα**:
+1. **Ξύλινο format**: "In Slackware, X is handled as follows:" - αυτό δεν είναι φυσική απάντηση
+2. **Απλή αντιγραφή**: Το `output` είναι σχεδόν copy-paste του chunk, χωρίς σύνθεση
+3. **Χωρίς εξήγηση**: Δεν εξηγεί το "γιατί", μόνο αντιγράφει
+4. **Μεγάλο αλλά άχρηστο**: Το μοντέλο θα μάθει να βγάζει τέτοιες άγαρμπες απαντήσεις
+
+**Αυτό ακριβώς είχα προειδοποιήσει** ότι θα συμβεί με template-based approach. Για να πάρεις τις **αναλυτικές, φυσικές απαντήσεις** που θέλεις, χρειάζεσαι **LLM-based distillation**.
+
+---
+
+## ✅ Η λύση: Script με LLM Distillation
+
+Επειδή έχεις τοπικά το `llama.cpp`, θα χρησιμοποιήσουμε ένα μεγάλο μοντέλο (π.χ. Qwen2.5-32B ή 72B) για να γράψει τις απαντήσεις.
+
+### Βήμα 1: Στήσε τον llama.cpp server
+
+```bash
+# Σε ένα τερματικό, ξεκίνα τον server με ένα μεγάλο μοντέλο
+./llama-server \
+  -m /path/to/qwen2.5-32b-instruct-q6_k.gguf \
+  --port 8080 \
+  --ctx-size 8192 \
+  --n-gpu-layers 99 \
+  --parallel 4
+
+# Αν έχεις 64GB RAM, μπορείς να χρησιμοποιήσεις και 72B:
+# ./llama-server -m /path/to/qwen2.5-72b-instruct-q4_k_m.gguf ...
+```
+
+### Βήμα 2: Το βελτιωμένο script `09-make-qa-llm.py`
+
+```python
+#!/usr/bin/env python3
+"""
+slackgpt — παραγωγή QA ζευγών με LLM Distillation μέσω llama.cpp server
+./09-make-qa-llm.py                    γράφει dataset/qa.jsonl
+./09-make-qa-llm.py --show             δείγμα στην οθόνη
+./09-make-qa-llm.py --resume           συνέχισε από εκεί που σταμάτησε
+
+ΠΡΟΫΠΟΘΕΣΗ: llama-server τρέχει στο localhost:8080 με Qwen2.5-32B/72B
+"""
+import argparse
+import json
+import random
+import re
+import sqlite3
+import sys
+import time
+from pathlib import Path
+
+try:
+    import requests
+except ImportError:
+    sys.exit("Χρειάζεσαι το requests: pip install requests")
+
+DB = Path("corpus/index.db")
+QUESTIONS = Path("dataset/questions.jsonl")
+OUT = Path("dataset/qa.jsonl")
+LLAMA_URL = "http://localhost:8080/completion"
+
+# ============ PROMPTS ανά τύπο περιεχομένου ============
+
+PROMPTS = {
+    "wiki": """You are an expert Slackware Linux documentation writer. 
+Given a question and relevant context from Slackware documentation, write a 
+detailed, comprehensive answer in English. The answer should:
+- Be thorough and educational (aim for 200-400 words)
+- Include specific commands, file paths, and configuration details from the context
+- Explain the "why" behind each step, not just the "how"
+- Use proper formatting with code blocks (```) where appropriate
+- If the context doesn't fully answer the question, say so clearly
+
+Question: {question}
+
+Context from Slackware documentation:
+{context}
+
+Write a detailed, natural answer (do NOT start with "In Slackware, X is handled as follows:"):""",
+
+    "slackbuild": """You are an expert Slackware Linux documentation writer. 
+Given a question about a SlackBuild from SlackBuilds.org, write a detailed, 
+comprehensive answer. The answer should:
+- Explain what the package does in plain, accessible language (2-3 sentences)
+- List the dependencies clearly and explain why they're needed
+- Provide step-by-step instructions for building and installing it
+- Include important notes, caveats, and troubleshooting tips
+- Use proper formatting with code blocks (```) where appropriate
+
+Question: {question}
+
+SlackBuild information:
+{context}
+
+Write a detailed, helpful answer:""",
+
+    "package": """You are an expert Slackware Linux documentation writer. 
+Given a question about a Slackware package, write a detailed, comprehensive answer. 
+The answer should:
+- Explain what the package does and why it's useful (3-4 sentences)
+- Mention which series it belongs to (a, ap, d, l, n, x, etc.) and what that series means
+- Provide common use cases and examples
+- Include relevant commands for managing the package (installpkg, removepkg, etc.)
+- Be thorough but focused on practical information
+
+Question: {question}
+
+Package information:
+{context}
+
+Write a detailed, helpful answer:""",
+
+    "man": """You are an expert Slackware Linux documentation writer. 
+Given a question about a command-line tool, write a detailed, comprehensive answer. 
+The answer should:
+- Explain what the command does and when you'd use it (2-3 sentences)
+- Describe the most important options with clear examples
+- Provide 2-3 practical usage examples showing real-world scenarios
+- Include tips, common pitfalls, and related commands
+- Use proper formatting with code blocks (```) where appropriate
+
+Question: {question}
+
+Manual page information:
+{context}
+
+Write a detailed, practical answer:""",
+
+    "negative": """You are an expert Slackware Linux assistant. 
+A user has asked you a question that is completely outside the scope of 
+Slackware Linux documentation. Politely decline to answer and redirect 
+them to Slackware-related topics. Be friendly but clear about your limitations.
+
+Question: {question}
+
+Your response (2-3 sentences):""",
+}
+
+
+def call_llama(prompt, max_tokens=1024, temp=0.7, retries=3):
+    """Καλεί τον llama.cpp server και επιστρέφει το generated text."""
+    payload = {
+        "prompt": prompt,
+        "n_predict": max_tokens,
+        "temperature": temp,
+        "top_k": 40,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "stream": False,
+    }
+    
+    for attempt in range(retries):
+        try:
+            resp = requests.post(LLAMA_URL, json=payload, timeout=180)
+            resp.raise_for_status()
+            data = resp.json()
+            text = data.get("content", "").strip()
+            # Αφαίρεσε τυχόν trailing whitespace/newlines
+            text = re.sub(r'\s+$', '', text)
+            return text
+        except Exception as e:
+            if attempt < retries - 1:
+                print(f"  !! Attempt {attempt+1} failed: {e}, retrying...")
+                time.sleep(3)
+            else:
+                raise
+
+
+def get_chunk_for_question(con, q_data):
+    """Βρίσκει το σχετικό chunk από τη βάση για αυτή την ερώτηση."""
+    kind = q_data.get("kind", "")
+    src = q_data.get("src", "")
+    expect = q_data.get("expect", "")
+    
+    if kind == "negative" or not src:
+        return None
+    
+    # Προσπαθούμε να βρούμε το chunk με βάση το path
+    if src:
+        row = con.execute(
+            "SELECT title, text, path FROM chunks WHERE path = ? LIMIT 1",
+            (src,)
+        ).fetchone()
+        if row:
+            return row
+    
+    # Fallback: ψάχνουμε με βάση το expect
+    if expect:
+        if kind in ("package", "slackbuild"):
+            row = con.execute(
+                "SELECT title, text, path FROM chunks WHERE kind = ? AND title LIKE ? LIMIT 1",
+                (kind, f"%{expect}%")
+            ).fetchone()
+            if row:
+                return row
+        
+        if kind == "man":
+            row = con.execute(
+                "SELECT title, text, path FROM chunks WHERE kind = ? AND title LIKE ? LIMIT 1",
+                ("man", f"{expect}(%")
+            ).fetchone()
+            if row:
+                return row
+    
+    return None
+
+
+def clean_text(text, max_chars=4000):
+    """Καθαρίζει το text για να χωράει στο context."""
+    text = re.sub(r"\n{3,}", "\n\n", text).strip()
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)  # links -> plain
+    text = re.sub(r"!\[[^\]]*\]\([^)]+\)", "", text)       # images -> remove
+    
+    if len(text) > max_chars:
+        # Κόψε στο τέλος μιας πρότασης πριν το όριο
+        cut = text[:max_chars].rfind(".")
+        if cut < max_chars // 2:
+            cut = max_chars
+        text = text[:cut + 1]
+    
+    return text
+
+
+def generate_qa_pair(con, q_data):
+    """Generate ένα QA pair χρησιμοποιώντας LLM."""
+    question = q_data["q"]
+    kind = q_data.get("kind", "")
+    
+    # Αρνητικά παραδείγματα
+    if kind == "negative":
+        prompt = PROMPTS["negative"].format(question=question)
+        answer = call_llama(prompt, max_tokens=200, temp=0.5)
+        return {
+            "instruction": question,
+            "input": "",
+            "output": answer,
+            "kind": kind,
+            "src": "",
+        }
+    
+    # Θετικά παραδείγματα
+    chunk = get_chunk_for_question(con, q_data)
+    if not chunk:
+        return None
+    
+    title, text, path = chunk
+    text = clean_text(text)
+    
+    # Διάλεξε το κατάλληλο prompt
+    prompt_template = PROMPTS.get(kind, PROMPTS["wiki"])
+    prompt = prompt_template.format(question=question, context=text)
+    
+    # Κάλεσε το LLM
+    answer = call_llama(prompt, max_tokens=1024, temp=0.7)
+    
+    return {
+        "instruction": question,
+        "input": "",
+        "output": answer,
+        "kind": kind,
+        "src": path,
+    }
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--input", default=str(QUESTIONS))
+    ap.add_argument("-o", "--out", default=str(OUT))
+    ap.add_argument("--show", action="store_true")
+    ap.add_argument("--resume", action="store_true")
+    ap.add_argument("--limit", type=int, help="process only N questions")
+    ap.add_argument("--batch-size", type=int, default=10,
+                    help="flush to disk every N items")
+    args = ap.parse_args()
+    
+    if not DB.exists():
+        sys.exit(f"δεν βρέθηκε {DB} — τρέξε πρώτα 02-index.py")
+    
+    inp = Path(args.input)
+    if not inp.exists():
+        sys.exit(f"δεν βρέθηκε {inp} — τρέξε πρώτα 09-make-questions.py")
+    
+    # Έλεγχος ότι ο server τρέχει
+    try:
+        r = requests.get("http://localhost:8080/health", timeout=5)
+        if r.status_code != 200:
+            sys.exit("Ο llama-server δεν απαντάει σωστά. Ξεκίνα τον πρώτα!")
+    except Exception as e:
+        sys.exit(f"Δεν μπορώ να συνδεθώ στον llama-server: {e}\n"
+                 f"Ξεκίνα τον με: ./llama-server -m MODEL --port 8080")
+    
+    # Φόρτωση ερωτήσεων
+    questions = []
+    with inp.open() as fh:
+        for line in fh:
+            questions.append(json.loads(line))
+    
+    if args.limit:
+        questions = questions[:args.limit]
+    
+    print(f":: Φορτώθηκαν {len(questions)} ερωτήσεις από {inp}")
+    
+    # Resume
+    outp = Path(args.out)
+    outp.parent.mkdir(parents=True, exist_ok=True)
+    processed = set()
+    
+    if args.resume and outp.exists():
+        with outp.open() as fh:
+            for line in fh:
+                data = json.loads(line)
+                processed.add(data["instruction"].lower())
+        print(f":: Βρέθηκαν {len(processed)} ήδη επεξεργασμένες, τις παραλείπω")
+    
+    con = sqlite3.connect(DB)
+    
+    # Επεξεργασία
+    buffer = []
+    skipped = 0
+    errors = 0
+    total = 0
+    
+    for i, q_data in enumerate(questions):
+        q_lower = q_data["q"].lower()
+        
+        if q_lower in processed:
+            continue
+        
+        try:
+            qa = generate_qa_pair(con, q_data)
+            if qa:
+                buffer.append(qa)
+                total += 1
+                
+                # Flush κάθε batch_size items
+                if len(buffer) >= args.batch_size:
+                    with outp.open("a") as fh:
+                        for item in buffer:
+                            fh.write(json.dumps(item, ensure_ascii=False) + "\n")
+                    buffer.clear()
+                
+                if total % 10 == 0:
+                    print(f":: {i+1}/{len(questions)} processed, {total} QA pairs generated")
+            else:
+                skipped += 1
+        except Exception as e:
+            print(f"!! Error on question {i}: {e}", file=sys.stderr)
+            errors += 1
+            continue
+    
+    # Flush υπόλοιπα
+    if buffer:
+        with outp.open("a") as fh:
+            for item in buffer:
+                fh.write(json.dumps(item, ensure_ascii=False) + "\n")
+    
+    con.close()
+    
+    print(f"\n:: Ολοκλήρωση: {total} QA pairs -> {outp}")
+    print(f"   Skipped (no chunk): {skipped}, Errors: {errors}")
+    
+    # Στατιστικά
+    by_kind = {}
+    with outp.open() as fh:
+        for line in fh:
+            data = json.loads(line)
+            by_kind[data["kind"]] = by_kind.get(data["kind"], 0) + 1
+    
+    print("\n:: Κατανομή ανά kind:")
+    for k, v in sorted(by_kind.items(), key=lambda x: -x[1]):
+        print(f"   {k:12s} {v:5d}")
+    
+    if args.show:
+        print("\n--- δείγμα 3 απαντήσεων ---")
+        samples = []
+        with outp.open() as fh:
+            for line in fh:
+                samples.append(json.loads(line))
+        for r in random.sample(samples, min(3, len(samples))):
+            print(f"\n[{r['kind']}] Q: {r['instruction']}")
+            print(f"    A: {r['output'][:500]}...")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+---
+
+## 📊 Τι θα δεις στο νέο dataset
+
+Με το LLM-based approach, οι απαντήσεις θα είναι **φυσικές και αναλυτικές**:
+
+**Παράδειγμα wiki entry (νέο):**
+```json
+{
+  "instruction": "how does Slackware handle master configuration file",
+  "output": "The master configuration file for Slackware Live Edition is `make_slackware_live.conf`. This file gives you complete control over customizing your own Live OS variant.\n\nHere's what you can customize:\n\n**Desktop Environment**: Choose from SLACKWARE, XFCE, MATE, CINNAMON, Ktown (KDE), DAW (audio workstation), and others.\n\n**Package Selection**: Define exactly which package sets to include, letting you create a minimal or full-featured system.\n\n**User Configuration**: Set the default username (default: 'live'), full name, and distribution name.\n\n**Custom Post-Install Steps**: Define a `custom_config()` function to run any additional setup not covered by the main script.\n\nTo create a custom Live OS, you need at minimum two variables:\n\n```bash\nLIVEDE=\"MYCUSTOM\"      # Your custom name\nSEQ_CUSTOM=\"...\"       # Package sequence\n```\n\nThe configuration file is well-commented, making it easy to understand each option. After editing, run `make_slackware_live.sh` to generate your custom ISO."
+}
+```
+
+**Παράδειγμα package entry (νέο):**
+```json
+{
+  "instruction": "what does the firefox package do",
+  "output": "Firefox is the default web browser in Slackware, included in the `xap` (X Applications) series. It's a powerful, open-source web browser developed by Mozilla that supports modern web standards, extensions, and synchronization across devices.\n\n**What's in the package:**\n- The Firefox browser binary\n- Localization files for multiple languages\n- Default configuration and policies\n\n**Managing Firefox:**\n\n```bash\n# Check if installed\nslackpkg search firefox\n\n# Install/upgrade\nslackpkg install firefox\nslackpkg upgrade firefox\n\n# Remove\nslackpkg remove firefox\n```\n\n**Configuration locations:**\n- System-wide policies: `/etc/firefox/policies/`\n- User profiles: `~/.mozilla/firefox/`\n- Desktop integration: `/usr/share/applications/firefox.desktop`\n\nFirefox receives security updates through Slackware's `-stable` branch. Always keep it updated, especially if you use it for sensitive web browsing."
+}
+```
+
+---
+
+## 🚀 Πώς να το τρέξεις
+
+```bash
+# 1. Σε ένα τερματικό, ξεκίνα τον server
+./llama-server -m /path/to/qwen2.5-32b-instruct-q6_k.gguf \
+  --port 8080 --ctx-size 8192 --n-gpu-layers 99 --parallel 4
+
+# 2. Σε άλλο τερματικό, τρέξε το script
+python3 09-make-qa-llm.py --limit 50 --show    # δοκιμή σε 50 ερωτήσεις
+
+# 3. Αν είσαι ικανοποιημένος, τρέξε το πλήρες
+python3 09-make-qa-llm.py
+
+# 4. Αν κολλήσει, συνέχισε
+python3 09-make-qa-llm.py --resume
+```
+
+**Χρόνος εκτέλεσης**: ~3000 ερωτήσεις × ~10 δευτερόλεπτα/ερώτηση = ~8 ώρες σε GPU. Μπορείς να το τρέχεις overnight.
+
+---
+
+## 🎯 Επόμενα βήματα
+
+Μόλις έχεις το νέο `qa.jsonl` με τις LLM-generated απαντήσεις, θα είσαι έτοιμος για **fine-tuning** με το Unsloth στην RTX 3090 σου. Θέλεις να σου γράψω το training script;
+
+### USER
+ναι γραψε το
+
+### ASSISTANT
+Ορίστε το πλήρες script. Αυτό το script διαβάζει τις ερωτήσεις από το `dataset/questions.jsonl`, βρίσκει το αντίστοιχο context από τη βάση δεδομένων (`corpus/index.db`), και καλεί τον τοπικό σου `llama-server` (μέσω του OpenAI-compatible API που παρέχει) για να γράψει **φυσικές, αναλυτικές και σωστά δομημένες απαντήσεις**.
+
+### Προαπαιτούμενο: Εκκίνηση του `llama-server`
+Πριν τρέξεις το script, βεβαιώσου ότι ο `llama-server` τρέχει και φορτώνει ένα **Instruct** μοντέλο (π.χ. Qwen2.5-32B-Instruct ή 14B-Instruct), ώστε να καταλαβαίνει εντολές.
+
+```bash
+# Παράδειγμα εκκίνησης του llama-server (σε ένα άλλο τερματικό)
+./llama-server \
+  -m /path/to/qwen2.5-32b-instruct-q6_k.gguf \
+  --port 8080 \
+  --ctx-size 8192 \
+  --n-gpu-layers 99
+```
+
+### Το Script: `09-make-qa-llm.py`
+
+```python
+#!/usr/bin/env python3
+"""
+slackgpt — Παραγωγή υψηλής ποιότητας QA ζευγών μέσω LLM Distillation.
+Χρησιμοποιεί τον τοπικό llama-server (μέσω του /v1/chat/completions API)
+για να συνθέσει αναλυτικές απαντήσεις βασισμένες στο context του corpus.
+
+Χρήση:
+  ./09-make-qa-llm.py                  # Επεξεργασία όλων
+  ./09-make-qa-llm.py --limit 20       # Δοκιμή σε 20 ερωτήσεις
+  ./09-make-qa-llm.py --resume         # Συνέχεια από εκεί που σταμάτησε
+  ./09-make-qa-llm.py --show           # Εμφάνιση δειγμάτων στην οθόνη
+"""
+
+import argparse
+import json
+import re
+import sqlite3
+import sys
+import time
+from pathlib import Path
+
+try:
+    import requests
+except ImportError:
+    sys.exit("Σφάλμα: Χρειάζεσαι τη βιβλιοθήκη 'requests'. Δώσε: pip install requests")
+
+# --- Ρυθμίσεις ---
+DB_PATH = Path("corpus/index.db")
+IN_QUESTIONS = Path("dataset/questions.jsonl")
+OUT_QA = Path("dataset/qa.jsonl")
+LLM_URL = "http://localhost:8080/v1/chat/completions"
+
+# --- Prompts για το LLM ---
+SYSTEM_PROMPT = """You are a senior Slackware Linux system administrator and expert technical writer. 
+Your task is to write comprehensive, natural, and highly detailed answers to user questions based STRICTLY on the provided documentation context. 
+Rules:
+1. Do NOT use robotic or repetitive phrases like "In Slackware, X is handled as follows:". Start answering directly and naturally.
+2. Explain the "why" and "how", providing context, warnings, or best practices if mentioned in the text.
+3. Use Markdown formatting (bolding, lists, and ```bash or ```text code blocks) to make the answer readable.
+4. If the provided context does not contain enough information to answer the question, politely state that the documentation does not cover it, rather than hallucinating."""
+
+USER_PROMPT_TEMPLATE = """Question: {question}
+
+Documentation Context:
+{context}
+
+Write a detailed, professional, and natural answer to the question based ONLY on the context above:"""
+
+NEGATIVE_SYSTEM_PROMPT = """You are a helpful Slackware Linux support assistant. The user has asked a question that is completely outside the scope of Slackware Linux (e.g., about Windows, Kubernetes, Python decorators, or general trivia). 
+Politely but firmly decline to answer, explaining that you are specialized exclusively in Slackware Linux documentation, configuration, and package management."""
+
+NEGATIVE_USER_PROMPT = "Question: {question}"
+
+
+def get_db_connection():
+    if not DB_PATH.exists():
+        sys.exit(f"Σφάλμα: Δεν βρέθηκε η βάση δεδομένων {DB_PATH}. Τρέξε πρώτα τα scripts indexing.")
+    return sqlite3.connect(DB_PATH)
+
+def fetch_context(con, q_data):
+    """Βρίσκει το σχετικό chunk από τη βάση δεδομένων."""
+    kind = q_data.get("kind", "")
+    src = q_data.get("src", "")
+    expect = q_data.get("expect", "")
+    
+    # 1. Προσπάθεια εύρεσης μέσω του αρχικού path (src)
+    if src:
+        row = con.execute("SELECT title, text FROM chunks WHERE path = ? LIMIT 1", (src,)).fetchone()
+        if row:
+            return row
+            
+    # 2. Fallback: Εύρεση μέσω του τίτλου/ονόματος (expect)
+    if expect:
+        if kind in ("package", "slackbuild"):
+            row = con.execute("SELECT title, text FROM chunks WHERE kind = ? AND title LIKE ? LIMIT 1", 
+                              (kind, f"%{expect}%")).fetchone()
+            if row: return row
+        elif kind == "man":
+            row = con.execute("SELECT title, text FROM chunks WHERE kind = ? AND title LIKE ? LIMIT 1", 
+                              ("man", f"{expect}(%")).fetchone()
+            if row: return row
+    return None
+
+def clean_context(text, max_chars=4000):
+    """Καθαρίζει και κόβει το context για να χωράει στο context window."""
+    text = re.sub(r"\n{3,}", "\n\n", text).strip()
+    text = re.sub(r"!\[[^\]]*\]\([^)]+\)", "", text) # Αφαίρεση εικόνων
+    if len(text) > max_chars:
+        cut = text[:max_chars].rfind("\n\n")
+        if cut < max_chars // 2: cut = max_chars
+        text = text[:cut] + "\n\n[... context truncated ...]"
+    return text
+
+def call_llm(messages, max_tokens=1024, temp=0.6):
+    """Καλεί τον llama-server και επιστρέφει το κείμενο."""
+    payload = {
+        "model": "local-model",
+        "messages": messages,
+        "temperature": temp,
+        "max_tokens": max_tokens,
+        "stream": False
+    }
+    
+    for attempt in range(3):
+        try:
+            resp = requests.post(LLM_URL, json=payload, timeout=120)
+            resp.raise_for_status()
+            data = resp.json()
+            return data["choices"][0]["message"]["content"].strip()
+        except Exception as e:
+            if attempt < 2:
+                print(f"  [!] Αποτυχία κλήσης LLM (Attempt {attempt+1}): {e}. Επανάληψη σε 3s...")
+                time.sleep(3)
+            else:
+                raise RuntimeError(f"Το LLM απέτυχε οριστικά: {e}")
+
+def process_question(con, q_data):
+    """Επεξεργάζεται μία ερώτηση και επιστρέφει το QA dictionary."""
+    question = q_data["q"]
+    kind = q_data.get("kind", "")
+    
+    # Χειρισμός Αρνητικών Παραδειγμάτων (Negative)
+    if kind == "negative":
+        messages = [
+            {"role": "system", "content": NEGATIVE_SYSTEM_PROMPT},
+            {"role": "user", "content": NEGATIVE_USER_PROMPT.format(question=question)}
+        ]
+        answer = call_llm(messages, max_tokens=150, temp=0.3)
+        return {
+            "instruction": question,
+            "input": "",
+            "output": answer,
+            "kind": kind,
+            "src": ""
+        }
+    
+    # Χειρισμός Θετικών Παραδειγμάτων
+    chunk = fetch_context(con, q_data)
+    if not chunk:
+        return None # Δεν βρήκαμε context, το προσπερνάμε
+        
+    title, raw_text = chunk
+    context = clean_context(raw_text)
+    
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": USER_PROMPT_TEMPLATE.format(question=question, context=context)}
+    ]
+    
+    answer = call_llm(messages, max_tokens=1024, temp=0.6)
+    
+    return {
+        "instruction": question,
+        "input": "",
+        "output": answer,
+        "kind": kind,
+        "src": q_data.get("src", "")
+    }
+
+def main():
+    ap = argparse.ArgumentParser(description="LLM Distillation for Slackware Docs")
+    ap.add_argument("--limit", type=int, help="Περιορισμός αριθμού ερωτήσεων (για δοκιμή)")
+    ap.add_argument("--resume", action="store_true", help="Συνέχεια από το υπάρχον αρχείο εξόδου")
+    ap.add_argument("--show", action="store_true", help="Εμφάνιση δειγμάτων στο τέλος")
+    args = ap.parse_args()
+
+    if not IN_QUESTIONS.exists():
+        sys.exit(f"Σφάλμα: Δεν βρέθηκε το {IN_QUESTIONS}. Τρέξε πρώτα το 09-make-questions.py")
+
+    # Έλεγχος σύνδεσης με τον LLM Server
+    try:
+        r = requests.get("http://localhost:8080/health", timeout=3)
+        if r.status_code != 200: raise Exception
+    except:
+        sys.exit("Σφάλμα: Ο llama-server δεν απαντάει στο http://localhost:8080. Ξεκίνα τον πρώτα!")
+
+    # Φόρτωση ερωτήσεων
+    questions = []
+    with open(IN_QUESTIONS, "r", encoding="utf-8") as f:
+        for line in f:
+            questions.append(json.loads(line))
+    
+    if args.limit:
+        questions = questions[:args.limit]
+        
+    print(f"[*] Φορτώθηκαν {len(questions)} ερωτήσεις.")
+
+    # Έλεγχος ήδη επεξεργασμένων (για resume)
+    processed_instructions = set()
+    if args.resume and OUT_QA.exists():
+        with open(OUT_QA, "r", encoding="utf-8") as f:
+            for line in f:
+                try:
+                    data = json.loads(line)
+                    processed_instructions.add(data["instruction"].lower())
+                except:
+                    pass
+        print(f"[*] Βρέθηκαν {len(processed_instructions)} ήδη επεξεργασμένες ερωτήσεις. Παράλειψη...")
+
+    con = get_db_connection()
+    OUT_QA.parent.mkdir(parents=True, exist_ok=True)
+    
+    success_count = 0
+    skip_count = 0
+    error_count = 0
+
+    # Κύρια Λειτουργία
+    mode = "a" if args.resume else "w"
+    with open(OUT_QA, mode, encoding="utf-8") as out_f:
+        for i, q_data in enumerate(questions):
+            q_lower = q_data["q"].lower()
+            
+            if q_lower in processed_instructions:
+                skip_count += 1
+                continue
+                
+            try:
+                qa_pair = process_question(con, q_data)
+                if qa_pair:
+                    out_f.write(json.dumps(qa_pair, ensure_ascii=False) + "\n")
+                    out_f.flush() # Γράφουμε αμέσως για ασφάλεια
+                    success_count += 1
+                    
+                    if success_count % 5 == 0:
+                        print(f"[+] Πρόοδος: {success_count} επιτυχημένα / {i+1} συνολικά")
+                else:
+                    skip_count += 1
+            except Exception as e:
+                print(f"\n[!] Σφάλμα στην ερώτηση {i+1} ('{q_data['q'][:40]}...'): {e}")
+                error_count += 1
+                continue
+
+    con.close()
+    
+    print("\n" + "="*50)
+    print(f"[OK] Ολοκλήρωση!")
+    print(f"   Επιτυχημένα: {success_count}")
+    print(f"   Παραλείψεις (χωρίς context / ήδη υπάρχοντα): {skip_count}")
+    print(f"   Σφάλματα LLM: {error_count}")
+    print(f"   Αρχείο Εξόδου: {OUT_QA}")
+    print("="*50)
+
+    if args.show and OUT_QA.exists():
+        print("\n--- ΔΕΙΓΜΑΤΑ ΑΠΟ ΤΟ ΑΡΧΕΙΟ ---")
+        samples = []
+        with open(OUT_QA, "r", encoding="utf-8") as f:
+            for line in f:
+                samples.append(json.loads(line))
+        
+        # Εμφάνιση 2 θετικών και 1 αρνητικού
+        shown = 0
+        for s in samples:
+            if shown >= 3: break
+            if s["kind"] == "negative" and shown == 2: continue # Αποφυγή διπλών αρνητικών
+            
+            print(f"\n[{s['kind'].upper()}] Q: {s['instruction']}")
+            print(f"A: {s['output'][:300]}...\n" + "-"*40)
+            shown += 1
+
+if __name__ == "__main__":
+    main()
+```
+
+### Πώς να το τρέξεις:
+
+1. **Εγκατάσταση του `requests`** (αν δεν το έχεις):
+   ```bash
+   pip install requests
+   ```
+
+2. **Δοκιμή σε μικρή κλίμακα** (για να δεις αν δουλεύει σωστά η σύνδεση και η ποιότητα):
+   ```bash
+   python3 09-make-qa-llm.py --limit 10 --show
+   ```
+   *Αν δεις ότι οι απαντήσεις είναι φυσικές, αναλυτικές και χρησιμοποιούν Markdown, είσαι έτοιμος για τα επόμενα βήματα.*
+
+3. **Εκτέλεση για όλο το Dataset** (θα πάρει ώρα, ανάλογα με την ταχύτητα της GPU σου στον llama-server):
+   ```bash
+   python3 09-make-qa-llm.py
+   ```
+   *Αν κολλήσει ή πέσει η σύνδεση, μπορείς να το συνεχίσεις ακριβώς από εκεί που σταμάτησε με:*
+   ```bash
+   python3 09-make-qa-llm.py --resume
+   ```
+
+### Γιατί αυτό το script θα λύσει το πρόβλημα:
+1. **Χρήση `/v1/chat/completions`**: Ο `llama-server` υποστηρίζει το OpenAI API. Αυτό σημαίνει ότι εφαρμόζει **αυτόματα** το σωστό Chat Template (π.χ. `<|im_start|>system...`) για το μοντέλο που έχεις φορτώσει (π.χ. Qwen2.5-Instruct). Αυτό είναι κρίσιμο για να καταλάβει το μοντέλο ότι πρέπει να απαντήσει σε οδηγία (instruction) και όχι απλώς να συνεχίσει το κείμενο.
+2. **Αυστηρό System Prompt**: Έχω προσθέσει ρητή εντολή στο LLM να **μην** χρησιμοποιεί τις ρομποτικές φράσεις ("In Slackware, X is handled as follows") και να γράφει απευθείας την ουσία, χρησιμοποιώντας Markdown.
+3. **Καθαρισμό Context**: Κόβει αυτόματα τεράστια chunks κειμένου που θα ξεπερνούσαν το context window, κρατώντας μόνο τις σχετικές παραγράφους.
+
+Μόλις τελειώσει και πάρεις το τελικό `dataset/qa.jsonl`, πες μου να σου γράψω το **Unsloth Training Script** για να το "περάσεις" στο Qwen2.5-3B/7B στην RTX 3090 σου!
+
+### USER
+python3 09-make-questions.py --limit 50 --show 
+:: Φορτώθηκαν 50 ερωτήσεις από dataset/questions.jsonl
+  !! Attempt 1 failed: HTTPConnectionPool(host='localhost', port=8080): Read timed out. (read timeout=180), retrying...
+
+
+### ASSISTANT
+Το σφάλμα `Read timed out` σημαίνει ότι το script προσπαθεί να στείλει αίτημα στον `llama-server` (στη θύρα 8080), αλλά ο server δεν αποκρίνεται μέσα στο χρονικό περιθώριο των 180 δευτερολέπτων. 
+
+Αυτό συμβαίνει συνήθως για έναν από τους παρακάτω λόγους:
+1. **Ο server φορτώνει ακόμη το μοντέλο**: Αν μόλις τον ξεκίνησες, χρειάζεται χρόνο (ειδικά σε CPU ή με μεγάλα μοντέλα) για να φορτώσει τα weights στη μνήμη πριν αρχίσει να δέχεται αιτήματα.
+2. **Έλλειψη μνήμης (OOM / Swapping)**: Αν το μοντέλο είναι πολύ μεγάλο (π.χ. 32B ή 72B) και το σύστημα αρχίζει να χρησιμοποιεί έντονα το swap disk, η απόδοση πέφτει δραματικά και η επεξεργασία "κολλάει".
+3. **Πολύ μεγάλο Context Window**: Η παράμετρος `--ctx-size` δεσμεύει πολλή μνήμη RAM προκαλώντας καθυστερήσεις.
+
+### Βήματα για διάγνωση και επίλυση:
+
+**Βήμα 1: Έλεγξε αν ο server είναι ζωντανός**
+Άνοιξε ένα **νέο τερματικό** (ενώ ο server τρέχει στο άλλο) και τρέξε:
+```bash
+curl http://localhost:8080/health
+```
+Αν δεν επιστρέψει αμέσως κάτι σαν `{"status":"ok"}`, ο server είναι κολλημένος ή φορτώνει ακόμη.
+
+**Βήμα 2: Κοίταξε το τερματικό του `llama-server`**
+Πήγαινε στο παράθυρο όπου έτρεξε η εντολή `llama-server`. Τι γράφει;
+- Αν γράφει `loading model`, περίμενε λίγο περισσότερο μέχρι να τελειώσει.
+- Αν γράφει `Killed` ή αν η διαδικασία τερματίστηκε απότομα, σημαίνει ότι ξέμεινες από RAM (Out Of Memory).
+
+**Βήμα 3: Δοκίμασε ένα μικρότερο μοντέλο (Προτεινόμενο για δοκιμή)**
+Για να επιβεβαιώσεις ότι η ροή (pipeline) δουλεύει σωστά, ξεκίνα με ένα μικρότερο μοντέλο που χωράει άνετα στη μνήμη και τρέχει γρήγορα, όπως το **Qwen2.5-7B-Instruct** (σε κβαντοποίηση Q8_0 ή Q6_K, ~6-8 GB).
+
+Στο τερματικό του server, σταμάτα το τρέχον (`Ctrl+C`) και τρέξε:
+```bash
+./llama-server \
+  -m /path/to/qwen2.5-7b-instruct-q8_0.gguf \
+  --port 8080 \
+  --ctx-size 4096 \
+  --n-gpu-layers 99
+```
+*(Σημείωση: Αν δεν χρησιμοποιείς GPU, αφαίρεσε τη γραμμή `--n-gpu-layers` ή βάλε `0`)*.
+
+**Βήμα 4: Κάνε μια μικρή δοκιμή με το script**
+Αφού βεβαιωθείς ότι ο server απαντάει κανονικά (με το `curl`), τρέξε το script σου για **μόνο 2-3 ερωτήσεις** αρχικά. Αυτό θα σου δείξει αν η ποιότητα των απαντήσεων είναι καλή και θα αποφύγεις άσκοπα timeouts:
+```bash
+python3 09-make-questions.py --limit 3 --show
+```
+
+**Σημείωση:** Το γεγονός ότι το σφάλμα αναφέρει το `localhost:8080` επιβεβαιώνει ότι τρέχεις την εκδοχή του script που καλεί το LLM (όπως συζητήσαμε), και όχι την παλιά template-based εκδοχή. 
+
+Πες μου τι επιστρέφει η εντολή `curl` και τι γράφει το τερματικό του `llama-server` για να προχωρήσουμε στη σωστή λύση!
+
+### USER
+curl http://localhost:8080/health
+{"status":"ok"}
+
+top - 14:54:09 up  1:56,  1 user,  load average: 4.60, 2.81, 2.27
+Tasks: 468 total, 3 running, 464 sleep, 1 d-sleep, 0 stopped, 0 zombie
+%Cpu(s): 28.2 us,  1.4 sy,  0.0 ni, 70.4 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :  63967.4 total,  37146.9 free,  14002.0 used,  13753.6 buff/cache     
+MiB Swap:  63967.4 total,  63967.4 free,      0.0 used.  49965.4 avail Mem 
+
+ python3 09-make-questions.py --limit 3 --show
+:: Φορτώθηκαν 3 ερωτήσεις από dataset/questions.jsonl
+  !! Attempt 1 failed: HTTPConnectionPool(host='localhost', port=8080): Read timed out. (read timeout=180), retrying...
+
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                            
+  989 omen      20   0   16.8g  15.4g   8.5g R 531.4  24.7   8:02.65 llama-server                       
+ 4102 omen      20   0 2766544 522792 317736 R  28.6   0.8   9:46.11 kwin_wayland                       
+ 5348 omen      20   0 4428708 896132 357208 S  13.3   1.4  13:56.48 firefox                            
+15429 omen      20   0 1469408  57388  42276 S   4.0   0.1   0:06.41 xfce4-terminal                     
+25651 omen      20   0 4040228 731088 163524 S   3.0   1.1   6:11.83 Isolated Web Co                    
+ 4450 omen      20   0 2807512 464276 257904 S   2.0   0.7   0:15.48 plasmashell                        
+30624 root      20   0       0      0      0 I   1.7   0.0   0:06.89 kworker/u80:2-i915                 
+  228 root       0 -20       0      0      0 D   1.3   0.0   0:43.04 kworker/u81:0+i915_flip            
+ 6034 omen      20   0 3565016 477852 175736 S   1.3   0.7   1:56.95 Isolated Web Co                    
+27394 root      20   0       0      0      0 I   1.0   0.0   0:11.86 kworker/u80:1-ext4-rsv-conversion  
+31894 omen      20   0 1075996 121680  99648 S   1.0   0.2   0:01.84 konsole                            
+   15 root      20   0       0      0      0 I   0.3   0.0   0:21.04 rcu_preempt                        
+  560 root       0 -20       0      0      0 I   0.3   0.0   0:00.07 kworker/3:1H-i915_cleanup          
+  618 root      20   0       0      0      0 I   0.3   0.0   0:03.21 kworker/6:1-mm_percpu_wq           
+ 3905 omen       9 -11   65596  24256  10236 S   0.3   0.0   0:02.67 pipewire                           
+ 4782 omen      20   0   60392  34804  11828 S   0.3   0.1   0:00.77 hp-systray                         
+11094 omen      20   0 2856520 515652 280036 S   0.3   0.8   0:12.29 Dooble                             
+15608 omen      20   0   11076   7556   5024 R   0.3   0.0   0:09.53 top                                
+    1 root      20   0    3084   2100   1984 S   0.0   0.0   0:00.89 init                               
+    2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd                           
+    3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_workqueue_release             
+    4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-rcu_gp                   
+    5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-sync_wq               
+
+### ASSISTANT
+Το σφάλμα `Read timed out` σημαίνει ότι το script περιμένει απάντηση από τον `llama-server` για περισσότερο από 180 δευτερόλεπτα (3 λεπτά). 
+
+Κοιτάζοντας την έξοδο του `top`, βλέπουμε ότι ο `llama-server` καταναλώνει **531% CPU**, που σημαίνει ότι **δεν έχει κολλήσει**, απλώς επεξεργάζεται την απάντηση πολύ αργά. Αυτό συμβαίνει συνήθως για δύο λόγους:
+1. Το μοντέλο είναι πολύ μεγάλο και δεν χωράει ολόκληρο στη VRAM της RTX 3090 (24GB), οπότε "σπαζάρει" στη RAM/CPU, πέφτοντας δραματικά η ταχύτητα παραγωγής.
+2. Ζητάμε πάρα πολλά tokens (`max_tokens=1024`) και με τη χαμηλή ταχύτητα (π.χ. 2-3 tokens/δευτερόλεπτο), ξεπερνάει το όριο των 180 δευτερολέπτων.
+
+### Πώς να το διορθώσεις:
+
+#### 1. Αύξησε το όριο χρόνου (timeout) στο script
+Άνοιξε το Python script που τρέχεις και βρες τη γραμμή με το `requests.post`. Άλλαξε το `timeout=180` σε `timeout=600` (10 λεπτά):
+```python
+resp = requests.post(LLAMA_URL, json=payload, timeout=600)
+```
+
+#### 2. Μείωσε τα `max_tokens` για γρήγορη δοκιμή
+Για να επιβεβαιώσεις ότι η ροή δουλεύει, μείωσε προσωρινά τα tokens που ζητάς. Στο ίδιο script, άλλαξε τη συνάρτηση κλήσης:
+```python
+def call_llm(prompt, max_tokens=512, temp=0.7, retries=3): # Άλλαξε από 1024 σε 512 ή 256
+```
+
+#### 3. Βεβαιώσου ότι χρησιμοποιείς την RTX 3090 (GPU Offload)
+Όταν ξεκινάς τον `llama-server`, πρέπει οπωσδήποτε να του πεις να χρησιμοποιήσει την κάρτα γραφικών. Η εντολή πρέπει να περιέχει το `-ngl 99` (ή `--n-gpu-layers 99`):
+```bash
+./llama-server \
+  -m /path/to/qwen2.5-32b-instruct-q4_k_m.gguf \
+  --port 8080 \
+  --ctx-size 4096 \
+  --n-gpu-layers 99   # <--- ΑΥΤΟ ΕΙΝΑΙ ΚΡΙΣΙΜΟ
+```
+**Σημαντική Σημείωση:** Ένα μοντέλο **32B σε κβαντοποίηση Q4_K_M** είναι περίπου **20GB** και χωράει **ολόκληρο** στα 24GB VRAM της RTX 3090 σου, τρέχοντας με ταχύτητα 20-30+ tokens/δευτερόλεπτο. Αν προσπαθείς να τρέξεις μοντέλο **72B**, θα γεμίσει τη VRAM και θα συνεχίσει στη RAM, κάνοντας την παραγωγή εξαιρετικά αργή (και προκαλώντας το timeout).
+
+#### 4. Δοκίμασε ξανά με 1 ερώτηση
+Τρέξε το script με όριο 1 για να δεις την πλήρη διαδικασία χωρίς να περιμένεις ώρα:
+```bash
+python3 09-make-qa-llm.py --limit 1 --show
+```
+
+Αν μετά από αυτές τις αλλαγές συνεχίσει να βγάζει timeout, στείλε μου την **ακριβή εντολή** με την οποία ξεκίνησες τον `llama-server` (και το όνομα/μέγεθος του αρχείου `.gguf`) για να εντοπίσουμε αν υπάρχει θέμα με τη φόρτωση στη GPU.
+
+### USER
+δεν το τρεχω στο pc που εχει την vram το τρεχω κατευθεια σε cpu απο αλλο pc
+
+### ASSISTANT
+Α, κατάλαβα απόλυτα! Τρέχεις τον `llama-server` (και το Python script) σε έναν **άλλο υπολογιστή που έχει μόνο CPU**, όχι σε αυτόν με την RTX 3090.
+
+Αυτό εξηγεί απόλυτα το σφάλμα `Read timed out`. 
+
+### Γιατί συμβαίνει αυτό;
+Η παραγωγή κειμένου (inference) αποκλειστικά σε CPU είναι πολύ αργή. Για να γράψει ένα μοντέλο (π.χ. 7B ή 3B) μια αναλυτική απάντηση 500-1000 tokens, μπορεί να χρειαστεί **3 έως 10 λεπτά** σε έναν μέσο επεξεργαστή. Το Python script έχει προεπιλεγμένο όριο αναμονής (timeout) τα 180 δευτερόλεπτα (3 λεπτά). Επομένως, το script "πετάει" το σφάλμα και διακόπτει τη σύνδεση *πριν* προλάβει η CPU να ολοκληρώσει την απάντηση.
+
+---
+
+### Πώς να το διορθώσεις (4 Επιλογές)
+
+#### Επιλογή 1: Αύξησε δραματικά το Timeout στο Python script (Άμεση λύση)
+Άνοιξε το αρχείο `09-make-qa-llm.py` και βρες τη συνάρτηση `call_llm`. Άλλαξε το `timeout` από 180 σε 600 (10 λεπτά) ή και 1200 (20 λεπτά):
+
+```python
+def call_llm(messages, max_tokens=1024, temp=0.6):
+    payload = {
+        "model": "local-model",
+        "messages": messages,
+        "temperature": temp,
+        "max_tokens": max_tokens,
+        "stream": False
+    }
+    
+    for attempt in range(3):
+        try:
+            # ΑΛΛΑΞΕ ΤΟ TIMEOUT ΕΔΩ (π.χ. σε 1200 δευτερόλεπτα)
+            resp = requests.post(LLM_URL, json=payload, timeout=1200)
+            resp.raise_for_status()
+            data = resp.json()
+            return data["choices"][0]["message"]["content"].strip()
+        except Exception as e:
+            # ... (το υπόλοιπο μένει ίδιο)
+```
+
+#### Επιλογή 2: Μείωσε τα `max_tokens` για δοκιμή
+Αν οι απαντήσεις είναι πολύ μεγάλες, η CPU θα αργεί ακόμα περισσότερο. Για δοκιμή, άλλαξε το `max_tokens=1024` σε `max_tokens=512` ή `256` μέσα στο ίδιο script, για να δεις αν ολοκληρώνεται η διαδικασία.
+
+#### Επιλογή 3: Χρησιμοποίησε πολύ μικρότερο/συμπιεσμένο μοντέλο στην CPU
+Αν στην CPU τρέχεις ένα μοντέλο 7B ή 8B, θα είναι εξαιρετικά αργό. Για CPU-only μηχανήματα, η ιδανική επιλογή είναι το **Qwen2.5-3B-Instruct** σε κβαντοποίηση **Q4_K_M** ή **Q5_K_M** (το αρχείο θα είναι περίπου 2-2.5 GB). Θα τρέχει πολύ πιο γρήγορα και θα χωράει άνετα στη RAM.
+
+#### Επιλογή 4: Βελτιστοποίησε τον `llama-server` για CPU
+Όταν ξεκινάς τον server στον υπολογιστή με την CPU, βεβαιώσου ότι του δίνεις όλους τους πυρήnes που μπορεί να χρησιμοποιήσει:
+```bash
+./llama-server \
+  -m /path/to/qwen2.5-3b-instruct-q4_k_m.gguf \
+  --port 8080 \
+  --ctx-size 4096 \
+  --threads 8 \
+  --batch-size 512 \
+  --mlock
+```
+*(Άλλαξε το `--threads 8` στον αριθμό των πυρήνων της CPU σου).*
+
+---
+
+### 💡 Η "Έξυπνη" Ροή Εργασίας (Προτεινόμενη)
+Για να γλιτώσεις ώρες (ή και μέρες) αναμονής, σου προτείνω να μην κάνεις τη βαριά δουλειά στον υπολογιστή με την CPU. Η σωστή ροή είναι η εξής:
+
+1. **Δημιουργία Dataset:** Τρέξε τον `llama-server` και το script `09-make-qa-llm.py` **στον υπολογιστή με την RTX 3090**. Θα τελειώσει σε κλάσματα του χρόνου (λεπτά αντί για ώρες).
+2. **Fine-Tuning:** Κάνε την εκπαίδευση (με το Unsloth script που θα σου δώσω) πάλι **στην RTX 3090**.
+3. **Εξαγωγή (Export):** Μετέτρεψε το εκπαιδευμένο μοντέλο σε μορφή `.gguf` (π.χ. `Q4_K_M` ή `Q5_K_M`) στην RTX 3090.
+4. **Μεταφορά & Εκτέλεση:** Αντέγραψε το τελικό, μικρό αρχείο `.gguf` (που θα είναι ~2.5 GB) **στον υπολογιστή με την CPU** και τρέξε το εκεί (μέσω Ollama ή llama.cpp). Θα τρέχει τέλεια, γρήγορα και χωρίς να κολλάει.
+
+**Τι προτιμάς;** Να σου στείλω τον κώδικα για να αυξήσεις το timeout και να συνεχίσεις στην CPU, ή θέλεις να μεταφέρεις τη διαδικασία δημιουργίας του dataset στον υπολογιστή με την 3090 (που είναι μακράν η καλύτερη επιλογή);
+
+### USER
+λοιπόν ακου τι θα κανω θα κανω όλη την δουλεια κατευθεια στον υπολογιστη με την rtx οποτε σε παρακαλω δωσε μου ολα τα βηματα πάλι απο την αρχή και ότι script χρειαζεται
+
+### ASSISTANT
+Εξαιρετική απόφαση! Κάνοντας όλη τη διαδικασία στον υπολογιστή με την **RTX 3090 (24GB VRAM)**, θα λύσεις οριστικά το πρόβλημα των timeouts και η εκπαίδευση θα είναι αστραπιαία. 
+
+Ακολουθεί ο **πλήρης, βήμα-προς-βήμα οδηγός** με όλα τα scripts, σχεδιασμένος αποκλειστικά για το μηχάνημα με την RTX 3090.
+
+---
+
+### Βήμα 1: Προετοιμασία Περιβάλλοντος (στην RTX 3090)
+Άνοιξε ένα τερματικό στον υπολογιστή με την RTX 3090 και εγκατέστησε τα απαραίτητα πακέτα Python για το Unsloth και την εκπαίδευση:
+
+```bash
+# Δημιουργία και ενεργοποίηση virtual environment (προαιρετικό αλλά συνιστάται)
+python3 -m venv venv
+source venv/bin/activate
+
+# Εγκατάσταση Unsloth και εξαρτήσεων
+pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
+pip install --no-deps xformers trl peft accelerate bitsandbytes
+pip install requests datasets
+```
+
+---
+
+### Βήμα 2: Εκκίνηση του `llama-server` με GPU Acceleration
+Για να φτιάξουμε το dataset με αναλυτικές απαντήσεις, θα τρέξουμε έναν τοπικό server. Επειδή είμαστε στην RTX 3090, θα φορτώσουμε **όλο** το μοντέλο στην VRAM για μέγιστη ταχύτητα (περίπου 30-50 tokens/δευτερόλεπτο, άρα **κανένα timeout**).
+
+1. Κατέβασε ένα μοντέλο Qwen2.5-7B-Instruct σε μορφή GGUF (π.χ. `Qwen2.5-7B-Instruct-Q4_K_M.gguf` από το HuggingFace).
+2. Σε ένα **νέο τερματικό**, ξεκίνα τον server:
+
+```bash
+./llama-server \
+  -m /διαδρομή/προς/Qwen2.5-7B-Instruct-Q4_K_M.gguf \
+  --port 8080 \
+  --ctx-size 4096 \
+  --n-gpu-layers 99 \
+  --parallel 4
+```
+*(Σημείωση: Το `--n-gpu-layers 99` εξασφαλίζει ότι όλο το μοντέλο θα τρέξει στην RTX 3090).*
+
+---
+
+### Βήμα 3: Δημιουργία Dataset με Αναλυτικές Απαντήσεις (`09-make-qa-llm.py`)
+Αυτό το script διαβάζει τις ερωτήσεις που ήδη έφτιαξες (`dataset/questions.jsonl`), βρίσκει το σχετικό κείμενο από τη βάση (`corpus/index.db`) και ζητάει από το τοπικό LLM να γράψει μια **φυσική, αναλυτική απάντηση**.
+
+Δημιούργησε το αρχείο `09-make-qa-llm.py`:
+
+```python
+#!/usr/bin/env python3
+import argparse, json, re, sqlite3, sys, time
+from pathlib import Path
+import requests
+
+DB = Path("corpus/index.db")
+QUESTIONS = Path("dataset/questions.jsonl")
+OUT = Path("dataset/qa.jsonl")
+LLAMA_URL = "http://localhost:8080/v1/chat/completions"
+
+SYSTEM_PROMPT = """You are an expert Slackware Linux system administrator and technical writer. 
+Given a question and relevant context from Slackware documentation, write a detailed, comprehensive answer in English. 
+Rules:
+1. Be thorough and educational (aim for 200-400 words).
+2. Include specific commands, file paths, and configuration details from the context.
+3. Explain the "why" behind each step, not just the "how".
+4. Use proper Markdown formatting (bolding, lists, and ```bash code blocks).
+5. If the context doesn't fully answer the question, politely state that the documentation does not cover it."""
+
+NEGATIVE_PROMPT = """You are a helpful Slackware Linux assistant. The user has asked a question completely outside the scope of Slackware Linux. 
+Politely decline to answer and redirect them to Slackware-related topics."""
+
+def call_llm(messages, max_tokens=1024, temp=0.7):
+    payload = {"model": "local", "messages": messages, "temperature": temp, "max_tokens": max_tokens, "stream": False}
+    for attempt in range(3):
+        try:
+            resp = requests.post(LLAMA_URL, json=payload, timeout=300) # 5 λεπτά timeout, αρκετό για 7B σε GPU
+            resp.raise_for_status()
+            return resp.json()["choices"][0]["message"]["content"].strip()
+        except Exception as e:
+            if attempt < 2:
+                print(f"  !! Attempt {attempt+1} failed: {e}, retrying...")
+                time.sleep(3)
+            else:
+                raise RuntimeError(f"LLM failed: {e}")
+
+def get_chunk(con, q_data):
+    kind, src, expect = q_data.get("kind", ""), q_data.get("src", ""), q_data.get("expect", "")
+    if kind == "negative" or not src: return None
+    if src:
+        row = con.execute("SELECT title, text FROM chunks WHERE path = ? LIMIT 1", (src,)).fetchone()
+        if row: return row
+    if expect and kind in ("package", "slackbuild"):
+        row = con.execute("SELECT title, text FROM chunks WHERE kind = ? AND title LIKE ? LIMIT 1", (kind, f"%{expect}%")).fetchone()
+        if row: return row
+    return None
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--limit", type=int, help="Process only N questions")
+    ap.add_argument("--resume", action="store_true", help="Resume from existing output")
+    args = ap.parse_args()
+
+    if not DB.exists(): sys.exit(f"DB not found: {DB}")
+    if not QUESTIONS.exists(): sys.exit(f"Questions not found: {QUESTIONS}")
+
+    questions = []
+    with open(QUESTIONS) as f:
+        for line in f: questions.append(json.loads(line))
+    if args.limit: questions = questions[:args.limit]
+
+    processed = set()
+    if args.resume and OUT.exists():
+        with open(OUT) as f:
+            for line in f: processed.add(json.loads(line)["instruction"].lower())
+
+    con = sqlite3.connect(DB)
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    mode = "a" if args.resume else "w"
+
+    success, skip, errors = 0, 0, 0
+    with open(OUT, mode) as out_f:
+        for i, q in enumerate(questions):
+            q_lower = q["q"].lower()
+            if q_lower in processed:
+                skip += 1
+                continue
+            
+            try:
+                if q.get("kind") == "negative":
+                    ans = call_llm([{"role": "system", "content": NEGATIVE_PROMPT}, {"role": "user", "content": f"Question: {q['q']}"}], max_tokens=150, temp=0.3)
+                    qa = {"instruction": q["q"], "input": "", "output": ans, "kind": "negative", "src": ""}
+                else:
+                    chunk = get_chunk(con, q)
+                    if not chunk:
+                        skip += 1
+                        continue
+                    title, text = chunk
+                    text = re.sub(r"\n{3,}", "\n\n", text).strip()
+                    if len(text) > 3000: text = text[:3000]
+                    
+                    ans = call_llm([
+                        {"role": "system", "content": SYSTEM_PROMPT},
+                        {"role": "user", "content": f"Question: {q['q']}\n\nContext:\n{text}"}
+                    ], max_tokens=1024, temp=0.7)
+                    qa = {"instruction": q["q"], "input": "", "output": ans, "kind": q.get("kind", "wiki"), "src": q.get("src", "")}
+                
+                out_f.write(json.dumps(qa, ensure_ascii=False) + "\n")
+                out_f.flush()
+                success += 1
+                if success % 10 == 0: print(f"[+] Progress: {success} QA pairs generated")
+            except Exception as e:
+                print(f"!! Error on q {i}: {e}")
+                errors += 1
+
+    con.close()
+    print(f"\n[OK] Done! Success: {success}, Skipped: {skip}, Errors: {errors} -> {OUT}")
+
+if __name__ == "__main__":
+    main()
+```
+
+**Εκτέλεση:**
+```bash
+python3 09-make-qa-llm.py --limit 20  # Δοκιμή στις πρώτες 20 ερωτήσεις
+python3 09-make-qa-llm.py              # Πλήρης εκτέλεση για όλο το dataset
+python3 09-make-qa-llm.py --resume     # Αν διακοπεί, συνεχίζει από εκεί που σταμάτησε
+```
+
+---
+
+### Βήμα 4: Fine-Tuning με Unsloth (`train_qwen.py`)
+Τώρα θα εκπαιδεύσουμε το **Qwen2.5-7B-Instruct** χρησιμοποιώντας QLoRA. Η RTX 3090 θα το ολοκληρώσει σε λίγη ώρα.
+
+Δημιούργησε το αρχείο `train_qwen.py`:
+
+```python
+from unsloth import FastLanguageModel
+import torch
+from datasets import load_dataset
+from trl import SFTTrainer
+from transformers import TrainingArguments
+
+# 1. Φόρτωση μοντέλου (4-bit για εξοικονόμηση VRAM, max_seq_length 4096 για μεγάλες απαντήσεις)
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name="unsloth/Qwen2.5-7B-Instruct",
+    max_seq_length=4096,
+    dtype=None,
+    load_in_4bit=True,
+)
+
+# 2. Εφαρμογή QLoRA adapters
+model = FastLanguageModel.get_peft_model(
+    model,
+    r=16,
+    target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+    lora_alpha=16,
+    lora_dropout=0,
+    bias="none",
+    use_gradient_checkpointing="unsloth",
+)
+
+# 3. Φόρτωση Dataset
+dataset = load_dataset("json", data_files="dataset/qa.jsonl", split="train")
+
+# 4. Formatting για Qwen2.5 Chat Template
+def formatting_prompts_func(examples):
+    instructions = examples["instruction"]
+    outputs = examples["output"]
+    texts = []
+    for inst, out in zip(instructions, outputs):
+        # Qwen2.5 Chat Template
+        text = (
+            "<|im_start|>system\nYou are a helpful Slackware Linux expert.<|im_end|>\n"
+            "<|im_start|>user\n" + inst + "<|im_end|>\n"
+            "<|im_start|>assistant\n" + out + "<|im_end|>"
+        )
+        texts.append(text)
+    return {"text": texts}
+
+dataset = dataset.map(formatting_prompts_func, batched=True)
+
+# 5. Εκπαίδευση
+trainer = SFTTrainer(
+    model=model,
+    tokenizer=tokenizer,
+    train_dataset=dataset,
+    dataset_text_field="text",
+    max_seq_length=4096,
+    args=TrainingArguments(
+        per_device_train_batch_size=2,
+        gradient_accumulation_steps=4,
+        warmup_steps=10,
+        num_train_epochs=3,
+        learning_rate=2e-4,
+        fp16=not torch.cuda.is_bf16_supported(),
+        bf16=torch.cuda.is_bf16_supported(),
+        logging_steps=1,
+        output_dir="outputs",
+        optim="adamw_8bit",
+    ),
+)
+
+print("Starting training...")
+trainer.train()
+
+# 6. Αποθήκευση του εκπαιδευμένου adapter
+model.save_pretrained("qwen25_7b_slackware_lora")
+tokenizer.save_pretrained("qwen25_7b_slackware_lora")
+print("Training complete and saved to qwen25_7b_slackware_lora/")
+```
+
+**Εκτέλεση:**
+```bash
+python3 train_qwen.py
+```
+
+---
+
+### Βήμα 5: Εξαγωγή σε GGUF για CPU (`export_gguf.py`)
+Μόλις τελειώσει η εκπαίδευση, πρέπει να ενώσουμε τον adapter με το base μοντέλο και να το εξάγουμε σε μορφή **GGUF** (κβαντοποιημένο), ώστε να τρέχει ελαφριά σε οποιοδήποτε PC με CPU.
+
+Δημιούργησε το αρχείο `export_gguf.py`:
+
+```python
+from unsloth import FastLanguageModel
+
+# Φόρτωση του εκπαιδευμένου μοντέλου
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name="qwen25_7b_slackware_lora",
+    max_seq_length=4096,
+    dtype=None,
+    load_in_4bit=True,
+)
+
+# Εξαγωγή σε GGUF (Q4_K_M για ισορροπία ταχύτητας/ποιότητας σε CPU, ~4.5GB RAM)
+# Εναλλακτικά μπορείς να χρησιμοποιήσεις "q5_k_m" για λίγο καλύτερη ποιότητα (~5.5GB RAM)
+print("Exporting to GGUF...")
+model.save_pretrained_gguf(
+    "qwen25_7b_slackware_final",
+    tokenizer,
+    quantization_method="q4_k_m"
+)
+print("Export complete! Check the 'qwen25_7b_slackware_final' directory for the .gguf file.")
+```
+
+**Εκτέλεση:**
+```bash
+python3 export_gguf.py
+```
+
+---
+
+### Βήμα 6: Μεταφορά και Εκτέλεση στα άλλα PCs (CPU-only)
+1. Αντέγραψε το αρχείο `.gguf` (θα βρίσκεται στον φάκελο `qwen25_7b_slackware_final/`) στα άλλα μηχανήματα μέσω USB ή δικτύου. Το αρχείο θα είναι περίπου **4.5 GB**.
+2. Στα άλλα μηχανήματα, εγκατέστησε το `llama.cpp` ή το `Ollama`.
+
+**Αν χρησιμοποιείς Ollama (πιο εύκολο):**
+Δημιούργησε ένα αρχείο `Modelfile`:
+```text
+FROM ./qwen25-7b-slackware-final.gguf
+PARAMETER num_ctx 4096
+SYSTEM "You are an expert Slackware Linux system administrator. Always provide detailed, step-by-step answers with code blocks."
+```
+Τρέξε:
+```bash
+ollama create slackware-guru -f Modelfile
+ollama run slackware-guru
+```
+
+**Αν χρησιμοποιείς `llama.cpp` απευθείας:**
+```bash
+./llama-cli -m qwen25-7b-slackware-final.gguf -p "<|im_start|>user\nHow do I configure network in Slackware?<|im_end|>\n<|im_start|>assistant\n" -n 1024 --temp 0.7
+```
+
+---
+
+### Σύνοψη Ροής Εργασίας
+1. `pip install unsloth...` (στην RTX 3090)
+2. `./llama-server ... --n-gpu-layers 99` (στην RTX 3090)
+3. `python3 09-make-qa-llm.py` (δημιουργία dataset με αναλυτικές απαντήσεις)
+4. `python3 train_qwen.py` (fine-tuning με Unsloth)
+5. `python3 export_gguf.py` (μετατροπή σε ελαφρύ GGUF)
+6. Αντιγραφή του `.gguf` στα CPU μηχανήματα και εκτέλεση με Ollama/llama.cpp.
+
+Έχεις ό,τι χρειάζεσαι για να ξεκινήσεις άμεσα! Αν κολλήσεις σε κάποιο βήμα ή εμφανιστεί κάποιο σφάλμα, πες μου να το διορθώσουμε.
+
+### USER
+Qwen2.5-7B-Instruct-Q4_K_M.gguf αυτο ειναι μικρο αφου εχω rtx μηπως ειναι καλυτερα να βαλουμε καποιο μεγαλυτερο ή θα εχουμε αλλα προβληματα μετα ?
+
+### ASSISTANT
+Εξαιρετική ερώτηση και δείχνει ότι σκέφτεσαι στρατηγικά. Η RTX 3090 με τα 24GB VRAM είναι πραγματικά "θηρίο" και τεχνικά *μπορεί* να τρέξει και να εκπαιδεύσει μοντέλα μέχρι και 32B (σε κβαντοποίηση Q4). 
+
+Ωστόσο, **το να βάλεις μεγαλύτερο μοντέλο τώρα, θα σου δημιουργήσει τεράστια προβλήματα μετά**, ακριβώς εξαιτίας του δεύτερου στόχου σου: να τρέχει σε υπολογιστές μόνο με CPU και λιγότερη RAM.
+
+Ας δούμε αναλυτικά γιατί το **7B** είναι το ιδανικό "Sweet Spot" και τι θα συνέβαινε με μεγαλύτερα:
+
+### 1. Το μοντέλο 7B (Qwen2.5-7B-Instruct-Q4_K_M)
+* **Μέγεθος:** ~4.5 GB - 5.5 GB.
+* **Στην RTX 3090 σου:** Θα τρέξει αστραπιαία. Θα σου μείνουν ~18GB VRAM ελεύθερα, τα οποία είναι κρίσιμα για να χωράει το μεγάλο context window (τα μεγάλα κείμενα του Slackware documentation) κατά τη διάρκεια του fine-tuning χωρίς Out-Of-Memory (OOM) σφάλματα.
+* **Στους target CPU υπολογιστές:** Θα τρέξει άψογα σε οποιοδήποτε μηχάνημα με **8GB RAM** (αφήνοντας 3GB για το λειτουργικό και το context) και θα πετάει σε μηχάνημα με 16GB RAM.
+
+### 2. Το μοντέλο 14B (Qwen2.5-14B-Instruct-Q4_K_M)
+* **Μέγεθος:** ~8.5 GB - 9.5 GB.
+* **Στην RTX 3090 σου:** Θα τρέξει πολύ καλά, αλλά θα αφήσει λιγότερο χώρο για το batch size και το context window κατά την εκπαίδευση.
+* **Στους target CPU υπολογιστές:** Εδώ είναι ο κίνδυνος. Σε έναν υπολογιστή με **8GB RAM**, το μοντέλο ΔΕΝ θα χωρέσει. Το λειτουργικό θα αρχίσει να χρησιμοποιεί τον δίσκο ως εικονική μνήμη (swapping), κάνοντας την απόκριση του μοντέλου εξαιρετικά αργή (π.χ. 1-2 λέξεις το δευτερόλεπτο) ή θα κρασάρει τελείως. Θα λειτουργούσε μόνο αν είσαι 100% σίγουρος ότι όλοι οι target υπολογιστές έχουν τουλάχιστον 16GB RAM.
+
+### 3. Το μοντέλο 32B (Qwen2.5-32B-Instruct-Q4_K_M)
+* **Μέγεθος:** ~19 GB - 20 GB.
+* **Στην RTX 3090 σου:** Μόλις που θα χωρέσει. Κατά το fine-tuning, είναι πολύ πιθανό να πάρεις σφάλματα OOM επειδή δεν θα μένει VRAM για το context των ερωτήσεων.
+* **Στους target CPU υπολογιστές:** **Αδύτον.** Απαιτεί πάνω από 20GB RAM μόνο για να φορτώσει. Δεν θα τρέξει πουθενά εκτός αν ο target υπολογιστής είναι επίσης high-end workstation.
+
+---
+
+### Η "Έξυπνη" Λύση (Knowledge Distillation)
+Αν φοβάσαι ότι το 7B είναι "χαζό" ή δεν δίνει αρκετά αναλυτικές απαντήσεις, **δεν χρειάζεται να το κάνεις μεγαλύτερο**. Η διαδικασία που συμφωνήσαμε λύνει ακριβώς αυτό το πρόβλημα:
+
+1. Για να φτιάξουμε το dataset, θα τρέξουμε στον server της 3090 ένα **μεγάλο μοντέλο (π.χ. 14B ή 32B)**. Αυτό θα γράψει τέλειες, αναλυτικές, expert-level απαντήσεις για το Slackware.
+2. Μετά, θα κάνουμε fine-tune το **μικρό 7B μοντέλο** σε αυτό το dataset υψηλής ποιότητας.
+3. **Το αποτέλεσμα:** Το 7B μοντέλο θα "μιμηθεί" τη συμπεριφορά και την ποιότητα του 32B, δίνοντας μεγάλες και σωστές απαντήσεις, αλλά θα παραμείνει αρκετά ελαφρύ (~5GB) για να τρέχει σε οποιονδήποτε απλό CPU υπολογιστή.
+
+### Η πρότασή μου:
+Μείνε στο **Qwen2.5-7B-Instruct** (ή ακόμα καλύτερα στο **Qwen2.5-Coder-7B-Instruct**, το οποίο είναι ειδικά εκπαιδευμένο να καταλαβαίνει technical documentation, scripts και commands, άρα είναι ιδανικό για Slackware).
+
+**Για να είμαστε 100% σίγουροι:** Πόση RAM (περίπου) έχουν οι target υπολογιστές στους οποίους θέλεις να τρέχει τελικά το μοντέλο; (π.χ. έχουν 8GB, 16GB ή 32GB;)
+
+### USER
+16
+
+### ASSISTANT
+
+
+### USER
+θα εχουν 8-16 GB ram
+
+### ASSISTANT
+Τέλεια! Με 8-16 GB RAM, έχουμε ξεκάθαρη εικόνα. Ας κάνουμε τους υπολογισμούς:
+
+## 📊 Ανάλυση RAM ανά μοντέλο/κβαντοποίηση
+
+| Μοντέλο | Κβαντοποίηση | Μέγεθος | 8GB RAM | 16GB RAM |
+|---------|-------------|---------|---------|----------|
+| **Qwen2.5-7B** | Q4_K_M | ~4.5 GB | ✅ Άνετο | ✅ Άνετο |
+| **Qwen2.5-7B** | Q5_K_M | ~5.5 GB | ⚠️ Σφιχτά | ✅ Άνετο |
+| **Qwen2.5-7B** | Q6_K | ~6.5 GB | ❌ Οριακό | ✅ Άνετο |
+| **Qwen2.5-3B** | Q6_K | ~3 GB | ✅ Άνετο | ✅ Άνετο |
+| **Qwen2.5-3B** | Q8_0 | ~3.5 GB | ✅ Άνετο | ✅ Άνετο |
+
+## 🎯 Η πρότασή μου: **Qwen2.5-7B σε Q4_K_M**
+
+**Γιατί:**
+- ✅ Χωράει ΑΝΕΤΑ σε 8GB RAM (αφήνει ~3.5GB για OS + context window)
+- ✅ Πολύ καλύτερη ποιότητα από το 3B (ειδικά σε τεχνικές απαντήσεις Slackware)
+- ✅ Το Q4_K_M έχει ελάχιστη απώλεια ποιότητας (~1-2%)
+- ✅ Θα τρέχει με ~10-15 tokens/sec σε μέση CPU
+
+## 🚀 Η πλήρης ροή εργασίας (συνοπτικά)
+
+### Βήμα 1: Setup στην RTX 3090
+```bash
+python3 -m venv venv && source venv/bin/activate
+pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
+pip install --no-deps xformers trl peft accelerate bitsandbytes
+pip install requests datasets
+```
+
+### Βήμα 2: Δημιουργία dataset με το μεγάλο μοντέλο
+```bash
+# Σε ένα τερματικό: ξεκίνα τον llama-server με Qwen2.5-32B (ή 14B)
+./llama-server -m /path/to/qwen2.5-32b-instruct-q4_k_m.gguf \
+  --port 8080 --ctx-size 8192 --n-gpu-layers 99
+
+# Σε άλλο τερματικό: τρέξε το script για να φτιάξεις τις αναλυτικές απαντήσεις
+python3 09-make-qa-llm.py
+```
+
+### Βήμα 3: Fine-tuning του 7B στην RTX 3090
+```python
+# train_qwen.py
+from unsloth import FastLanguageModel
+from datasets import load_dataset
+from trl import SFTTrainer
+from transformers import TrainingArguments
+import torch
+
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name="unsloth/Qwen2.5-7B-Instruct",
+    max_seq_length=4096,
+    load_in_4bit=True,
+)
+
+model = FastLanguageModel.get_peft_model(
+    model, r=16,
+    target_modules=["q_proj","k_proj","v_proj","o_proj","gate_proj","up_proj","down_proj"],
+    lora_alpha=16, lora_dropout=0, bias="none",
+    use_gradient_checkpointing="unsloth",
+)
+
+dataset = load_dataset("json", data_files="dataset/qa.jsonl", split="train")
+
+def formatting_prompts_func(examples):
+    texts = []
+    for inst, out in zip(examples["instruction"], examples["output"]):
+        text = (
+            "<|im_start|>system\nYou are an expert Slackware Linux assistant. "
+            "Answer in Greek when asked in Greek, otherwise in English.<|im_end|>\n"
+            "<|im_start|>user\n" + inst + "<|im_end|>\n"
+            "<|im_start|>assistant\n" + out + "<|im_end|>"
+        )
+        texts.append(text)
+    return {"text": texts}
+
+dataset = dataset.map(formatting_prompts_func, batched=True)
+
+trainer = SFTTrainer(
+    model=model, tokenizer=tokenizer, train_dataset=dataset,
+    dataset_text_field="text", max_seq_length=4096,
+    args=TrainingArguments(
+        per_device_train_batch_size=2,
+        gradient_accumulation_steps=4,
+        warmup_steps=10,
+        num_train_epochs=3,
+        learning_rate=2e-4,
+        bf16=torch.cuda.is_bf16_supported(),
+        fp16=not torch.cuda.is_bf16_supported(),
+        logging_steps=1,
+        output_dir="outputs",
+        optim="adamw_8bit",
+    ),
+)
+trainer.train()
+model.save_pretrained("qwen25_7b_slackware_lora")
+```
+
+### Βήμα 4: Εξαγωγή σε GGUF Q4_K_M
+```python
+# export_gguf.py
+from unsloth import FastLanguageModel
+
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name="qwen25_7b_slackware_lora",
+    max_seq_length=4096, load_in_4bit=True,
+)
+
+model.save_pretrained_gguf(
+    "qwen25_7b_slackware_final",
+    tokenizer,
+    quantization_method="q4_k_m"  # ← 4.5GB, τρέχει σε 8GB+
+)
+```
+
+### Βήμα 5: Εκτέλεση στα 8-16GB μηχανήματα
+```bash
+# Με Ollama (πιο εύκολο)
+ollama create slackware-guru -f Modelfile
+# Modelfile:
+# FROM ./qwen25-7b-slackware-final-q4_k_m.gguf
+# PARAMETER num_ctx 4096
+# SYSTEM "Είσαι ειδικός στο Slackware Linux..."
+
+# Ή με llama.cpp απευθείας
+./llama-cli -m qwen25-7b-slackware-final-q4_k_m.gguf \
+  --ctx-size 4096 --threads $(nproc) --temp 0.7
+```
+
+## ⚠️ Εναλλακτική αν τα 8GB είναι πολύ σφιχτά
+
+Αν δεις ότι σε μερικά 8GB μηχανήματα "πνίγεται", έχεις δύο επιλογές:
+
+1. **Μείωσε το context window** σε 2048 (αντί 4096) → εξοικονόμηση ~1GB
+2. **Πήγαινε σε Qwen2.5-3B σε Q8_0** (3.5GB) → μικρότερο μοντέλο αλλά τρέχει παντού τέλεια
+
+Θέλεις να σου γράψω τα scripts λεπτομερώς ή έχεις απορίες σε κάποιο βήμα;
+
+### USER
+ενταξει ευχαριστω κρατα μνημη αν χρειαστει θα επανελθω
+
+### ASSISTANT
